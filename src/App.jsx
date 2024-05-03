@@ -24,12 +24,12 @@ function App() {
       >
         <div className="accordion" id="accordionExample">
           <div className="accordion-item">
-            <div className="row p-3">
-              <span className="col-8">test</span>
+            <div className="row p-3 align-items-center ">
+              <span className="col-8 fs-5 ">test</span>
               <div className="col-4">
                 <div className="row justify-content-end ">
                   <button
-                    className="collapsed col-2 btn btn-info mx-2 col"
+                    className="col-2 btn btn-info mx-2 col"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseOne"

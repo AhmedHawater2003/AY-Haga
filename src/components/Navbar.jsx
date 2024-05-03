@@ -9,7 +9,6 @@ import Sidebar from "./Sidebar";
 const NavIcon = styled(Link)`
   margin-left: 2rem;
   font-size: 2rem;
-  height: 80px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -35,11 +34,11 @@ const Navbar = ({ showSideBar, sideBarFlag }) => {
   };
   return (
     <div
-      className={
+      className={`container-flow ${
         !isScrolled
           ? "header-navbar sticky-top"
           : "header-navbar sticky-top scrolled"
-      }
+      }`}
     >
       <div
         className={
@@ -49,8 +48,8 @@ const Navbar = ({ showSideBar, sideBarFlag }) => {
       <nav
         className={
           !isScrolled
-            ? "navbar navbar-expand-lg navbar-light  sticky-top"
-            : "navbar navbar-expand-lg navbar-light sticky-top scrolled"
+            ? "navbar navbar-expand navbar-light  sticky-top"
+            : "navbar navbar-expand navbar-light sticky-top scrolled"
         }
       >
         <NavIcon to="#">
