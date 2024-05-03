@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import Sidebar from "./Sidebar";
 
 const NavIcon = styled(Link)`
   margin-left: 2rem;
@@ -79,6 +80,11 @@ const Navbar = ({ showSideBar, sideBarFlag }) => {
           </ul>
         </div>
       </nav>
+      {sideBarFlag ? (
+        <Sidebar sideBarState={[sideBarFlag, showSideBar]} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

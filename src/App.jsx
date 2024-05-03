@@ -6,15 +6,19 @@ import Overview from "./pages/Overview";
 import { Reports, ReportsOne, ReportsTwo, ReportsThree } from "./pages/Reports";
 import Team from "./pages/Team";
 import { FaArrowUp, FaPlus, FaUps } from "react-icons/fa";
+import Navbar from "./components/Navbar";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   return (
     <Router>
-      <Sidebar sideBarState={[isOpen, () => setIsOpen(!isOpen)]} />
+      <Navbar
+        sideBarFlag={isSideBarOpen}
+        showSideBar={() => setIsSideBarOpen(!isSideBarOpen)}
+      />
       <div
         style={{
-          margin: `20px 20px 20px ${isOpen ? "270px" : "20px"}`,
+          margin: `20px 20px 20px ${isSideBarOpen ? "270px" : "20px"}`,
           transition: "200ms",
         }}
       >
