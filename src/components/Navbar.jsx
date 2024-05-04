@@ -24,7 +24,6 @@ const Navbar = ({ isLanding, showSideBar, sideBarFlag }) => {
     sideBarFlag: false,
   };
   const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -66,13 +65,28 @@ const Navbar = ({ isLanding, showSideBar, sideBarFlag }) => {
         }
       >
         {!isLanding ? (
-          <NavIcon to="#">
-            {sideBarFlag ? (
-              <AiIcons.AiOutlineClose onClick={showSideBar} />
-            ) : (
-              <FaIcons.FaBars onClick={showSideBar} />
-            )}
-          </NavIcon>
+          <>
+            <NavIcon to="#">
+              {sideBarFlag ? (
+                <AiIcons.AiOutlineClose onClick={showSideBar} />
+              ) : (
+                <FaIcons.FaBars onClick={showSideBar} />
+              )}
+            </NavIcon>
+            <SearchBar
+              inputStyle={{
+                width: "30vw",
+                height: "40px",
+                padding: "10px 10px",
+              }}
+              buttonStyle={{
+                fontSize: "20px",
+                padding: "4px",
+                width: "80px",
+                height: "40px",
+              }}
+            />
+          </>
         ) : (
           <a className="navbar-brand" href="/how-to-use">
             How To Use?
