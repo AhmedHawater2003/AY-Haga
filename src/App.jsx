@@ -7,6 +7,7 @@ import { Reports, ReportsOne, ReportsTwo, ReportsThree } from "./pages/Reports";
 import Team from "./pages/Team";
 import { FaArrowUp, FaPlus, FaUps } from "react-icons/fa";
 import Navbar from "./components/Navbar";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);

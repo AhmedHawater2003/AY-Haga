@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import Sidebar from "./Sidebar";
+import SearchBar from "./SearchBar";
 
 const NavIcon = styled(Link)`
   margin-left: 2rem;
@@ -59,6 +60,7 @@ const Navbar = ({ showSideBar, sideBarFlag }) => {
             <FaIcons.FaBars onClick={showSideBar} />
           )}
         </NavIcon>
+        <SearchBar height={25} width={15} />
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto">
             <img className="navbar-logo" src={logo} alt="logo" />
