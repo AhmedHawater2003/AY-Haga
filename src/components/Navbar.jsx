@@ -10,12 +10,18 @@ const NavIcon = styled(Link)`
   margin-left: 2rem;
   font-size: 2rem;
   display: flex;
+  padding-right: 20px;
   justify-content: flex-start;
   align-items: center;
   color: #1b5e39;
 `;
 
-const Navbar = ({ showSideBar, sideBarFlag }) => {
+const Navbar = ({ isLanding, showSideBar, sideBarFlag }) => {
+  Navbar.defaultprops = {
+    isLanding: false,
+    showSideBar: () => { },
+    sideBarFlag: false,
+  };
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -34,45 +40,47 @@ const Navbar = ({ showSideBar, sideBarFlag }) => {
   };
   return (
     <div
-      className={`container-flow ${
-        !isScrolled
-          ? "header-navbar sticky-top"
-          : "header-navbar sticky-top scrolled"
-      }`}
+      className={`container-flow ${!isLanding
+        ? "header-navbar sticky-top" :
+        isScrolled ? "header-navbar landing sticky-top scrolled" : "header-navbar landing sticky-top"
+        }`}
     >
       <div
         className={
-          !isScrolled ? "header-background" : "header-background scrolled"
+          !isScrolled && isLanding ? "header-background" : "header-background scrolled"
         }
       ></div>
       <nav
         className={
-          !isScrolled
+          !isLanding
             ? "navbar navbar-expand navbar-light  sticky-top"
-            : "navbar navbar-expand navbar-light sticky-top scrolled"
+            : isScrolled ? "navbar landing navbar-expand navbar-light sticky-top scrolled" : "navbar landing navbar-expand navbar-light sticky-top"
         }
       >
-        <NavIcon to="#">
-          {sideBarFlag ? (
-            <AiIcons.AiOutlineClose onClick={showSideBar} />
-          ) : (
-            <FaIcons.FaBars onClick={showSideBar} />
-          )}
-        </NavIcon>
+        {!isLanding ?
+          <NavIcon to="#">
+            {sideBarFlag ? (
+              <AiIcons.AiOutlineClose onClick={showSideBar} />
+            ) : (
+              <FaIcons.FaBars onClick={showSideBar} />
+            )}
+          </NavIcon> :
+          <a className="navbar-brand" href="/how-to-use">How To Use?</a>
+        }
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto">
-            <img className="navbar-logo" src={logo} alt="logo" />
+            <a href="/"><img className="navbar-logo" src={logo} alt="logo" href='/' /></a>
           </ul>
         </div>
         <div>
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <a className="btn" href="/login">
                 Sign In
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <a className="btn" href="/register">
                 Register
               </a>
             </li>
