@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { SidebarData } from "./SidebarData";
+import { OrgSidebarData } from "./OrgSidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 import SearchBar from "./SearchBar";
@@ -46,7 +46,7 @@ const Sidebar = ({ sideBarState }) => {
                 width: "20%",
               }}
             />
-            {SidebarData.map((item, index) => {
+            {OrgSidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;
             })}
           </SidebarWrap>
