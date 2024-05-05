@@ -2,6 +2,7 @@ import React from 'react'
 import Sidebar from '../components/Sidebar';
 import OrgNavbar from "../components/OrgNavbar";
 import { useState } from "react";
+import AccountBrief from '../components/AccountBrief';
 
 const OrgHomePage = () => {
     const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -15,6 +16,7 @@ const OrgHomePage = () => {
                         transition: "200ms",
                     }}
                 >
+                    <AccountBrief/>
                 </div>
             </div>   
             // <div><h1>fsgfifgd</h1></div>  
