@@ -4,25 +4,31 @@ import { useState } from 'react';
 import CategoryModal from './CategoryModal';
 import ClothingForm from './ClothingForm';
 import ToysForm from './ToysForm';
+import { Container, Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 const FulfilledPosts = () => {
     
   return (
     <div>
-        <div style={
-            {
-                // display: "flex",
-                // justifyContent: "space-between",
-                // flexDirection : 'row' ,
-                // alignItems: "center",
-                // padding: "20px",
-                // borderBottom: "1px solid #e0e0e0"
-            }
-        
-        }>
-            <h1>Fulfilled Posts</h1>
-            <CategoryModal />
-            <ClothingForm />
+        <div>
+            
+                <Row>
+                    <Col >
+                    <h1>Fulfilled Posts</h1>
+                    </Col>
+                    <Col style={{display:"flex",alignItems:"end",justifyContent:"end",marginRight:"30px"}} >
+                    <CategoryModal />
+                    
+                    </Col>
+                </Row>
+           
+            
+            
+            
 
         <div/>
             <div

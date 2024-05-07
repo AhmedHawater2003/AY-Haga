@@ -99,10 +99,11 @@ const ClothingForm = ({showClothing , back , close}) => {
           {showAlert&&<Alert variant={(isSuccess)?'success':'danger'}>
             {alertMessage}
           </Alert>}
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} className="login-text">
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Title</Form.Label>
+                <Form.Label className="login-text2">Title</Form.Label>
                 <Form.Control
+                  className="input-field"
                   type="text"
                   placeholder="post title"
                   value = {title}

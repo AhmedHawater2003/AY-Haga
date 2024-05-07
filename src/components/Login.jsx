@@ -42,8 +42,8 @@ const Login = () => {
                         </Alert>
                     )}
                     <div className="col p-0">
-                        <div className="login d-flex align-items-center">
-                            <div className="container">
+                        <div className="login d-flex align-items-center" style={{height:"100%"}}>
+                            <div className="container" style={{height:"100%"}}>
                                 <div className="row form">
                                     <a className='login-link' href="/">
                                         <p className="login-text2"><SlArrowLeftCircle />Back To Home</p>
