@@ -1,19 +1,16 @@
-import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
-import Contact from "./components/Contact";
 import HowToUse from "./components/HowToUse";
-import { Navbar } from "react-bootstrap";
-
-
 function App() {
-  
+ 
   return (
     <Router>
       <Switch>
         <Route path="/" exact component={LandingPage} />
-        <Route path="/login" exact component={Contact} />
+        <Route path="/login" exact component={Login} />
         <Route path="/how-to-use" exact component={HowToUse} />
+        <Route path="/admin" exact component={LandingPage} />
       </Switch>
     </Router>
   );
