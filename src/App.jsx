@@ -4,17 +4,13 @@ import LandingPage from "./components/LandingPage";
 import HowToUse from "./components/HowToUse";
 import OrgHomePage from "./pages/OrgHomePage";
 import { Navbar } from "react-bootstrap";
+import Register from "./components/Register";
+import DonorRegForm from "./components/DonorRegForm";
+
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={LandingPage} />
-        <Route path="/login" exact component={Login} />
-        <Route path="/how-to-use" exact component={HowToUse} />
-        <Route path="/org" exact component={OrgHomePage} />
-      </Switch>
-    </Router>
+   <Register/>
   );
 }
 
