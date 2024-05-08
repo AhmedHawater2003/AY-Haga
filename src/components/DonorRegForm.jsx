@@ -65,7 +65,7 @@ const DonorRegForm = () => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        New Post
+        Donor
       </Button>
 
       <Modal show={show} onHide={handleClose} size="lg">
@@ -270,12 +270,42 @@ const DonorRegForm = () => {
 
             </Form.Group>}
 
+
+
+
             {teacher && <Form.Group style={{ width: "80%" }} controlId="exampleForm.ControlInput1">
               <Form.Label>upload your document(s) </Form.Label>
               <div>
                 <input type="file" onChange={handleFileChange} multiple />
 
               </div>
+
+
+              <Form.Group style={{ width: "80%" }} controlId="exampleForm.ControlInput1">
+                <Form.Label>Subjects</Form.Label>
+                <br />
+                <input className="input-field donor"
+                  type="text"
+                  placeholder="Subjects"
+                  required
+                />
+              </Form.Group>
+
+
+
+              <Form.Group style={{ width: "80%" }} controlId="exampleForm.ControlInput1">
+                <Form.Label>Number of pro-bonos cases</Form.Label>
+                <br />
+                <input className="input-field donor"
+                  type="number"
+                  placeholder="Number of pro-bonos cases"
+                  required
+                />
+              </Form.Group>
+
+
+
+
             </Form.Group>}
 
             <Modal.Footer>

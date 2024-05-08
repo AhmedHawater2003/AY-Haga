@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import DonorRegForm from "./DonorRegForm";
+import OrganizationsRegForm from "./OrganizationsRegForm";
 
 
 
@@ -22,7 +23,7 @@ const Register = () => {
     return (
       
         <>
-            <DonorRegForm/>
+            <OrganizationsRegForm/>
                     
         </>
   
