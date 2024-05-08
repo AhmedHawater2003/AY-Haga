@@ -19,12 +19,14 @@ const NavIcon = styled(Link)`
 `;
 
 const Navbar = ({
-  isLanding = false,
-  showSideBar = () => {},
   sideBarFlag = false,
+  showSideBar = () => {},
+  isSideBarOpen = false,
   searchBarData = [],
   searchBarFunction,
   searchBarFlag = false,
+  sideBarData = [],
+  sideBarFunction,
 }) => {
   
   const [isScrolled, setIsScrolled] = useState(false);
@@ -45,7 +47,7 @@ const Navbar = ({
   return (
     <div
       className={`container-flow ${
-        !isLanding
+        sideBarFlag
           ? "header-navbar sticky-top"
           : isScrolled
           ? "header-navbar landing sticky-top scrolled"
@@ -54,24 +56,24 @@ const Navbar = ({
     >
       <div
         className={
-          !isScrolled && isLanding
+          !isScrolled && !sideBarFlag
             ? "header-background"
             : "header-background scrolled"
         }
       ></div>
       <nav
         className={
-          !isLanding
+          sideBarFlag
             ? "navbar navbar-expand navbar-light  sticky-top"
             : isScrolled
             ? "navbar landing navbar-expand navbar-light sticky-top scrolled"
             : "navbar landing navbar-expand navbar-light sticky-top"
         }
       >
-        {!isLanding ? (
+        {sideBarFlag ? (
           <>
             <NavIcon to="#">
-              {sideBarFlag ? (
+              {isSideBarOpen ? (
                 <AiIcons.AiOutlineClose onClick={showSideBar} />
               ) : (
                 <FaIcons.FaBars onClick={showSideBar} />
@@ -122,11 +124,11 @@ const Navbar = ({
           </ul>
         </div>
       </nav>
-      {sideBarFlag ? (
-        <Sidebar sideBarState={[sideBarFlag, showSideBar]} />
-      ) : (
-        <></>
-      )}
+      {isSideBarOpen && (
+        <Sidebar sideBarState={[isSideBarOpen, showSideBar]} sideBarData={sideBarData}
+        sideBarFunction={sideBarFunction}
+        resultLabellKey="title" />
+      ) }
     </div>
   );
 };

@@ -3,7 +3,7 @@ import logo from '../assets/logo_no_bg.png';
 import bg from '../assets/login_bg.jpg';
 import { FiEyeOff, FiEye } from 'react-icons/fi'; // Import eye and eyeOff icons from react-icons/fi
 import { SlArrowLeftCircle } from "react-icons/sl";
-import { Alert } from 'react-bootstrap'; // Assuming you're using Bootstrap for the alert
+import { Alert } from 'react-bootstrap';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -24,10 +24,14 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (email === "admin" && password === "admin") {
+        if (email === "marina.nader" && password === "WeLoveMarinaNader") {
             window.location.href = "/admin";
-        } else {
+        }
+        else {
             setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 3000);
         }
     }
 
@@ -35,15 +39,10 @@ const Login = () => {
         <div className="maincontainer">
             <div className="container-fluid" style={{ margin: "200px", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.9)", borderRadius: "20px" }}>
                 <div className="row no-gutter">
-                    {showAlert && (
-                        <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible>
-                            <Alert.Heading>Incorrect Credentials</Alert.Heading>
-                            <div className='login-text'>Please check your email and password and try again.</div>
-                        </Alert>
-                    )}
+
                     <div className="col p-0">
-                        <div className="login d-flex align-items-center" style={{height:"100%"}}>
-                            <div className="container" style={{height:"100%"}}>
+                        <div className="login d-flex align-items-center" style={{ height: "100%" }}>
+                            <div className="container" style={{ height: "100%" }}>
                                 <div className="row form">
                                     <a className='login-link' href="/">
                                         <p className="login-text2"><SlArrowLeftCircle />Back To Home</p>
@@ -66,6 +65,9 @@ const Login = () => {
                                                 </div>
                                             </div>
                                             <button type="submit" className="login-btn text-uppercase">Sign in</button>
+                                            {showAlert && (
+                                                    <div className='login-text'>Please check your email and password and try again.</div>  
+                                            )}
                                             <div className="text-center mt-4">
                                                 <div className="login-text">Doesn't Have An Account?</div>
                                                 <a href="#">

@@ -9,32 +9,32 @@ const Contact = () => {
                     <div className="card">
                         <img src={male_icon} alt='medical_icon' className="card-icon"></img>
                         <div className="card-title">Abdullah Mahmoud</div>
-                        <a className="card-description" href='https://www.linkedin.com/in/abdullahm2002/'>LinkedIn</a>
+                        <a className="card-description" href='https://www.linkedin.com/in/abdullahm2002/' target='_blank'>LinkedIn</a>
                     </div>
                     <div className="card">
                         <img src={male_icon} alt='blood_icon' className="card-icon"></img>
                         <div className="card-title">Abdelrahman Talaat</div>
-                        <a className="card-description" href='https://www.linkedin.com/in/abdelrahman-talaat-ba8a64244/'>LinkedIn</a>
+                        <a className="card-description" href='https://www.linkedin.com/in/abdelrahman-talaat-ba8a64244/' target='_blank'>LinkedIn</a>
                     </div>
                     <div className="card">
                         <img src={female_icon} alt='school_icon' className="card-icon"></img>
                         <div className="card-title">Ahd Mostafa</div>
-                        <a className="card-description" href='https://www.linkedin.com/in/ahd-mostafa-a36833231/'>LinkedIn</a>
+                        <a className="card-description" href='https://www.linkedin.com/in/ahd-mostafa-a36833231/' target='_blank'>LinkedIn</a>
                     </div>
                     <div className="card">
                         <img src={male_icon} alt='food_icon' className="card-icon"></img>
                         <div className="card-title">Ahmed Hawater</div>
-                        <a className="card-description" href='https://www.linkedin.com/in/ahmed-hawater/'>LinkedIn</a>
+                        <a className="card-description" href='https://www.linkedin.com/in/ahmed-hawater/' target='_blank'>LinkedIn</a>
                     </div>
                     <div className="card">
                         <img src={male_icon} alt='clothing_icon' className="card-icon"></img>
                         <div className="card-title">Ali Shokry</div>
-                        <a className="card-description" href='https://www.linkedin.com/in/ali-shokry-80b007236/'>LinkedIn</a>
+                        <a className="card-description" href='https://www.linkedin.com/in/ali-shokry-80b007236/' target='_blank'>LinkedIn</a>
                     </div>
                     <div className="card">
                         <img src={male_icon} alt='toy_icon' className="card-icon"></img>
                         <div className="card-title">Youssef Elshennawy</div>
-                        <a className="card-description" href='https://www.linkedin.com/in/youssef-elshenawy/'>LinkedIn</a>
+                        <a className="card-description" href='https://www.linkedin.com/in/youssef-elshenawy/' target='_blank'>LinkedIn</a>
                     </div>
                 </div>
             </div>
