@@ -1,140 +1,177 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 
 
-const ClothingForm = ({showClothing , back , close}) => {
-    // const [show, setShow] = useState(false);
+const ToysForm = ({showToys , back , close}) => {
     const [title , setTitle] = useState('');
     const [type , setType] = useState('');
+    const [category , setCategory] = useState('');
     const [age , setAge] = useState('');
-    const [gender , setGender] = useState('');
+    const [gender , setGender] = useState('');    
     const [quantity , setQuantity] = useState('');
-
-    const [material , setMaterial] = useState('');
+    const [photo , setPhoto] = useState('');
     const [additionalDetails , setAdditionalDetails] = useState('');
-    // const [showClothing , setShowClothing] = useState(false);
+    const [alertMessage , setAlertMessage] = useState('');
     const [showAlert, setShowAlert] = useState(false);
     
-    const [alertMessage , setAlertMessage] = useState('');
-   
-    
-    
-    
-    // const [season , setSeason] = useState('');
+//     useEffect(() => {
+//         setTimeout(
+//             () => {
+//                 setShowAlert(false);
+//             }, 3000
+//         );
+//     }
+// );
     
     
     const handleClose = () => {
-      // setShow(false);
+      
       setShowAlert(false);
+      setAge('');
+      setAlertMessage('');
       setTitle('');
       setType('');
-      setAge('');
       setGender('');
       setQuantity('');
-      // setSeason('');
-      setMaterial('');
+      setPhoto('');
+      setCategory('');
       setAdditionalDetails('');
-      setAlertMessage('');
       close();
+
     };
-    // const handleShow = () => setShow(true);
+    const handleShow = () => setShow(true);
 
     const handleSubmit =(event) => {
       event.preventDefault();
       if(age<1 || age > 100){
         setAlertMessage('Age Must be between 1 and 100');
+        
         setShowAlert('true');
         setSuccess(false);
-        // setTimeout(() => {
-        //     setShowAlert(false);
-        //     setAlertMessage('');
-        // } ,10000);
+        setTimeout(() => {
+            setShowAlert(false);
+            setAlertMessage('');
+
+        } ,10000);
       }
       else{
-        setAlertMessage('Post Added Successfully');
-        setShowAlert('true');
-        setSuccess(true);
+        // setShow(false);
+        // setShowToys();
+        setShowAlert(true);
+        
+        setAlertMessage('Posted Successfully!');
        
-
+        setSuccess(true);
+        
         setTimeout(() => {
             close();
+            setAge('');
             setTitle('');
             setType('');
-            setAge('');
             setGender('');
             setQuantity('');
-            setMaterial('');
+            setPhoto('');
+            setCategory('');
             setAdditionalDetails('');
             setShowAlert(false);
             setAlertMessage('');
-        } ,10000);
+            
+        },2000);
+        
+        
+        
+        console.log("Form submitted successfully");
       }
     };
 
-    // const handleShowClothing = () => {
-    //   setShowClothing(true);
-    //   console.log("Clothing Clicked")
-    //   setShow(false);
-    // }
+    
   
-    // const handleAlertClose = () => setShowAlert(false);
-    // const handleAlertShow = () => setShowAlert(true);
+    const handleAlertClose = () => setShowAlert(false);
+    const handleAlertShow = () => setShowAlert(true);
   
     const [isSuccess,setSuccess] = useState(false);
-  
+    console.log(showToys);
+    
     return (
       <>
-        
-        
-  
-        <Modal show={showClothing} onHide={handleClose} size="lg" scrollable={true} onSubmit={handleSubmit} >
+        {/* <Button variant="primary"  >
+          New Post
+        </Button>
+   */}
+   
+        <Modal show={showToys} onHide={handleClose} size="lg" scrollable={true} onSubmit={handleSubmit} >
           <Modal.Header closeButton>
-            <Modal.Title>Clothing Post</Modal.Title>
+            <Modal.Title>Toys Post</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body onSubmit={handleSubmit}>
           {showAlert&&<Alert variant={(isSuccess)?'success':'danger'}>
             {alertMessage}
           </Alert>}
-            <Form onSubmit={handleSubmit} className="login-text">
+            <Form onSubmit={handleSubmit}>
+             
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label className="login-text2">Title</Form.Label>
+                <Form.Label>Title</Form.Label>
                 <Form.Control
-                  className="input-field"
                   type="text"
-                  placeholder="post title"
+                  placeholder="Post Title"
                   value = {title}
                   onChange ={(event) => setTitle(event.target.value)}
+                  required
                   autoFocus
                 />
               </Form.Group>
+              
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Type</Form.Label>
                 <Form.Control
                   type="text"
-                  value = {type}
-                  onChange ={(event) => setType(event.target.value)}
-                  placeholder="clothing type"
+                  placeholder="Toy Type"
+                    value = {type}
+                    onChange ={(event) => setType(event.target.value)}
                 />
               </Form.Group>
+               <div style={
+                {
+                  display: "flex",
+                  flexDirection: "row",
+                  gap : '200px'
+                }
+              }>
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Category</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Toy Category"
+                  value={category}
+                  onChange ={(event) => setCategory(event.target.value)}
+                />
+              </Form.Group>
+              
+              
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Age</Form.Label>
                 <Form.Control
                   type="number"
-                  placeholder="age"
+                  placeholder="Age"
                   value={age}
-                  onChange ={(event) => {
-                    setAge(event.target.value);
-                    setShowAlert(false);
-                    setAlertMessage('');
-                  }}
+                  onChange ={(event) => setAge(event.target.value)}
                   min={"1"}
                   max={"100"}
                 />
               </Form.Group>
+              </div>
+              <div style={
+                {
+                  display: "flex",
+                  flexDirection: "row",
+                  gap : '200px'
+                }
+              }>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Gender</Form.Label>
                 <br/>
@@ -182,59 +219,51 @@ const ClothingForm = ({showClothing , back , close}) => {
                 </label>
               </div>
               </Form.Group>
+              
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Photo</Form.Label>
+                <Form.Control
+                  type="file"
+                  placeholder="photo"
+                  value = {photo}
+                  onChange={(event) => setPhoto(event.target.value)}
+                />
+              </Form.Group>
+              </div>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Quantity</Form.Label>
                 <Form.Control
                   type="number"
                   placeholder="quantity"
-                  value={quantity}
-                  onChange ={(event) => setQuantity(event.target.value)}
+                  value = {quantity}
+                  onChange={(event) => setQuantity(event.target.value)}
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Season</Form.Label>
-                {/* <Form.Control
-                  type="text"
-                  placeholder="clothing type"
-                /> */}
-                <select className="form-select" aria-label="Default select example" >
-                    <option>Open to select season</option>
-                    <option value="1">Summer</option>
-                    <option value="2">Fall</option>
-                    <option value="3">Winter</option>
-                    <option value="4">Spring</option>
-                </select>
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Material</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="clothing type"
-                  value={material}
-                  onChange ={(event) => setMaterial(event.target.value)}
-                />
-              </Form.Group>
+             
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlTextarea1"
               >
                 <Form.Label>Additional Details</Form.Label>
-                <Form.Control 
-                  as="textarea" 
-                  rows={3}
-                  value={additionalDetails}
-                  onChange={(e) => setAdditionalDetails(e.target.value)}  />
+                <Form.Control as="textarea" 
+                              rows={3} 
+                              value={additionalDetails} 
+                              onChange={(e) => setAdditionalDetails(e.target.value)} 
+                />
+                
               </Form.Group>
-              
+              <button type="submit" variant="primary" >
+              Save Changes
+            </button>
               
             </Form>
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer onSubmit={handleSubmit}>
             
             <Button variant="secondary" onClick={() => {back(); handleClose}}>
               Back
             </Button>
-            <Button type="submit" variant="primary" onClick={handleSubmit}>
+            <Button type="submit"  variant="primary" onClick={handleSubmit} >
               Save Changes
             </Button>
             
@@ -245,4 +274,4 @@ const ClothingForm = ({showClothing , back , close}) => {
     );
 }
 
-export default ClothingForm;
+export default ToysForm;

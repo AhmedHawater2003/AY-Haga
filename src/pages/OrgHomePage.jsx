@@ -8,11 +8,16 @@ import FulfilledPosts from '../components/org/FulfilledPosts';
 
 const OrgHomePage = () => {
     const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+    const [isHome, setIsHome] = useState(false);
+    const [isPending, setIsPending] = useState(false);
+    const [isWaiting, setIsWaiting] = useState(false);
+    const [isFulfilled, setIsFulfilled] = useState(true);
 
-    const isHome=false;
-    const isPending=false;
-    const isWaiting=false;
-    const isFulfilled=true;
+
+    // const isHome=false;
+    // const isPending=false;
+    // const isWaiting=false;
+    // const isFulfilled=true;
 
     return (
             <div>

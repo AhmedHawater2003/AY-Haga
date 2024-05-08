@@ -10,7 +10,17 @@ import DonorRegForm from "./components/DonorRegForm";
 
 function App() {
   return (
-   <Register/>
+   <Router>
+    <Switch>
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
+      <Route path="/donorreg" component={DonorRegForm} />
+      <Route path="/howtouse" component={HowToUse} />
+      <Route path="/org" component={OrgHomePage} />
+      <Route path="/" component={LandingPage} />
+    </Switch>
+   </Router>
+
   );
 }
 
