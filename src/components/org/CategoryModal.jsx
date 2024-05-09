@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 
 
 import med_icon from '../../assets/medical_icon.png';
+import Volunteer_icon from '../../assets/Volunteer_icon.png';
 import blood_icon from '../../assets/blood-drop.png';
 import school_icon from '../../assets/school-icon.png';
 import food_icon from '../../assets/food-icon.png';
@@ -15,6 +16,8 @@ import ClothingForm from './ClothingForm';
 import FoodForm from './FoodForm';
 import MedicalForm from './MedicalForm';
 import BloodForm from './BloodForm';
+import VolunteerForm from './VolunteerForm';
+import SchoolSupliesForm from './SchoolSupliesForm';
 
 
 
@@ -29,6 +32,8 @@ function CategoryModal() {
   const [showClothing , setShowClothing] = useState(false);
   const [showToys , setShowToys] = useState(false);
 
+  const [showVolunteer , setShowVolunteer] = useState(false);
+
     
 
 
@@ -41,6 +46,7 @@ function CategoryModal() {
     setShowFood(false);
     setShowClothing(false);
     setShowToys(false);
+    setShowVolunteer(false);
 
   }
   const handleShow = () => setShow(true);
@@ -77,6 +83,14 @@ function CategoryModal() {
     setShowBlood(true);
     setShow(false);
   };
+  const showVolunteerForm = () => {
+    setShowVolunteer(true);
+    setShow(false);
+  }
+  const showSchoolForm = () => {
+    setShowSchool(true);
+    setShow(false);
+  }
 
   const back = () => {
     setShow(true);
@@ -86,6 +100,7 @@ function CategoryModal() {
     setShowFood(false);
     setShowToys(false);
     setShowClothing(false);
+    setShowVolunteer(false);
 
   };
 
@@ -127,7 +142,7 @@ function CategoryModal() {
                         <div className="card-title">Blood Donations</div>
                         
                     </div>
-                    <div className="card">
+                    <div className="card" onClick={showSchoolForm}>
                         <br/>
                         <img src={school_icon} alt='school_icon' className="card-icon"></img>
                         <div className="card-title">School Donations</div>
@@ -151,6 +166,11 @@ function CategoryModal() {
                         <div className="card-title">Toy Donations</div>
                         
                     </div>
+                    <div className="card" onClick={showVolunteerForm}>
+                        <br/>
+                        <img src={Volunteer_icon} alt='Volunteer_icon' className="card-icon"></img>
+                        <div className="card-title">Ask For Volunteers</div>
+                    </div>
                 </div>
                 
         </Modal.Body>
@@ -165,6 +185,8 @@ function CategoryModal() {
       <FoodForm showFood = {showFood} back = {back} close = {handleClose} />
       <MedicalForm showMedical={showMedical} back ={back} close = {handleClose}/>
       <BloodForm showBlood={showBlood} back ={back} close = {handleClose}/>
+      <VolunteerForm showVolunteer={showVolunteer} back={back} close = {handleClose}/>
+      <SchoolSupliesForm showSchool = {showSchool} back = {back} close = {handleClose}/>
 
     </>
   );
