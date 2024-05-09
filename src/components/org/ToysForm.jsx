@@ -16,94 +16,107 @@ const ToysForm = ({showToys , back , close}) => {
     const [quantity , setQuantity] = useState('');
     const [photo , setPhoto] = useState('');
     const [additionalDetails , setAdditionalDetails] = useState('');
+    //Errors
+    const [titleError , setTitleError] = useState('');
+    const [typeError , setTypeError] = useState('');
+    const [categoryError , setCategoryError] = useState('');
+    const [ageError , setAgeError] = useState('');
+    const [genderError , setGenderError] = useState('');
+    const [quantityError , setQuantityError] = useState('');
+    const [photoError , setPhotoError] = useState('');
+
+
     const [alertMessage , setAlertMessage] = useState('');
     const [showAlert, setShowAlert] = useState(false);
+    const [isSuccess,setSuccess] = useState(false);
     
-//     useEffect(() => {
-//         setTimeout(
-//             () => {
-//                 setShowAlert(false);
-//             }, 3000
-//         );
-//     }
-// );
-    
-    
-    const handleClose = () => {
-      
-      setShowAlert(false);
-      setAge('');
-      setAlertMessage('');
+    const resetInsertions = () => {
       setTitle('');
       setType('');
+      setCategory('');
+      setAge('');
       setGender('');
       setQuantity('');
       setPhoto('');
-      setCategory('');
       setAdditionalDetails('');
+      setTitleError('');
+      setTypeError('');
+      setCategoryError('');
+      setAgeError('');
+      setGenderError('');
+      setQuantityError('');
+      setPhotoError('');
+      setAlertMessage('');
+      setShowAlert(false);
+      setSuccess(false);
+    }
+    
+    
+    const handleClose = () => {
+      resetInsertions();
       close();
-
     };
-    const handleShow = () => setShow(true);
-
-    const handleSubmit =(event) => {
-      event.preventDefault();
-      if(age<1 || age > 100){
-        setAlertMessage('Age Must be between 1 and 100');
-        
-        setShowAlert('true');
-        setSuccess(false);
-        setTimeout(() => {
-            setShowAlert(false);
-            setAlertMessage('');
-
-        } ,10000);
+    const handleBack = () => {
+      resetInsertions();
+      back();
+    }
+    const handleSubmit = () => {
+      if(title === ''){
+        setTitleError('Title is required');
       }
       else{
-        // setShow(false);
-        // setShowToys();
-        setShowAlert(true);
-        
-        setAlertMessage('Posted Successfully!');
-       
-        setSuccess(true);
-        
-        setTimeout(() => {
-            close();
-            setAge('');
-            setTitle('');
-            setType('');
-            setGender('');
-            setQuantity('');
-            setPhoto('');
-            setCategory('');
-            setAdditionalDetails('');
-            setShowAlert(false);
-            setAlertMessage('');
-            
-        },2000);
-        
-        
-        
-        console.log("Form submitted successfully");
+        setTitleError('');
       }
-    };
-
+      if(type === ''){
+        setTypeError('Type is required');
+      }
+      else{
+        setTypeError('');
+      }
+      if(age === ''){
+        setAgeError('Age is required');
+      }
+      else{
+        setAgeError('');
+      }
+      if(gender === ''){
+        setGenderError('Gender is required');
+      }
+      else{
+        setGenderError('');
+      }
+      if(category === ''){
+        setCategoryError('Category is required');
+      }
+      else{
+        setCategoryError('');
+      }
+      if(photo === ''){
+        setPhotoError('Photo is required');
+      }
+      else{
+        setPhotoError('');
+      }
+      if(quantity === ''){
+        setQuantityError('Quantity is required');
+      }
+      else{
+        setQuantityError('');
+      }
+      if(title !== '' && type !== '' && gender !== '' && category !== '' && photo !== '' && quantity !== ''){
+        setAlertMessage('Post Submitted Successfully');
+        setShowAlert(true);
+        setSuccess(true);
+        setTimeout(() => {            
+            handleClose();
+          }, 10000);
+      }
+    }
     
-  
-    const handleAlertClose = () => setShowAlert(false);
-    const handleAlertShow = () => setShowAlert(true);
-  
-    const [isSuccess,setSuccess] = useState(false);
-    console.log(showToys);
+
     
     return (
       <>
-        {/* <Button variant="primary"  >
-          New Post
-        </Button>
-   */}
-   
         <Modal show={showToys} onHide={handleClose} size="lg" scrollable={true} onSubmit={handleSubmit} >
           <Modal.Header closeButton>
             <Modal.Title>Toys Post</Modal.Title>
@@ -115,129 +128,146 @@ const ToysForm = ({showToys , back , close}) => {
             <Form onSubmit={handleSubmit}>
              
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Title</Form.Label>
+                <Form.Label>Title
+                  {titleError?  <span className="text-danger"> *</span> : null }
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Post Title"
                   value = {title}
                   onChange ={(event) => setTitle(event.target.value)}
-                  required
+                  isInvalid = {titleError}
                   autoFocus
                 />
+                <Form.Control.Feedback type="invalid">
+                  {titleError}
+                </Form.Control.Feedback>
               </Form.Group>
               
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Type</Form.Label>
+                <Form.Label>Type
+                  {typeError?  <span className="text-danger"> *</span> : null }
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Toy Type"
-                    value = {type}
-                    onChange ={(event) => setType(event.target.value)}
+                  value = {type}
+                  onChange ={(event) => setType(event.target.value)}
+                  isInvalid = {typeError}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {typeError}
+                </Form.Control.Feedback>
               </Form.Group>
-               <div style={
+               {/* <div style={
                 {
                   display: "flex",
                   flexDirection: "row",
                   gap : '200px'
                 }
-              }>
+              }> */}
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Category</Form.Label>
+                <Form.Label>Category
+                  {categoryError?  <span className="text-danger"> *</span> : null }
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Toy Category"
                   value={category}
                   onChange ={(event) => setCategory(event.target.value)}
+                  isInvalid = {categoryError}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {categoryError}
+                </Form.Control.Feedback>
               </Form.Group>
               
               
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Age</Form.Label>
+                <Form.Label>Age
+                  {ageError?  <span className="text-danger"> *</span> : null }
+                </Form.Label>
                 <Form.Control
                   type="number"
                   placeholder="Age"
                   value={age}
                   onChange ={(event) => setAge(event.target.value)}
-                  min={"1"}
-                  max={"100"}
+                  isInvalid ={ageError}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {ageError}
+                </Form.Control.Feedback>
               </Form.Group>
-              </div>
-              <div style={
-                {
-                  display: "flex",
-                  flexDirection: "row",
-                  gap : '200px'
-                }
-              }>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Gender</Form.Label>
+              <Form.Group >
+                <Form.Label> Gender 
+                    {
+                      genderError ? <span className="text-danger"> *</span> : null
+                    }
+                    </Form.Label> 
                 <br/>
-                {/* <Form.Control
-                  type="radio"
-                  placeholder="age"
-                /> */}
-                {/* <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-                        <label className="form-check-label" htmlFor="inlineRadio1">Male</label>
-                </div>
+                <Form.Control.Feedback type = "invalid">
+                  {genderError}
+                </Form.Control.Feedback>
                 <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-                <label className="form-check-label" htmlFor="inlineRadio2">Female</label>
-                </div> */}
-                <div className="form-check form-check-inline">
-                <input
-                  className="form-check-input"
+                <Form.Check 
                   type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio1"
+                  label="Male"
+                  name="gender"
                   value="Male"
                   checked={gender === "Male"}
                   onChange={(event) => setGender(event.target.value)}
-                />
-                <label
-                  className="form-check-label"
-                  htmlFor="inlineRadio1"
-                  value = 'Male'
-                >
-                  Male
-                </label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  className="form-check-input"
+                /></div>
+                 <div className="form-check form-check-inline">
+                <Form.Check
                   type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio2"
+                  label="Female"
+                  name="gender"
                   value="Female"
-                onChange={(event) => setGender(event.target.value)}
+                  checked={gender=== "Female"}
+                  onChange={(event) => setGender(event.target.value)}
                 />
-                <label className="form-check-label" htmlFor="inlineRadio1" value = 'Female'>
-                  Female
-                </label>
-              </div>
+                
+                </div>
+                    {
+                      genderError && <br/>
+                    }
+                    {
+                      genderError &&  <label style={{color:'red' , fontSize : '14px'}} >Gender is Required</label>
+                    }
+                
               </Form.Group>
               
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Photo</Form.Label>
+                <Form.Label>Photo of Requested Toy
+                  {photoError?  <span className="text-danger"> *</span> : null }
+                </Form.Label>
                 <Form.Control
                   type="file"
-                  placeholder="photo"
+                  placeholder="Upload Photo of Required Toy"
+                  accept=".png, .jpg, .jpeg, .jfif, .pjpeg, .pjp, .svg, .webp"
                   value = {photo}
                   onChange={(event) => setPhoto(event.target.value)}
+                  isInvalid = {photoError}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {photoError}
+                </Form.Control.Feedback>
               </Form.Group>
-              </div>
+              {/* </div> */}
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Quantity</Form.Label>
+                <Form.Label>Quantity Requested
+                  {quantityError?  <span className="text-danger"> *</span> : null }
+                </Form.Label>
                 <Form.Control
                   type="number"
-                  placeholder="quantity"
+                  placeholder="Enter Quantity Requested"
                   value = {quantity}
                   onChange={(event) => setQuantity(event.target.value)}
+                  isInvalid = {quantityError}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {quantityError}
+                </Form.Control.Feedback>
               </Form.Group>
              
               <Form.Group
@@ -252,19 +282,17 @@ const ToysForm = ({showToys , back , close}) => {
                 />
                 
               </Form.Group>
-              <button type="submit" variant="primary" >
-              Save Changes
-            </button>
+             
               
             </Form>
           </Modal.Body>
-          <Modal.Footer onSubmit={handleSubmit}>
+          <Modal.Footer >
             
-            <Button variant="secondary" onClick={() => {back(); handleClose}}>
+            <Button variant="secondary" onClick={handleBack}>
               Back
             </Button>
             <Button type="submit"  variant="primary" onClick={handleSubmit} >
-              Save Changes
+              Submit Post
             </Button>
             
           </Modal.Footer>
