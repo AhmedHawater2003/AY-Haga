@@ -9,7 +9,7 @@ const LandingPage = () => {
     const values = [250, 100, 150, 200, 300, 50];
     return ( 
         <>
-            <Navbar isLanding={true} sideBarFlag={isSideBarOpen} showSideBar={() => setIsSideBarOpen(!isSideBarOpen)} />
+            <Navbar />
             <Sections />
             <Summary />
             <Sections insights={true} titles={titles} values={values}/>

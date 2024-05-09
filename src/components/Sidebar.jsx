@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { OrgSidebarData } from "./OrgSidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
-import SearchBar from "./SearchBar";
 
 const SidebarNav = styled.nav`
   width: 250px;
@@ -22,7 +20,7 @@ const SidebarWrap = styled.div`
   width: 100%;
 `;
 
-const Sidebar = ({ sideBarState }) => {
+const Sidebar = ({ sideBarState, sideBarData, sideBarFunction }) => {
   const sidebar = sideBarState[0];
   const showSideBar = sideBarState[1];
 
@@ -31,23 +29,14 @@ const Sidebar = ({ sideBarState }) => {
       <IconContext.Provider value={{}}>
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
-            <SearchBar
-              formStyling={{ marginTop: "20px" }}
-              inputStyle={{
-                height: "30px",
-                padding: "20px 10px",
-                width: "75%",
-                borderRadius: "10px 0 0 10px",
-              }}
-              buttonStyle={{
-                height: "42px",
-                padding: "5px",
-                fontSize: "20px",
-                width: "20%",
-              }}
-            />
-            {OrgSidebarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
+            {sideBarData.map((item, index) => {
+              return (
+                <SubMenu
+                  item={item}
+                  key={index}
+                  sideBarFunction={sideBarFunction}
+                />
+              );
             })}
           </SidebarWrap>
         </SidebarNav>

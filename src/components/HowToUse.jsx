@@ -1,43 +1,57 @@
 import Navbar from "./Navbar";
 import { useState } from "react";
-import Sidebar from "./Sidebar";
-import SearchBar from "./SearchBar";
-import DonationsGrid from "./DonationsGrid";
+import * as AiIcons from "react-icons/ai";
+import * as IoIcons from "react-icons/io";
+import * as RiIcons from "react-icons/ri";
+
+import DonationsGrid from "./Donation/DonationsGrid";
 
 const HowToUse = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const sideBarData = [
+    {
+      title: "Summary",
+      icon: <AiIcons.AiFillHome />,
+      iconClosed: <RiIcons.RiArrowDownSFill />,
+      iconOpened: <RiIcons.RiArrowUpSFill />,
+
+      subNav: [
+        {
+          title: "Users",
+          content: <h1>Users</h1>,
+          icon: <IoIcons.IoIosPaper />,
+        },
+        {
+          title: "Revenue",
+          content: <h1>Reven</h1>,
+          icon: <IoIcons.IoIosPaper />,
+        },
+      ],
+    },
+  ];
+  const [content, setContent] = useState(<h1>home</h1>);
+  const sideBarFunction = (value) => {
+    setContent(value.content);
+  };
+
   return (
     <div>
       <Navbar
-        isLanding={false}
-        sideBarFlag={isSideBarOpen}
+        sideBarFlag={true}
+        isSideBarOpen={isSideBarOpen}
         showSideBar={() => setIsSideBarOpen(!isSideBarOpen)}
+        sideBarData={sideBarData}
+        sideBarFunction={sideBarFunction}
       />
       <div
-        className="content"
         style={{
           margin: `20px 20px 20px ${isSideBarOpen ? "270px" : "20px"}`,
           transition: "200ms",
         }}
       >
-        <div className="d-flex justify-content-between bg-primary p-3 mb-3">
-          <h1>Category Name</h1>
-          <SearchBar
-            formStyling={{ width: "50%", height: "50px" }}
-            inputStyle={{ width: "50%" }}
-          />
-        </div>
-        <DonationsGrid />
-      </div>
-      <div>
-        {/* <Switch>
-            <Route path="/overview" exact component={Overview} />
-            <Route path="/reports" exact component={Reports} />
-            <Route path="/reports/reports1" exact component={ReportsOne} />
-            <Route path="/reports/reports2" exact component={ReportsTwo} />
-            <Route path="/reports/reports3" exact component={ReportsThree} />
-            <Route path="/team" exact component={Team} />
-            </Switch> */}
+        {/* {content} */}
+
+        <DonationsGrid category={"All"} />
       </div>
     </div>
   );

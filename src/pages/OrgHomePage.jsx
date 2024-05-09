@@ -1,11 +1,24 @@
 import React from 'react'
-import Sidebar from '../components/Sidebar';
 import OrgNavbar from "../components/OrgNavbar";
 import { useState } from "react";
-import AccountBrief from '../components/AccountBrief';
+import HomeDiv from '../components/org/HomeDiv';
+import PendingPosts from '../components/org/PendingPosts';
+import WaitingPosts from '../components/org/WaitingPosts';
+import FulfilledPosts from '../components/org/FulfilledPosts';
 
 const OrgHomePage = () => {
     const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+    const [isHome, setIsHome] = useState(false);
+    const [isPending, setIsPending] = useState(false);
+    const [isWaiting, setIsWaiting] = useState(false);
+    const [isFulfilled, setIsFulfilled] = useState(true);
+
+
+    // const isHome=false;
+    // const isPending=false;
+    // const isWaiting=false;
+    // const isFulfilled=true;
+
     return (
             <div>
                 <OrgNavbar isLanding={false} sideBarFlag={isSideBarOpen}
@@ -16,10 +29,12 @@ const OrgHomePage = () => {
                         transition: "200ms",
                     }}
                 >
-                    <AccountBrief/>
+                    {isHome&&<HomeDiv/>}
+                    {isPending&&<PendingPosts/>}
+                    {isWaiting&&<WaitingPosts/>}
+                    {isFulfilled&&<FulfilledPosts/>}
                 </div>
-            </div>   
-            // <div><h1>fsgfifgd</h1></div>  
+            </div>  
   )
 }
 

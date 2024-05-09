@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import Sidebar from "./Sidebar";
-import SearchBar from "./SearchBar";
+import SearchBar from "./SearchBar/SearchBar";
+
 
 const NavIcon = styled(Link)`
   margin-left: 2rem;
@@ -17,12 +18,17 @@ const NavIcon = styled(Link)`
   color: #1b5e39;
 `;
 
-const Navbar = ({ isLanding, showSideBar, sideBarFlag }) => {
-  Navbar.defaultprops = {
-    isLanding: false,
-    showSideBar: () => {},
-    sideBarFlag: false,
-  };
+const Navbar = ({
+  sideBarFlag = false,
+  showSideBar = () => {},
+  isSideBarOpen = false,
+  searchBarData = [],
+  searchBarFunction,
+  searchBarFlag = false,
+  sideBarData = [],
+  sideBarFunction,
+}) => {
+  
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -30,7 +36,7 @@ const Navbar = ({ isLanding, showSideBar, sideBarFlag }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
+  
   const handleScroll = () => {
     if (window.scrollY > 0) {
       setIsScrolled(true);
@@ -41,7 +47,7 @@ const Navbar = ({ isLanding, showSideBar, sideBarFlag }) => {
   return (
     <div
       className={`container-flow ${
-        !isLanding
+        sideBarFlag
           ? "header-navbar sticky-top"
           : isScrolled
           ? "header-navbar landing sticky-top scrolled"
@@ -50,30 +56,30 @@ const Navbar = ({ isLanding, showSideBar, sideBarFlag }) => {
     >
       <div
         className={
-          !isScrolled && isLanding
+          !isScrolled && !sideBarFlag
             ? "header-background"
             : "header-background scrolled"
         }
       ></div>
       <nav
         className={
-          !isLanding
+          sideBarFlag
             ? "navbar navbar-expand navbar-light  sticky-top"
             : isScrolled
             ? "navbar landing navbar-expand navbar-light sticky-top scrolled"
             : "navbar landing navbar-expand navbar-light sticky-top"
         }
       >
-        {!isLanding ? (
+        {sideBarFlag ? (
           <>
             <NavIcon to="#">
-              {sideBarFlag ? (
+              {isSideBarOpen ? (
                 <AiIcons.AiOutlineClose onClick={showSideBar} />
               ) : (
                 <FaIcons.FaBars onClick={showSideBar} />
               )}
             </NavIcon>
-            <SearchBar
+            {searchBarFlag && <SearchBar
               inputStyle={{
                 width: "30vw",
                 height: "40px",
@@ -85,7 +91,11 @@ const Navbar = ({ isLanding, showSideBar, sideBarFlag }) => {
                 width: "80px",
                 height: "40px",
               }}
-            />
+              searchResultsData={searchBarData}
+              onSearchResultSelection={searchBarFunction}
+              resultLabellKey="title"
+              
+            />}
           </>
         ) : (
           <a className="navbar-brand" href="/how-to-use">
@@ -114,11 +124,11 @@ const Navbar = ({ isLanding, showSideBar, sideBarFlag }) => {
           </ul>
         </div>
       </nav>
-      {sideBarFlag ? (
-        <Sidebar sideBarState={[sideBarFlag, showSideBar]} />
-      ) : (
-        <></>
-      )}
+      {isSideBarOpen && (
+        <Sidebar sideBarState={[isSideBarOpen, showSideBar]} sideBarData={sideBarData}
+        sideBarFunction={sideBarFunction}
+        resultLabellKey="title" />
+      ) }
     </div>
   );
 };
