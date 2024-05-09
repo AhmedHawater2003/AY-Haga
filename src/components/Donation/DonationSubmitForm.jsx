@@ -3,9 +3,11 @@ import { Button } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
-function DonationSubmitForm() {
+
+function DonationSubmitForm({ hideModal }) {
     const [transportationType, setTransportationType] = useState("");
     const [validated, setValidated] = useState(false);
+    const [alertFlag, setAlertFlag] = useState(false);
     const handleSubmit = (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -16,13 +18,17 @@ function DonationSubmitForm() {
             setValidated(false);
             event.target.reset();
             setTransportationType("")
+            setAlertFlag(true);
+            setTimeout(() => {
+                setAlertFlag(false);
+                hideModal();
+            }, 2000);
 
         }
     }
     return (
-        <div className="border rounded border-1 m-2"
-            style={{ borderColor: "#edeeee" }}>
-            <Accordion defaultActiveKey="0">
+        <div className="border rounded border-1 m-2">
+            <Accordion >
                 <Accordion.Item eventKey="0">
                     <Accordion.Header style={{ justifyContent: 'center' }}> Donate </Accordion.Header>
                     <Accordion.Body >
@@ -58,12 +64,12 @@ function DonationSubmitForm() {
                                     Please choose a time slot.
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            <Button variant="primary" type="submit">
+                            {!alertFlag && <Button variant="primary" type="submit">
                                 Submit
-                            </Button>
+                            </Button>}
                         </Form>
-                        <Alert key={1} variant="success">
-                           Thank you for your support!
+                        <Alert variant="success" style={{ marginTop: "10px", textAlign: "center" }} show={alertFlag}>
+                            Thank you for your donation &#128154;
                         </Alert>
                     </Accordion.Body>
                 </Accordion.Item>

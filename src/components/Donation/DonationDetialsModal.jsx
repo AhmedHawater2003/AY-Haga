@@ -1,12 +1,12 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import DonationImage from "./DonationImage";
 import DonationPrimaryDetails from "./DonationPrimaryDetails";
 import DonationAdditionalDetails from "./DonationAdditionalDetails";
 import DonatinonOrganizationInfo from "./DonatinonOrganizationInfo";
 import { RegisteredOrgs } from "../../data/RegisteredOrgs";
 import DonationSubmitForm from "./DonationSubmitForm";
+
 
 function DonationDetialsModal({ donationCardDetials, showFlag, hide }) {
   return (
@@ -41,19 +41,11 @@ function DonationDetialsModal({ donationCardDetials, showFlag, hide }) {
 
               }
             />
-<DonationSubmitForm/>
+<DonationSubmitForm hideModal={hide}/>
 
           </div>
         </div>
       </Modal.Body>
-      {/* <Modal.Footer>
-        <Button variant="secondary" onClick={hide}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={hide}>
-          Donate !
-        </Button>
-      </Modal.Footer> */}
     </Modal>
   );
 }
