@@ -1,10 +1,10 @@
-import NewPostModal from "../NewPostModal";
-import AccountBrief from "../AccountBrief";
+import AccountBrief from "../OrgAccountBrief";
+import NotificationBrief from "../NotificationCenter/NotificationBrief";
 const HomeDiv = () => {
   return (
     <>
-            <NewPostModal />
             <AccountBrief/>
+            <NotificationBrief/>
     </>
   )
 }

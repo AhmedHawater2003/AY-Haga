@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import Sidebar from "./Sidebar";
-import SearchBar from "./SearchBar";
-import { Badge, Container } from "react-bootstrap";
+import SearchBar from "./SearchBar/SearchBar";
 import NotificationCenter from "./NotificationCenter";
 
 const NavIcon = styled(Link)`
@@ -101,14 +100,15 @@ const OrgNavbar = ({ isLanding, showSideBar, sideBarFlag }) => {
             </a>
           </ul>
         </div>
-        <div>    
-         <ul className="navbar-nav ml-auto">
-          <li className="nav-item"> <NotificationCenter/> </li>
+        <div>
+          <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <a className="btn">
-              account
-              </a>
-             </li>
+              {" "}
+              <NotificationCenter />{" "}
+            </li>
+            <li className="nav-item">
+              <a className="btn">account</a>
+            </li>
           </ul>
         </div>
       </nav>

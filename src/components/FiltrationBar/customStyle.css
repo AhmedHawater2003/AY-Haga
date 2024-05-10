@@ -1,0 +1,3 @@
+.hide-arrow::after {
+  display: none;
+}

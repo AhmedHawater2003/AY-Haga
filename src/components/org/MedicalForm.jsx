@@ -5,6 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 
+
 const MedicalForm = ({showMedical , back,close}) => {
     const [title,setTitle] = useState('');
     const [deviceType,setDeviceType] = useState('');
@@ -12,59 +13,89 @@ const MedicalForm = ({showMedical , back,close}) => {
     const [quantity,setQuantity] = useState('');
     const [photo , setPhoto] = useState('');
     const [additionalDetails , setAdditionalDetails] = useState('');
+
+    //Errors
+    const [titleError , setTitleError] = useState('');
+    const [deviceTypeError , setDeviceTypeError] = useState('');
+    const [useError , setUseError] = useState('');
+    const [quantityError , setQuantityError] = useState('');
+    const [photoError , setPhotoError] = useState('');
+
     const [alertMessage , setAlertMessage] = useState('');
     const [showAlert, setShowAlert] = useState(false);
+    const [isSuccess , setSuccess] = useState(false);
 
-    const handleClose = () => {
-        setShowAlert(false);
-        setAlertMessage('');
+    const resetInsertions = () => {
+        setTitleError('');
+        setDeviceTypeError('');
+        setUseError('');
+        setQuantityError('');
+        setPhotoError('');
         setTitle('');
         setDeviceType('');
         setUse('');
         setQuantity('');
         setPhoto('');
         setAdditionalDetails('');
+        setAlertMessage('');
+        setShowAlert(false);
+        setSuccess(false);
+    }
+
+    const handleBack = () => {
+      resetInsertions();
+      back();
+    }
+
+    const handleClose = () => {
+        resetInsertions();
         close();
     };
 
-    const handleSubmit =(event) => {
-        event.preventDefault();
-        if(quantity<1){
-            setAlertMessage('Quantity Must be greater than 0');
-            setShowAlert('true');
-            setSuccess(false);
-            // setTimeout(() => {
-            //     setShowAlert(false);
-            //     setAlertMessage('');
-            // } ,10000);
+    const handleSubmit = () => {
+        if(title === ''){
+            setTitleError('Title is required');
         }
         else{
-            clearTimeout();
-            setAlertMessage('Post Added Successfully');
-            setShowAlert('true');
+            setTitleError('');
+        }
+        if(deviceType === ''){
+            setDeviceTypeError('Device Type is required');
+        }
+        else{
+            setDeviceTypeError('');
+        }
+        if(use === ''){
+            setUseError('Use is required');
+        }
+        else{
+            setUseError('');
+        }
+        if(quantity === ''){
+            setQuantityError('Quantity is required');
+        }
+        else{
+            setQuantityError('');
+        }
+        if(photo === ''){
+            setPhotoError('Photo is required');
+        }
+        else{
+            setPhotoError('');
+        } 
+        if(title !== '' && deviceType !== '' && use !== '' && quantity !== '' && photo !== ''){
+            setAlertMessage('Post Submitted Successfully');
+            setShowAlert(true);
             setSuccess(true);
-            
             setTimeout(() => {
-                
-                close();
-                setTitle('');
-                setDeviceType('');
-                setUse('');
-                setQuantity('');
-                setPhoto('');
-                setAdditionalDetails('');
-                setShowAlert(false);
-                setAlertMessage('');
+                handleClose();
             } ,10000);
         }
-    };
-
-    const [isSuccess , setSuccess] = useState(false);
-
-
+    }
+ 
   return (
     <>
-        <Modal show={showMedical} onHide={handleClose} >
+        <Modal show={showMedical} onHide={handleClose} scrollable >
             <Modal.Header closeButton>
             <Modal.Title>Medical Donation Form</Modal.Title>
             </Modal.Header>
@@ -74,54 +105,75 @@ const MedicalForm = ({showMedical , back,close}) => {
             </Alert>}
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicTitle">
-                <Form.Label>Title</Form.Label>
-                <Form.Control type="text" placeholder="Enter title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                <Form.Label>Title
+                  {titleError?  <span className="text-danger"> *</span> : null }
+                </Form.Label>
+                <Form.Control type="text" placeholder="Enter title" value={title} onChange={(e) => setTitle(e.target.value)} isInvalid = {titleError} />
+                <Form.Control.Feedback type="invalid">
+                  {titleError}
+                </Form.Control.Feedback>
                 </Form.Group>
     
                 <Form.Group className="mb-3" controlId="formBasicDeviceType">
-                <Form.Label>Device Type</Form.Label>
-                <Form.Control type="text" placeholder="Enter device type" value={deviceType} onChange={(e) => setDeviceType(e.target.value)} />
+                <Form.Label>Device Type
+                  {deviceTypeError?  <span className="text-danger"> *</span> : null }
+                </Form.Label>
+                <Form.Control type="text" 
+                              placeholder="Enter device type" 
+                              value={deviceType} 
+                              onChange={(e) => setDeviceType(e.target.value)} 
+                              isInvalid = {deviceTypeError}
+                              />
+                <Form.Control.Feedback type="invalid">
+                  {deviceTypeError}
+                </Form.Control.Feedback>
                 </Form.Group>
     
                 <Form.Group className="mb-3" controlId="formBasicUse">
-                <Form.Label>Use</Form.Label>
-                <Form.Control type="text" placeholder="Enter use" value={use} onChange={(e) => setUse(e.target.value)} />
+                <Form.Label>Use
+                  {useError?  <span className="text-danger"> *</span> : null }
+                </Form.Label>
+                <Form.Control type="text" placeholder="Enter use" value={use} onChange={(e) => setUse(e.target.value)} isInvalid = {useError} />
+                <Form.Control.Feedback type="invalid">
+                  {useError}
+                </Form.Control.Feedback>
                 </Form.Group>
     
                 <Form.Group className="mb-3" controlId="formBasicQuantity">
-                <Form.Label>Quantity</Form.Label>
-                <Form.Control type="number" placeholder="Enter quantity" value={quantity} onChange={(e) => {
-                    setQuantity(e.target.value);
-                    setShowAlert(false);
-                    setAlertMessage('');}} />
+                <Form.Label>Quantity Requested
+                  {quantityError?  <span className="text-danger"> *</span> : null }
+                </Form.Label>
+                <Form.Control type="number" placeholder="Enter quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} isInvalid = {quantityError} />
+                <Form.Control.Feedback type="invalid">
+                  {quantityError}
+                </Form.Control.Feedback>
                 </Form.Group>
     
                 <Form.Group className="mb-3" controlId="formBasicPhoto">
-                <Form.Label>Photo</Form.Label>
-                <Form.Control type="file" placeholder="Enter photo" value={photo} onChange={(e) => setPhoto(e.target.value)} />
+                <Form.Label>Upload Photo of Requested Medical Supplies
+                  {photoError?  <span className="text-danger"> *</span> : null }
+                </Form.Label>
+                <Form.Control type="file" placeholder="Enter photo" value={photo} onChange={(e) => setPhoto(e.target.value)} isInvalid = {photoError} />
+                <Form.Control.Feedback type="invalid">
+                  {photoError}
+                </Form.Control.Feedback>
                 </Form.Group>
     
                 <Form.Group className="mb-3" controlId="formBasicAdditionalDetails">
                 <Form.Label>Additional Details</Form.Label>
-                <Form.Control type="text" placeholder="Enter additional details" value={additionalDetails} onChange={(e) => setAdditionalDetails(e.target.value)} />
+                <Form.Control as="textarea" rows={3} placeholder="Enter additional details" value={additionalDetails} onChange={(e) => setAdditionalDetails(e.target.value)} />
                 </Form.Group>
-    
-                
             </Form>
             </Modal.Body>
             <Modal.Footer onSubmit={handleSubmit}>
-            
-            <Button variant="secondary" onClick={() => {back(); handleClose}}>
+            <Button variant="secondary" onClick={handleBack}>
               Back
             </Button>
             <Button type="submit"  variant="primary" onClick={handleSubmit} >
-              Save Changes
-            </Button>
-            
+              Submit Post
+            </Button>  
           </Modal.Footer>
         </Modal>
-        
-
     </>
   )
 }
