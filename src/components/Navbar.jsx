@@ -115,7 +115,7 @@ const Navbar = ({
         <div>
           <ul className="navbar-nav ml-auto">
           {notificationCenterFlag&&<><li className="nav-item">
-              <NotificationCenter />
+              <NotificationCenter notificationData={notificationCenterData}/>
             </li></>}
             {!notificationCenterFlag && (<><li className="nav-item">
               <a className="btn" href="/login">
