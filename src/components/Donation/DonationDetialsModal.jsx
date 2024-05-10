@@ -7,7 +7,6 @@ import DonatinonOrganizationInfo from "./DonatinonOrganizationInfo";
 import { RegisteredOrgs } from "../../data/RegisteredOrgs";
 import DonationSubmitForm from "./DonationSubmitForm";
 
-
 function DonationDetialsModal({ donationCardDetials, showFlag, hide }) {
   return (
     <Modal size="xl" show={showFlag} onHide={hide} scrollable>
@@ -38,11 +37,9 @@ function DonationDetialsModal({ donationCardDetials, showFlag, hide }) {
             <DonatinonOrganizationInfo
               organizationDetails={
                 RegisteredOrgs[donationCardDetials["organization"]]
-
               }
             />
-<DonationSubmitForm hideModal={hide}/>
-
+            <DonationSubmitForm hideModal={hide} />
           </div>
         </div>
       </Modal.Body>

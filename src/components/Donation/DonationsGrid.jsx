@@ -9,7 +9,15 @@ function DonationsGrid({ category }) {
 
   return (
     <>
-      <div className="d-flex flex-wrap gap-5 ">
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+          gap: "32px",
+          padding: "15px",
+          justifyContent: "center",
+        }}
+      >
         {DonationDetails.filter(
           (donation) => category === "All" || donation.category === category
         ).map((donation) => (
