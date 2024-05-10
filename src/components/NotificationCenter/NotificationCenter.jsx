@@ -5,10 +5,12 @@ import Badge from "react-bootstrap/Badge";
 import { FaRegBell } from "react-icons/fa6";
 import OrgNotificationData from "../../data/OrgNotificationData";
 import NotificationTable from "./NotificationTable";
+import NotificationDetails from "./NotificationDetails";
 
 const NotificationCenter = () => {
   const [show, setShow] = useState(false);
   const [showNotificationDetails, setShowNotificationDetails] = useState(false);
+  const [notificationDataId, setNotificationDataId] = useState(0);
 
   const handleClose = () => {
     setShow(false);
@@ -16,20 +18,15 @@ const NotificationCenter = () => {
   };
   const handleShow = () => setShow(true);
 
-
   const handleShowNotificationDetails = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
     setShow(false);
     setShowNotificationDetails(true);
   };
   const back = () => {
-    setShowNotificationDetails(false);
     setShow(true);
   };
 
   const close = () => {
-    setShowNotificationDetails(false);
     setShow(false);
   };
 

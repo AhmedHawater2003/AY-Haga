@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Badge, Button } from "react-bootstrap";
-import NotificationDetails from "./NotificationDetails";
+import NotificationPopUp from "./NotificationPopUp";
 
 const NotificationWrapper = styled.div`
   display: flex;
@@ -50,19 +50,11 @@ const NotificationTable = ({
                   <span>{notification.user}</span>
                 </td>
                 <td>
-                  <Button variant="primary" onClick={handleShow}>
-                    View
-                  </Button>
-                  <NotificationDetails
-                    key={notification.id}
-                    notificationData={notification}
-                    showNotificationDetails={showNotificationDetails}
-                    back={back}
-                    close={close}
-                  />
+                  <NotificationPopUp close={close} back={back}/>
                 </td>
               </tr>
             ))}
+            
           </tbody>
         </table>
       </div>
@@ -71,84 +63,3 @@ const NotificationTable = ({
 };
 
 export default NotificationTable;
-
-{
-  /*
-dfghsdfg
-            // <tr style={{color:"red"}}>
-            //   <td>
-            //     <Badge bg="warning" style={{width:"100%",height:"100%"}}>Mid</Badge>
-            //   </td>
-            //   <td>
-            //     <div>
-            //       <span>New donation request </span>
-            //     </div>
-            //   </td>
-            //   <td>
-            //     <span>2021-09-01</span>
-            //   </td>
-            //   <td>
-            //     <span>Ahmed Aboelkhair</span>
-            //   </td>
-            //   <td>
-            //     <Button >View</Button>
-            //   </td>
-            // </tr>
-            // <tr >
-            //   <td>
-            //     <Badge bg="danger" style={{width:"100%",height:"100%"}}>High</Badge>
-            //   </td>
-            //   <td>
-            //     <div>
-            //       <span>New donation request!!</span>
-            //     </div>
-            //   </td>
-            //   <td>
-            //     <span>2021-09-01</span>
-            //   </td>
-            //   <td>
-            //     <span>funky monkey</span>
-            //   </td>
-            //   <td>
-            //     <Button >View</Button>
-            //   </td>
-            // </tr><tr >
-            //   <td>
-            //     <Badge bg="danger" style={{width:"100%",height:"100%"}}>High</Badge>
-            //   </td>
-            //   <td>
-            //     <div>
-            //       <span>terms updated</span>
-            //     </div>
-            //   </td>
-            //   <td>
-            //     <span>2021-09-01</span>
-            //   </td>
-            //   <td>
-            //     <span>Admin</span>
-            //   </td>
-            //   <td>
-            //     <Button >View</Button>
-            //   </td>
-            // </tr>
-            // <tr >
-            //   <td>
-            //     <Badge bg="danger" style={{width:"100%",height:"100%"}}>High</Badge>
-            //   </td>
-            //   <td>
-            //     <div>
-            //       <span>baghhizzzzz</span>
-            //     </div>
-            //   </td>
-            //   <td>
-            //     <span>2021-09-01</span>
-            //   </td>
-            //   <td>
-            //     <span>darkest ni**a</span>
-            //   </td>
-            //   <td>
-            //     <NotificationDetails />
-            //   </td>
-            // </tr>
-*/
-}

@@ -7,8 +7,15 @@ import DonatinonOrganizationInfo from "./DonatinonOrganizationInfo";
 import { RegisteredOrgs } from "../../data/RegisteredOrgs";
 import DonationSubmitForm from "./DonationSubmitForm";
 
-
-function DonationDetialsModal({ donationCardDetials, showFlag, hide }) {
+function DonationDetialsModal({
+  isDoner,
+  isFulfilled,
+  isWaiting,
+  isPending,
+  donationCardDetials,
+  showFlag,
+  hide,
+}) {
   return (
     <Modal size="xl" show={showFlag} onHide={hide} scrollable>
       <Modal.Header closeButton>
@@ -38,11 +45,10 @@ function DonationDetialsModal({ donationCardDetials, showFlag, hide }) {
             <DonatinonOrganizationInfo
               organizationDetails={
                 RegisteredOrgs[donationCardDetials["organization"]]
-
               }
             />
-<DonationSubmitForm hideModal={hide}/>
-
+            {isDoner&&<DonationSubmitForm hideModal={hide} />}
+            
           </div>
         </div>
       </Modal.Body>
