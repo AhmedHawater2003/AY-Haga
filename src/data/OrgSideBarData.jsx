@@ -4,7 +4,7 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
 
-export const OrgSidebarData = [
+const OrgSidebarData = [
   {
     title: "Overview",
     path: "#",
@@ -48,3 +48,5 @@ export const OrgSidebarData = [
     icon: <IoIcons.IoMdHelpCircle />,
   },
 ];
+
+export default OrgSidebarData;

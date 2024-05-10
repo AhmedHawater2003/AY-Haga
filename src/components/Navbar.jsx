@@ -6,6 +6,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import Sidebar from "./Sidebar";
 import SearchBar from "./SearchBar/SearchBar";
+import NotificationCenter from "./NotificationCenter/NotificationCenter";
 
 
 const NavIcon = styled(Link)`
@@ -27,6 +28,8 @@ const Navbar = ({
   searchBarFlag = false,
   sideBarData = [],
   sideBarFunction,
+  notificationCenterFlag=false,
+  notificationCenterData=[]
 }) => {
   
   const [isScrolled, setIsScrolled] = useState(false);
@@ -111,7 +114,10 @@ const Navbar = ({
         </div>
         <div>
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
+          {notificationCenterFlag&&<><li className="nav-item">
+              <NotificationCenter />
+            </li></>}
+            {!notificationCenterFlag && (<><li className="nav-item">
               <a className="btn" href="/login">
                 Sign In
               </a>
@@ -120,7 +126,7 @@ const Navbar = ({
               <a className="btn" href="/register">
                 Register
               </a>
-            </li>
+            </li></>)}
           </ul>
         </div>
       </nav>
