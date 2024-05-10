@@ -8,7 +8,7 @@ const DonationCard = ({ showDetails, donationDetails, setShownDonation }) => {
   };
 
   return (
-    <Card style={{ width: "18rem", display: "flex", flexDirection: "column" }}>
+    <Card style={{ width: "20rem", display: "flex", flexDirection: "column" }}>
       <Card.Img
         variant="top"
         src={donationDetails["image"]}
