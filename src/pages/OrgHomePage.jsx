@@ -10,8 +10,8 @@ import Navbar from '../components/Navbar';
 const OrgHomePage = () => {
     const [isSideBarOpen, setIsSideBarOpen] = useState(false);
     const [isHome, setIsHome] = useState(true);
-    const [isPending, setIsPending] = useState(false);
-    const [isWaiting, setIsWaiting] = useState(false);
+    const [isPending, setIsPending] = useState(true);
+    const [isWaiting, setIsWaiting] = useState(true);
     const [isFulfilled, setIsFulfilled] = useState(true);
 
     const [content, setContent] = useState(<h1>home</h1>);

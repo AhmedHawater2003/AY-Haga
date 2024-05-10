@@ -1,0 +1,25 @@
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.1rem transparent;
+}
+
+.accordion-button::after {
+  display: none;
+}
+
+.accordion-button {
+  justify-content: center;
+  background-color: rgb(27 94 54);
+  color: white;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: white;
+  color: #1b5e39;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  border-bottom: 1px solid #dee2e6;
+}

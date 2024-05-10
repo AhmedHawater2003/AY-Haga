@@ -1,14 +1,20 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const DonationCard = ({ showDetails, donationDetails, setShownDonation }) => {
+const DonationCard = ({ showDetails, donationDetails, setShownDonation}) => {
   const handleClick = () => {
     setShownDonation((prev) => donationDetails);
     showDetails();
   };
 
   return (
-    <Card style={{ width: "20rem", display: "flex", flexDirection: "column" }}>
+    <Card
+      style={{
+        width: "18rem",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Card.Img
         variant="top"
         src={donationDetails["image"]}

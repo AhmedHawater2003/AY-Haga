@@ -1,8 +1,7 @@
-import PostCard from "./PostCard";
 import CategoryModal from "./CategoryModal";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
-
+import DonationsGrid from "../Donation/DonationsGrid";
 
 const FulfilledPosts = () => {
   return (
@@ -25,25 +24,13 @@ const FulfilledPosts = () => {
         </Row>
 
         <div />
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-            gap: "32px",
-            padding: "15px",
-            justifyContent: "center",
-          }}
-        >
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
+        <div>
+          <DonationsGrid
+            isDonor={false}
+            isFulfilled={true}
+            isPending={false}
+            isWaiting={false}
+          />
         </div>
       </div>
     </div>
