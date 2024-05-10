@@ -208,19 +208,25 @@
   border-radius: 10px;
 }
 
+.card-col{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0px 0px 6px 4px rgba(255, 255, 255, 0.4);
+}
+
 /* cards styling */
 .card-container {
   display: flex;
   overflow-x: auto;
-  /* Horizontal scrolling for overflow */
   gap: 20px;
-  /* Adjust the spacing between cards */
   padding: 20px;
 }
 
 .card {
   display: flex;
   align-items: center;
+  text-align: center;
   /* Prevent cards from growing to fill space */
   width: 225px;
   /* Set a fixed width for cards */
@@ -245,9 +251,8 @@
 
 .card-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  /* Center align the cards horizontally */
 }
 
 .card-icon {
@@ -545,6 +550,21 @@
   box-sizing: border-box;
 }
 
+.form-control:focus{
+  border-color: #1b5e39;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-check-input[type=radio]:focus {
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-check-input:checked[type=radio]{
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
 .maincontainer {
   display: flex;
   justify-content: center;
@@ -564,15 +584,26 @@
   padding: 10px;
   border: 1px solid #1b5e39;
   border-radius: 100px;
+  outline: none;
+}
+.input-field:focus{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #1b5e39;
+  border-radius: 100px;
+  outline: none;
 }
 
 .input-field.donor {
   width: 100%;
 }
 
-.input-field:focus {
-  border: 1px solid #1b5e39;
+.input-field.donor:focus{
+  width: 80%; 
+  outline: none; 
 }
+
+
 
 .login-text {
   font-size: 15px;
@@ -584,10 +615,17 @@
   color: #1b5e39;
 }
 
-.login-title {
-  font-size: 60px;
+.login-text-warning {
+  font-size: 15px;
   font-weight: bold;
-  margin-bottom: 20px;
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.login-title {
+  font-size: 50px;
+  font-weight: bold;
   color: #1b5e39;
   text-align: center;
 }
@@ -618,19 +656,20 @@
 }
 
 .login-logo {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 }
 
 .login-logo-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+
 }
 
 .login-link {
   color: #1b5e39;
   font-weight: bold;
+  text-align: left;
 }
 
 .login-bg {

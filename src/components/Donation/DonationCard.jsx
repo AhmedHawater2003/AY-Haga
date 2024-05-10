@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const DonationCard = ({ showDetails, donationDetails, setShownDonation }) => {
+const DonationCard = ({ showDetails, donationDetails, setShownDonation}) => {
   const handleClick = () => {
     setShownDonation((prev) => donationDetails);
     showDetails();

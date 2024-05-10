@@ -52,7 +52,7 @@ const HowToUse = () => {
       >
         {/* {content} */}
         <FilterBar />
-        <DonationsGrid category={"All"} />
+        <DonationsGrid category={"All"} isDoner={true} isFullfilled={false} isPending={false} isWaiting={false}/>
       </div>
     </div>
   );
