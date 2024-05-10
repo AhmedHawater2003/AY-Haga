@@ -5,6 +5,7 @@ import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
 
 import DonationsGrid from "./Donation/DonationsGrid";
+import FilterBar from "./FiltrationBar/FilterBar";
 
 const HowToUse = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -50,7 +51,7 @@ const HowToUse = () => {
         }}
       >
         {/* {content} */}
-
+        <FilterBar />
         <DonationsGrid category={"All"} />
       </div>
     </div>

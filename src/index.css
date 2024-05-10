@@ -4,47 +4,19 @@
 }
 
 /* change styling of button when clicked */
-:not(.btn-check)+.btn:active {
+:not(.btn-check) + .btn:active {
   background-color: #1b5e39;
 }
 
 .form-control:focus {
   border-color: #28a745;
   box-shadow: 0 0 0 0.1rem rgba(40, 167, 69, 0.25);
-} 
+}
 
-.form-select:focus{
+.form-select:focus {
   border-color: #28a745;
   box-shadow: 0 0 0 0.1rem rgba(40, 167, 69, 0.25);
-
 }
-.accordion-button:focus {
-  box-shadow: 0 0 0 0.1rem transparent
-}
-
-.accordion-button::after {
-  display: none;
-}
-
-.accordion-button {
-  justify-content: center;
-  background-color: rgb(27 94 54);
-  color: white;
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-  font-weight: bold
-}
-
-.accordion-button:not(.collapsed) {
-  background-color:white;
-  color: #1b5e39;
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-  font-weight: bold;
-  border-bottom: 1px solid #dee2e6;
-}
-
-
 
 .btn {
   background-color: #1b5e39;
@@ -70,8 +42,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-
-
 .btn-middle {
   background-color: white;
   color: #1b5e39;
@@ -95,8 +65,6 @@
   font-weight: bold;
   transition: all 0.3s ease-in-out;
 }
-
-
 
 /* navbar styling */
 .navbar {
@@ -695,5 +663,3 @@
 .alert.show {
   opacity: 1;
 }
-
-
