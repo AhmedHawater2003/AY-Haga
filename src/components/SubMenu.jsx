@@ -51,7 +51,12 @@ const SubMenu = ({ item, sideBarFunction }) => {
 
   return (
     <>
-      <SidebarLink onClick={item.subNav && showSubnav}>
+      <SidebarLink onClick={() => {
+        if(item.subNav)
+          showSubnav()
+        else
+          sideBarFunction(item)
+      }}>
         <div>
           {item.icon}
           <SidebarLabel>{item.title}</SidebarLabel>

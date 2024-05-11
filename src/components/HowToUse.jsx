@@ -1,38 +1,23 @@
 import Navbar from "./Navbar";
 import { useState } from "react";
-import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
-import * as RiIcons from "react-icons/ri";
-
 import DonationsGrid from "./Donation/DonationsGrid";
 import FilterBar from "./FiltrationBar/FilterBar";
+import { DonorSideBarData, allData } from "../data/DonorSideBarData";
+import { DonationCategoriesData } from "../data/DonationCategoriesData";
 import TrackTest from "./Tracking/TrackTest";
 import Demo from "./Tracking/Stepper";
 
 const HowToUse = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-  const sideBarData = [
-    {
-      title: "Summary",
-      icon: <AiIcons.AiFillHome />,
-      iconClosed: <RiIcons.RiArrowDownSFill />,
-      iconOpened: <RiIcons.RiArrowUpSFill />,
-
-      subNav: [
-        {
-          title: "Users",
-          content: <h1>Users</h1>,
-          icon: <IoIcons.IoIosPaper />,
-        },
-        {
-          title: "Revenue",
-          content: <h1>Reven</h1>,
-          icon: <IoIcons.IoIosPaper />,
-        },
-      ],
-    },
-  ];
-  const [content, setContent] = useState(<h1>home</h1>);
+  const [content, setContent] = useState(
+    <DonationsGrid
+      data={allData}
+      isDoner={true}
+      isFullfilled={false}
+      isPending={false}
+      isWaiting={false}
+    />
+  );
   const sideBarFunction = (value) => {
     setContent(value.content);
   };
@@ -41,9 +26,12 @@ const HowToUse = () => {
     <div>
       <Navbar
         sideBarFlag={true}
+        searchBarFlag={true}
+        searchBarData={DonationCategoriesData}
+        searchBarFunction={(item) => setContent(item.content)}
         isSideBarOpen={isSideBarOpen}
         showSideBar={() => setIsSideBarOpen(!isSideBarOpen)}
-        sideBarData={sideBarData}
+        sideBarData={DonorSideBarData}
         sideBarFunction={sideBarFunction}
       />
       <div
@@ -52,16 +40,8 @@ const HowToUse = () => {
           transition: "200ms",
         }}
       >
-        {/* {content} */}
         <FilterBar />
-        <DonationsGrid
-          category={"All"}
-          isDoner={true}
-          isFullfilled={false}
-          isPending={false}
-          isWaiting={false}
-        />
-        <Demo />
+        {content}
       </div>
     </div>
   );
