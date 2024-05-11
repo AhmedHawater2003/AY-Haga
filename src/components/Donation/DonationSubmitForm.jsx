@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import "./customStyle.css";
 
-function DonationSubmitForm({ hideModal }) {
+function DonationSubmitForm({ hideModal, isVolunteer}) {
   const [transportationType, setTransportationType] = useState("");
   const [validated, setValidated] = useState(false);
   const [alertFlag, setAlertFlag] = useState(false);
@@ -26,7 +26,23 @@ function DonationSubmitForm({ hideModal }) {
     }
   };
   return (
-    <div className="border rounded border-1 m-2">
+    isVolunteer ?
+    <h1> 
+      <Button variant="primary" type="volunteer">
+                  Volunteer
+                </Button>
+                <Alert
+              variant="success"
+              style={{ marginTop: "10px", textAlign: "center" }}
+              show={alertFlag}
+            >
+              Thank you for olunteering &#128154;
+            </Alert>
+
+    </h1>
+    
+    
+    :<div className="border rounded border-1 m-2">
       <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header style={{ justifyContent: "center" }}>

@@ -9,6 +9,7 @@ import DonationSubmitForm from "./DonationSubmitForm";
 
 function DonationDetialsModal({
   isDoner,
+  isVolunteer,
   isFulfilled,
   isWaiting,
   isPending,
@@ -47,7 +48,7 @@ function DonationDetialsModal({
                 RegisteredOrgs[donationCardDetials["organization"]]
               }
             />
-            {isDoner && <DonationSubmitForm hideModal={hide} />}
+            {isDoner && <DonationSubmitForm hideModal={hide} isVolunteer = {isVolunteer} /> }
           </div>
         </div>
       </Modal.Body>
