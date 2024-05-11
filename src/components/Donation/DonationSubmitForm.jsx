@@ -29,7 +29,7 @@ function DonationSubmitForm({ hideModal }) {
     <div className="border rounded border-1 m-2">
       <Accordion>
         <Accordion.Item eventKey="0">
-          <Accordion.Header style={{ justifyContent: "center" }}>
+          <Accordion.Header style={{ justifyContent: "center" } } className = "donation">
             {" "}
             Donate{" "}
           </Accordion.Header>

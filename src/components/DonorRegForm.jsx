@@ -110,6 +110,16 @@ const DonorRegForm = () => {
   const handleFileChange = (event) => {
     const files = event.target.files;
     setSelectedFiles(...selectedFiles, ...files);
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const blob = new Blob([file], { type: file.type });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = file.name;
+      link.click();
+  }
   };
 
 

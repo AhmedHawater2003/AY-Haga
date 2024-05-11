@@ -29,7 +29,8 @@ const Navbar = ({
   sideBarData = [],
   sideBarFunction,
   notificationCenterFlag=false,
-  notificationCenterData=[]
+  notificationCenterData=[],
+  resetSearch,
 }) => {
   
   const [isScrolled, setIsScrolled] = useState(false);
@@ -97,7 +98,7 @@ const Navbar = ({
               searchResultsData={searchBarData}
               onSearchResultSelection={searchBarFunction}
               resultLabellKey="title"
-              
+  
             />}
           </>
         ) : (

@@ -32,6 +32,20 @@ const SearchButton = styled.button`
   color: #e3f9eb;
   font-size: 24px;
 `;
+
+const searchResultsListStyle = {
+    width: "75%",
+    backgroundColor: "#fffffc",
+    display: "flex",
+    flexDirection: "column",
+    borderRadius: "10px",
+    maxHeight: "300px",
+    overflowY: "auto",
+    position: "absolute",
+    zIndex: "1000",
+    top: "5rem",
+
+}
 const SearchBar = ({
   globalStyling,
   formStyling,
@@ -39,7 +53,8 @@ const SearchBar = ({
   buttonStyle,
   searchResultsData,
   onSearchResultSelection,
-  resultLabellKey
+  resultLabellKey,
+  searchResultsListStyle,
 }) => {
   const mergedFormStyling = { ...globalStyling, ...formStyling };
   const mergedInputStyle = { ...globalStyling, ...inputStyle };
@@ -63,16 +78,17 @@ const SearchBar = ({
           onChange={(e) => setQuery(e.target.value)}
           style={mergedInputStyle}
           type="text"
-          placeholder="Search By Category..."
+          placeholder="Search By Organization Name"
         />
         <SearchButton
           style={mergedButtonStyle}
-          onClick={() => console.log("Ahmed")}
+          onClick={(e)=>{e.preventDefault();}}
         >
           <FaSearch />
         </SearchButton>
       </SearchForm>
       <SearchResultsList
+        styling={searchResultsListStyle} 
         data={filterdResults}
         resultLabellKey = {resultLabellKey}
         onSearchResultSelection={(resultData) => {
