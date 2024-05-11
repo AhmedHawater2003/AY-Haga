@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import GoogleLocator from "../GoogleLocator";
+import { Spinner } from "react-bootstrap";
 
 const VolunteerForm = ({showVolunteer , back , close}) => {
     const [type , setType] = useState('');
@@ -121,20 +122,20 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
             else{
                 setSubjectError('');
             }
-            if(schoolName === ''){
-                setSchoolNameError('School Name is required');
-            }
-            else{
-                setSchoolNameError('');
-            }
+            // if(schoolName === ''){
+            //     setSchoolNameError('School Name is required');
+            // }
+            // else{
+            //     setSchoolNameError('');
+            // }
             if(schoolAddress === ''){
-                setSchoolAddressError('School Address is required');
+                setSchoolAddressError('Address is required');
             }
             else{
                 setSchoolAddressError('');
             }
             if(schoolContact === ''){
-                setSchoolContactError('School Contact is required');
+                setSchoolContactError('Contact Number is required');
             }
             else{
                 setSchoolContactError('');
@@ -211,24 +212,25 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
 
         }
         //Check if all useStates edited on events are not empty
-        if((type === 'Teacher') && !(title === '' ) && !(description === '') && !(subject === '') && !(schoolName === '') && !(schoolAddress === '') 
-            && !(schoolContact === '') && !(numberOfStudents === '')){
-            setAlertMessage('Post Submitted Successfully');
+        if((type === 'Teacher') && !(title === '' ) && !(description === '') && !(subject === '') 
+        // && !(schoolName === '') 
+      && !(schoolAddress === '') && !(schoolContact === '') && !(numberOfStudents === '')){
+            setAlertMessage('Post Submitted Successfully!');
             setShowAlert(true);
             setSuccess(true);
             setTimeout(() => {       
                 handleClose();
-              }, 10000)
+              }, 4000)
     
           }
           if((type === 'Doctor') && !(title === '' ) && !(description === '') && !(patientName === '') && !(patientAge === '') && !(patientGender === '') 
             && !(patientWeight === '') && !(medicalSpeciality === '') && !(patientAddress === '')){
-            setAlertMessage('Post Submitted Successfully');
+            setAlertMessage('Post Submitted Successfully!');
             setShowAlert(true);
             setSuccess(true);
             setTimeout(() => {       
                 handleClose();
-              }, 10000)
+              }, 4000)
             }
       
     }
@@ -248,10 +250,13 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
         <Modal.Header closeButton>
             <Modal.Title>Ask For Volunteers</Modal.Title>
         </Modal.Header>
-        <Modal.Body onSubmit={handleSubmit}>
-            {showAlert && <Alert variant= {(isSuccess)? 'success':'danger'}>
-                {alertMessage}
+        {showAlert&&<Alert style={{ textAlign: 'center'  }}  variant={(isSuccess)?'success':'danger'}>
+                {alertMessage}. Redirecting <Spinner animation="border" size="sm" className="ms-2" />
             </Alert>}
+        <Modal.Body onSubmit={handleSubmit}>
+            {/* {showAlert && <Alert variant= {(isSuccess)? 'success':'danger'}>
+                {alertMessage}
+            </Alert>} */}
             <Form onSubmit = {handleSubmit} >
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label style={{fontSize:'25px' , fontWeight : "bold"}}>Volunteer As
@@ -299,7 +304,7 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Post Title"
+                  placeholder="Enter Post Title"
                   value = {title}
                   onChange ={(event) => setTitle(event.target.value)}
                   isInvalid = {titleError}
@@ -315,7 +320,7 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
                 </Form.Label>
                 <Form.Control
                   as="textarea"
-                  placeholder="Description"
+                  placeholder="Enter Description"
                   value = {description}
                   onChange ={(event) => setDescription(event.target.value)}
                   isInvalid = {descriptionError}
@@ -467,7 +472,7 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Post Title"
+                  placeholder="Enter Post Title"
                   value = {title}
                   onChange ={(event) => setTitle(event.target.value)}
                   isInvalid = {titleError}
@@ -483,7 +488,7 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
                 </Form.Label>
                 <Form.Control
                   as="textarea"
-                  placeholder="Description"
+                  placeholder="Enter Description"
                   value = {description}
                   onChange ={(event) => setDescription(event.target.value)}
                   isInvalid = {descriptionError}
@@ -507,7 +512,7 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
                   {subjectError}
                 </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>School Name
                   {schoolNameError? <span className="text-danger"> *</span> : null}
                 </Form.Label>
@@ -521,14 +526,14 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
                 <Form.Control.Feedback type="invalid">
                   {schoolNameError}
                 </Form.Control.Feedback>
-                </Form.Group>
+                </Form.Group> */}
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>School Address
+                <Form.Label>Address
                   {schoolAddressError? <span className="text-danger"> *</span> : null}
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="School Address"
+                  placeholder="Enter Address"
                   value = {schoolAddress}
                   onChange ={(event) => setSchoolAddress(event.target.value)}
                   isInvalid = {schoolAddressError}
@@ -538,12 +543,12 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
                 </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>School Contact
+                <Form.Label>Contact Number
                   {schoolContactError? <span className="text-danger"> *</span> : null}
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="School Contact"
+                  placeholder="Enter Contact Number"
                   value = {schoolContact}
                   onChange ={(event) => setSchoolContact(event.target.value)}
                   isInvalid = {schoolContactError}
