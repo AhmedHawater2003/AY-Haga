@@ -1,11 +1,13 @@
 import * as IoIcons from "react-icons/io";
+import { DonationDetails } from "./DonationsData";
+import DonationsGrid from "../components/Donation/DonationsGrid"
 
 export const DonationCategoriesData = [
   {
     id: 1,
     title: "Clothes",
-    content: <h1>Clothes</h1>,
-    path: "/overview/users",
+    content: <DonationsGrid data={DonationDetails} filterFunction={(donation) => donation.category === "Clothes"}  isDoner={true} isFullfilled={false} isPending={false} isWaiting={false} />,
+    // path: "/overview/users",
     icon: <IoIcons.IoIosPaper />,
   }, 
   {

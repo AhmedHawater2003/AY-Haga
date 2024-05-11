@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { DonationDetails } from "../../data/DonationsData";
 import DonationCard from "./DonationCard";
 import DonationDetialsModal from "./DonationDetialsModal";
 import OrgFulfilledPostData from "../../data/OrgFulfilledPostData";
@@ -7,14 +6,16 @@ import OrgWaitingPostData from "../../data/OrgWaitingPostData";
 import OrgPendingPostData from "../../data/OrgPendingPostData";
 
 function DonationsGrid({
-  category,
+  data,
+  isVolunteer,
+  filterFunction = (donation) => true,
   isDoner,
   isFulfilled,
   isWaiting,
   isPending,
 }) {
   const [showDonationDetails, setShowDetails] = useState(false);
-  const [shownDonation, setShownDonation] = useState(DonationDetails[0]);
+  const [shownDonation, setShownDonation] = useState(data[0]);
 
   return (
     <>
@@ -28,9 +29,8 @@ function DonationsGrid({
         }}
       >
         {isDoner &&
-          DonationDetails.filter(
-            (donation) => category === "All" || donation.category === category
-          ).map((donation) => (
+          data.filter(
+            (donation) => filterFunction(donation)).map((donation) => (
             <DonationCard
               key={donation.id}
               showDetails={() => setShowDetails(true)}
@@ -79,6 +79,7 @@ function DonationsGrid({
       </div>
 
       <DonationDetialsModal
+        isVolunteer={isVolunteer}
         isDoner={isDoner}
         isFulfilled={isFulfilled}
         isPending={isPending}
