@@ -208,7 +208,7 @@
   border-radius: 10px;
 }
 
-.card-col{
+.card-col {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -550,17 +550,17 @@
   box-sizing: border-box;
 }
 
-.form-control:focus{
+.form-control:focus {
   border-color: #1b5e39;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
-.form-check-input[type=radio]:focus {
+.form-check-input[type="radio"]:focus {
   border-radius: 50%;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
-.form-check-input:checked[type=radio]{
+.form-check-input:checked[type="radio"] {
   background-color: #28a745;
   border-color: #28a745;
 }
@@ -586,7 +586,7 @@
   border-radius: 100px;
   outline: none;
 }
-.input-field:focus{
+.input-field:focus {
   width: 100%;
   padding: 10px;
   border: 1px solid #1b5e39;
@@ -598,12 +598,10 @@
   width: 100%;
 }
 
-.input-field.donor:focus{
-  width: 80%; 
-  outline: none; 
+.input-field.donor:focus {
+  width: 80%;
+  outline: none;
 }
-
-
 
 .login-text {
   font-size: 15px;
@@ -663,7 +661,6 @@
 .login-logo-container {
   display: flex;
   justify-content: center;
-
 }
 
 .login-link {

@@ -6,6 +6,8 @@ import * as RiIcons from "react-icons/ri";
 
 import DonationsGrid from "./Donation/DonationsGrid";
 import FilterBar from "./FiltrationBar/FilterBar";
+import TrackTest from "./Tracking/TrackTest";
+import Demo from "./Tracking/Stepper";
 
 const HowToUse = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -52,7 +54,14 @@ const HowToUse = () => {
       >
         {/* {content} */}
         <FilterBar />
-        <DonationsGrid category={"All"} isDoner={true} isFullfilled={false} isPending={false} isWaiting={false}/>
+        <DonationsGrid
+          category={"All"}
+          isDoner={true}
+          isFullfilled={false}
+          isPending={false}
+          isWaiting={false}
+        />
+        <Demo />
       </div>
     </div>
   );
