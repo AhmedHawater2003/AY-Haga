@@ -44,7 +44,7 @@ export const DonorSideBarData = [
 
       {
         title: "As a Doctor",
-        content: <DonationsGrid data={DoctorData} isDoner={true} isFullfilled={false} isPending={false} isWaiting={false} />,
+        content: <DonationsGrid data={DoctorData} isVolunteer={true} isDoner={true} isFullfilled={false} isPending={false} isWaiting={false} />,
         icon: <IoIcons.IoIosPaper />
       },
 

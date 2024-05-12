@@ -9,6 +9,12 @@ function DonationSubmitForm({ hideModal, isVolunteer}) {
   const [transportationType, setTransportationType] = useState("");
   const [validated, setValidated] = useState(false);
   const [alertFlag, setAlertFlag] = useState(false);
+  const handleVolunteer = () => {
+    setAlertFlag(true);
+    setTimeout(() => {setAlertFlag(false), 
+      hideModal();
+    } ,2000); 
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -27,19 +33,19 @@ function DonationSubmitForm({ hideModal, isVolunteer}) {
   };
   return (
     isVolunteer ?
-    <h1> 
-      <Button variant="primary" type="volunteer">
-                  Volunteer
-                </Button>
-                <Alert
-              variant="success"
-              style={{ marginTop: "10px", textAlign: "center" }}
-              show={alertFlag}
-            >
-              Thank you for olunteering &#128154;
-            </Alert>
+    <h1>
+    <Button variant="primary" type="button" onClick={handleVolunteer}>
+  Volunteer
+</Button>
+      
+    {alertFlag && (
+      <Alert variant="success" style={{ marginTop: "10px", textAlign: "center" }}>
+        Thank you for volunteering &#128154;
+      </Alert>
+    )}
+  </h1>
 
-    </h1>
+      
     
     
     :<div className="border rounded border-1 m-2">

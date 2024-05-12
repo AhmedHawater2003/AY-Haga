@@ -79,7 +79,7 @@ function DonationsGrid({
       </div>
 
       <DonationDetialsModal
-        isVolunteer={isVolunteer}
+      isVolunteer={isVolunteer}
         isDoner={isDoner}
         isFulfilled={isFulfilled}
         isPending={isPending}
