@@ -7,8 +7,9 @@ import { DonorSideBarData, allData } from "../data/DonorSideBarData";
 import { DonationCategoriesData } from "../data/DonationCategoriesData";
 import CategoryFilter from "./FiltrationBar/CategoryFilter";
 import FilterBar from "./FiltrationBar/FilterBar";
+import DonorHome from "./Donation/DonorHome";
 
-const HomePage = <h1>Home</h1>;
+const HomePage = <DonorHome/>;
 const HowToUse = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(true);
   const [content, setContent] = useState(HomePage);

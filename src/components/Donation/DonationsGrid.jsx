@@ -113,6 +113,7 @@ function DonationsGrid({
         showFlag={showDonationDetails}
         hide={() => setShowDetails(false)}
         deletePost = {deletePost}
+        setShowFlag={setShownDonation}
       />
     </>
   );
