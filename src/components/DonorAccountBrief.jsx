@@ -15,11 +15,7 @@ const OrgAccountBrief = () => {
           <div
             style={{
               float: "right",
-              // marginTop : '-10px'
-              // position : 'relative',
-              // top : '-10px'
             }}
-            // className="col-md-12 col-lg-6 col-xl-6"
           >
             <br />
           </div>
@@ -32,7 +28,6 @@ const OrgAccountBrief = () => {
             width: "95%",
             margin: "auto",
           }}
-          // className="col-md-12 col-lg-6 col-xl-6"
         >
           <div className="profilecard-shadow-primary profilecard-border mb-3 profilecard">
             <div className="dropdown-menu-header">
