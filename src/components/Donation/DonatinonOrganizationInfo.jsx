@@ -45,7 +45,7 @@ function DonatinonOrganizationInfo({ organizationDetails }) {
           <span>{organizationDetails["location"]}</span>
           <span>{`Member Since: ${organizationDetails["memberSince"]}`}</span>
           <a
-            href="https://www.who.int/"
+            href={organizationDetails["profileLink"]}
             target="_blank"
             rel="noreferrer"
             style={{ textDecoration: "none" }}

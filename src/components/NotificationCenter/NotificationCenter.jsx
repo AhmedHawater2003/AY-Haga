@@ -8,7 +8,7 @@ import NotificationTable from "./NotificationTable";
 import RequestPopUp from "./RequestPopUp";
 import AnnouncementPopUp from "./AnnouncementPopUp";
 
-const NotificationCenter = () => {
+const NotificationCenter = ({notificationData}) => {
   const [show, setShow] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
   const [showAnnounce, setShowAnnounce] = useState(false);
@@ -50,7 +50,7 @@ const NotificationCenter = () => {
           bg="danger"
           // style={{ position: "absolute", top: "15px", right: "80px" }}
         >
-          {OrgNotificationData.length}
+          {notificationData.length}
         </Badge>
       </Button>
 
@@ -59,7 +59,7 @@ const NotificationCenter = () => {
           <Modal.Title>Notification Center</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {OrgNotificationData.length > 0 ? (
+          {notificationData.length > 0 ? (
             <NotificationTable
               notificationData={OrgNotificationData}
               handleShowRequest={handleShowRequest}

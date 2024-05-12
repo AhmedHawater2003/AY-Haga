@@ -29,15 +29,16 @@ function DonationsGrid({
         }}
       >
         {isDoner &&
-          data.filter(
-            (donation) => filterFunction(donation)).map((donation) => (
-            <DonationCard
-              key={donation.id}
-              showDetails={() => setShowDetails(true)}
-              donationDetails={donation}
-              setShownDonation={() => setShownDonation(donation)}
-            />
-          ))}
+          data
+            .filter((donation) => filterFunction(donation))
+            .map((donation) => (
+              <DonationCard
+                key={donation.id}
+                showDetails={() => setShowDetails(true)}
+                donationDetails={donation}
+                setShownDonation={() => setShownDonation(donation)}
+              />
+            ))}
 
         {isFulfilled &&
           OrgFulfilledPostData.map((donation) => (
@@ -79,7 +80,7 @@ function DonationsGrid({
       </div>
 
       <DonationDetialsModal
-        isVolunteer={isVolunteer}
+      isVolunteer={isVolunteer}
         isDoner={isDoner}
         isFulfilled={isFulfilled}
         isPending={isPending}

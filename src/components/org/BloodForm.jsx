@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import GoogleLocator from "../GoogleLocator";
+import { Spinner } from 'react-bootstrap';
 
 const BloodForm = ({showBlood , back , close}) => {
     const [title , setTitle] = useState('');
@@ -104,13 +105,13 @@ const BloodForm = ({showBlood , back , close}) => {
       if(!(title === '') && 
         (type === 'A+' || type === 'A-' || type === 'B+' || type === 'B-' || type === 'AB+' || type === 'AB-' || type === 'O+' || type === 'O-') && 
         !(patientName === '') && !(hospitalName === '') && !(hospitalArea === '') && !(governate === '')){
-        setAlertMessage('Post Submitted Successfully');
+        setAlertMessage('Post Submitted Successfully!');
         setShowAlert(true);
         setSuccess(true);
         setTimeout(() => {
             resetInsertions();
             close();
-        } ,10000);
+        } ,4000);
       }
 
      
@@ -129,21 +130,24 @@ const BloodForm = ({showBlood , back , close}) => {
 
   return (
     <>
-    
+   
         <Modal show={showBlood} onHide={handleClose} size="lg" scrollable >
             <Modal.Header closeButton>
             <Modal.Title>Blood Donation Form</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-            {showAlert&&<Alert variant={(isSuccess)?'success':'danger'}>
-                {alertMessage}
+            {showAlert&&<Alert style={{ textAlign: 'center'  }}  variant={(isSuccess)?'success':'danger'}>
+                {alertMessage}. Redirecting <Spinner animation="border" size="sm" className="ms-2" />
             </Alert>}
+            <Modal.Body>
+            {/* {showAlert&&<Alert variant={(isSuccess)?'success':'danger'}>
+                {alertMessage}
+            </Alert>} */}
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicTitle">
                 <Form.Label>Title
                   {titleError? <span className="text-danger"> *</span> : null } 
                 </Form.Label>
-                <Form.Control type="text" placeholder="Enter title" value={title} onChange={(e) => {setTitle(e.target.value);}} isInvalid={titleError} />
+                <Form.Control type="text" placeholder="Enter Post Title" value={title} onChange={(e) => {setTitle(e.target.value);}} isInvalid={titleError} />
                 <Form.Control.Feedback type="invalid">
                   {titleError}
                 </Form.Control.Feedback>
@@ -202,7 +206,7 @@ const BloodForm = ({showBlood , back , close}) => {
                 </Form.Group>
 
                 <Form.Group   controlId="exampleForm.ControlInput1">
-                <Form.Label>Hospital Location  
+                <Form.Label>Hospital Address  
                   {/* {hospitalLocationError? <span className="text-danger"> *</span> : null} */}
                 </Form.Label>
                 <GoogleLocator />

@@ -9,8 +9,8 @@ const FilterContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 3px;
-  padding: 10px;
-  border: 1px solid #1b5e39;
+  padding: 0px 10px;
+  border: 1px solid #0ca678;
   :hover button {
     transition: 0.3s;
     display: block;
@@ -19,7 +19,7 @@ const FilterContainer = styled.div`
 
 const FilterText = styled.div`
   font-size: 1rem;
-  color: #1b5e39;
+  color: #0ca678;
   font-weight: bold;
   padding: 0 5px;
 `;

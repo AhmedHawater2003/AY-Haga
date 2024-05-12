@@ -23,7 +23,7 @@ const FulfilledPosts = () => {
           </Col>
         </Row>
 
-        <div />
+        <br/>
         <div>
           <DonationsGrid
             isDonor={false}
