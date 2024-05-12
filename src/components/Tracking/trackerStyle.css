@@ -20,7 +20,7 @@
 }
 
 .track .accordion-button:not(.collapsed),
-.accordion-button {
+.track .accordion-button {
   background-color: white;
   color: #0ca678;
   font-size: 1.2rem;

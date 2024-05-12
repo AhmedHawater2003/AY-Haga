@@ -6,7 +6,7 @@ export const RegisteredOrgs = {
     location: "Cairo/Egypt",
     memberSince: 2024,
     profileLink: "https://www.who.int/",
-    profilePicture: "https://www.egyptianrc.org/newcss/img/ERC-logo.png",
+    profilePicture: "https://s.yimg.com/fz/api/res/1.2/DzK83vxCWIIWavU0ERBNRg--~C/YXBwaWQ9c3JjaGRkO2ZpPWZpdDtoPTI0MDtxPTgwO3c9MzMy/https://s.yimg.com/zb/imgv1/316c2b96-bd2a-3589-8814-30cf738c18fc/t_500x300",
   },
   "Hope Haven Orphanage": {
     id: 2,
@@ -62,4 +62,65 @@ export const RegisteredOrgs = {
     profileLink: "https://www.egyptianrc.org/home",
     profilePicture: "https://s.yimg.com/fz/api/res/1.2/P9CZ3_JKglD_7UUtKIx.2g--~C/YXBwaWQ9c3JjaGRkO2ZpPWZpdDtoPTI2MDtxPTgwO3c9MzMy/https://s.yimg.com/zb/imgv1/30835952-a7d3-3ff3-a1c9-5651623c98dc/t_500x300",
   },
+  "Minya Women's Development Center": {
+    id: 8,
+    title: "Minya Women's Development Center",
+    commID: "5574132",
+    location: "Minya/Egypt",
+    memberSince: 2021,
+    profileLink: "https://mc.minia.edu.eg/obl/lawayih.aspx",
+    profilePicture: "https://mc.minia.edu.eg/obl/Images/logo.jpg",
+  },
+  
+    "Hurghada Community Center" : {
+      id: 9,
+      title: "Hurghada Community Center",
+      commID: "475896",
+      location: "Hurghada/Egypt",
+      memberSince: 2019,
+      profileLink: "https://hurghada.com/",
+      profilePicture: "https://up.yimg.com/ib/th?id=OIP.BSM0dHSWFhpATYP6KhNFOAHaJ4&pid=Api&rs=1&c=1&qlt=95&w=84&h=112",
+    },
+
+    "Elderly Care Foundation" : {
+      id: 30,
+      title: "Elderly Care Foundation",
+      commID: "1597569",
+      location: "Minya,Egypt",
+      memberSince: 2020,
+      profileLink: "https://www.caring.com/caregivers/elder-care-options-for-senior-living-arrangements/",
+      profilePicture: "https://www.caring.com/app/themes/caring/assets/images/Caring_Horizontal_Blue.svg",
+
+    },
+    "Cairo Medical Center" : {
+      id: 31,
+      title: "Cairo Medical Center",
+      commID: "46985723",
+      location: "Cairo,Egypt",
+      memberSince: 2023,
+      profileLink: "https://www.cairomedicalcare.com/",
+      profilePicture: "https://cairo-medical.com/wp-content/uploads/2023/07/Asset-8.png",
+    },
+
+    "Tanta Orphanage" : {
+      id: 32,
+      title: "Tanta Orphanage",
+      commID: "45871254",
+      location: "Tanta,Egypt",
+      memberSince: 2017,
+      profileLink: "https://www.tantainc.org/",
+      profilePicture: "https://images.squarespace-cdn.com/content/v1/6436529f279c344ae828ea5a/3192ac76-3d91-4232-8617-c6f43f73e629/Tanta+Icon_S_TransparentBG.png?format=1500w",
+    },
+
+    "Dar Al-Salam Retirement Home" : {
+      id: 33,
+      title: "Dar Al-Salam Retirement Home",
+      commID: "65231542",
+      location: "Giza,Egypt",
+      memberSince: 2017,
+      profileLink: "https://www.hopehealthandrehab.com/",
+      profilePicture: "https://www.hopehealthandrehab.com/wp-content/uploads/sites/143/2023/07/hope-health-icon.png",
+    },
+
+  
 };

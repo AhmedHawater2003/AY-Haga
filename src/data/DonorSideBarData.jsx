@@ -9,21 +9,17 @@ import { DonationDetails } from "../data/DonationsData";
 import { TeachingData } from "../data/TeachingData";
 import { DoctorData } from "../data/DoctorData";
 import DonationTracker from "../components/Tracking/DonationTracker";
-
+import CategoryFilter from "../components/FiltrationBar/CategoryFilter";
+import RegOrg from "../components/Admin/RegOrg";
+import { RegOrgData } from "./RegOrgData";
+import DonationsPage from "../components/Donation/DonationsPage";
 export const allData = [...DonationDetails, ...TeachingData, ...DoctorData];
 
 export const DonorSideBarData = [
   {
     title: "Home",
-    content: (
-      <DonationsGrid
-        data={allData}
-        isDoner={true}
-        isFullfilled={false}
-        isPending={false}
-        isWaiting={false}
-      />
-    ),
+    content: <h1>Home</h1>,
+
     icon: <AiIcons.AiFillHome />,
   },
 
@@ -32,9 +28,15 @@ export const DonorSideBarData = [
     icon: <IoIcons.IoMdPeople />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: DonationCategoriesData,
+    content: <DonationsPage />,
   },
+
+  {
+    title: "Organizations",
+    content: <RegOrg userData={RegOrgData} />,
+    icon: <IoIcons.IoMdPeople />,
+  },
+
   {
     title: "Volunteering",
     icon: <IoIcons.IoMdPeople />,

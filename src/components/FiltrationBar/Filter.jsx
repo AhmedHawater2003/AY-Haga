@@ -3,7 +3,7 @@ import styled from "styled-components";
 import * as FaIcons from "react-icons/fa";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import Badge from "react-bootstrap/Badge";
+import { Badge } from "@mantine/core";
 
 const FilterContainer = styled.div`
   display: flex;
@@ -29,14 +29,14 @@ const IconButton = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  color: red;
+  color: #fa5252;
 `;
 
 function Filter({ id, filterValue, removeFilter, filterCategory }) {
   return (
     <FilterContainer className="rounded-5">
       <FilterText>{filterCategory}</FilterText>
-      <Badge pill bg="success" className="fs-6">
+      <Badge color="teal" size="lg" radius="lg">
         {filterValue}
       </Badge>
       <IconButton type="button" onClick={() => removeFilter(id)}>

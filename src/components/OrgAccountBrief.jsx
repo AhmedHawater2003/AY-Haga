@@ -8,8 +8,34 @@ import {Row , Col} from "react-bootstrap";
 const OrgAccountBrief = () => {
   return (
     <div>
+      <Row>
+        <Col>
+          <br/>
+        </Col>
+        <Col>
+        <div 
+        style={{
+          float : 'right',
+          // marginTop : '-10px'
+          // position : 'relative',
+          // top : '-10px'
+        }}
+        // className="col-md-12 col-lg-6 col-xl-6"
+        >
+          <CategoryModal />
+          <br/>
+        </div>
+        </Col>
+      </Row>
       <Row justify="flex">
-        <div className="col-md-12 col-lg-6 col-xl-6">
+        <br/>
+        <div 
+        style={{
+          width : '95%', 
+          margin : 'auto'
+        }}
+        // className="col-md-12 col-lg-6 col-xl-6"
+        >
           <div className="profilecard-shadow-primary profilecard-border mb-3 profilecard">
             <div className="dropdown-menu-header">
               <div className="dropdown-menu-header-inner bg-primary">
@@ -64,11 +90,11 @@ const OrgAccountBrief = () => {
                     <div className="widget-content p-0">
                       <div className="widget-content-wrapper">
                         <div className="widget-content-left center-elem mr-2">
-                          <b>Representative Name:</b>
+                          <b>Organization Type:</b>
                         </div>
                         <div className="widget-content-right">
                           <span id="ContentPlaceHolderright_ContentPlaceHoldercontent_RepresentativeFullName">
-                            Ali Mahmoud Shokry Abdelrehim
+                            Non-Profit
                           </span>
                         </div>
                       </div>
@@ -78,10 +104,38 @@ const OrgAccountBrief = () => {
                     <div className="widget-content p-0">
                       <div className="widget-content-wrapper">
                         <div className="widget-content-left center-elem mr-2">
-                          <b>Age:</b>
+                          <b>Representative Name:</b>
                         </div>
                         <div className="widget-content-right">
-                          <span>90</span>
+                          <span id="ContentPlaceHolderright_ContentPlaceHoldercontent_RepresentativeFullName">
+                            Mohamed ElSayed
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="list-group-item">
+                    <div className="widget-content p-0">
+                      <div className="widget-content-wrapper">
+                        <div className="widget-content-left center-elem mr-2">
+                          <b>Email:</b>
+                        </div>
+                        <div className="widget-content-right">
+                          <span id="ContentPlaceHolderright_ContentPlaceHoldercontent_RepresentativeFullName">
+                          mohamed.el-sayed@resala.org
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="list-group-item">
+                    <div className="widget-content p-0">
+                      <div className="widget-content-wrapper">
+                        <div className="widget-content-left center-elem mr-2">
+                          <b>Website:</b>
+                        </div>
+                        <div className="widget-content-right">
+                          <span><a className="card-description" href='https://resala.org' target='_blank'>Resala</a></span>
                         </div>
                       </div>
                     </div>
@@ -91,9 +145,9 @@ const OrgAccountBrief = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-12 col-lg-6 col-xl-6">
+        {/* <div className="col-md-12 col-lg-6 col-xl-6">
           <CategoryModal />
-        </div>
+        </div> */}
       </Row>
     </div>
     // <Card>

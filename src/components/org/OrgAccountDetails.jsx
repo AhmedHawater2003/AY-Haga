@@ -1,19 +1,14 @@
 import { useState } from 'react';
-import { CardBody, Row  } from "react-bootstrap";
+import {  Row  } from "react-bootstrap";
 import { Col } from "react-bootstrap";
-import CategoryModal from './CategoryModal';
 import Form from "react-bootstrap/Form";
-import Alert from "react-bootstrap/Alert";
-import { Spinner } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import { FiEyeOff, FiEye, FiEdit3 } from 'react-icons/fi'; 
 import styles from "./test.module.css"
-import style from "./org.module.css"
 import { Notification } from '@mantine/core';
+import { Alert } from 'react-bootstrap';
 import { Card } from '@mantine/core';
-import { CardSection } from '@mantine/core';
 import GoogleLocator from '../GoogleLocator';
-import { IconClick } from '@tabler/icons-react';
 import { FiCheckSquare  , FiX  } from "react-icons/fi";
 
 
@@ -71,7 +66,7 @@ const OrgAccountDetails = () => {
   const [newRepresentativeGender , setNewRepresentativeGender] = useState(oldRepresentativeGender);
   // const [newRepresentativeGenderError , setNewRepresentativeGenderError] = useState('');
 
-  const [oldRepresentativeEmail , setOldRepresentativeEmail] = useState('mohamed.el-sayed@ayady.com')
+  const [oldRepresentativeEmail , setOldRepresentativeEmail] = useState('mohamed.el-sayed@gmail.com')
   const [newRepresentativeEmail , setNewRepresentativeEmail] = useState(oldRepresentativeEmail);
   const [newRepresentativeEmailError , setNewRepresentativeEmailError] = useState('');
 
@@ -136,7 +131,7 @@ const OrgAccountDetails = () => {
       setTimeout(() => {
         setError(false);
       
-      },3000);
+      },5000);
     }
     else{
       setNewOrganizationNameError('');
@@ -147,7 +142,7 @@ const OrgAccountDetails = () => {
       setTimeout(() => {
         setError(false);
       
-      },3000);
+      },5000);
     }
     else{
       setNewOrganizationTypeError('');
@@ -158,7 +153,7 @@ const OrgAccountDetails = () => {
       setTimeout(() => {
         setError(false);
       
-      },3000);
+      },5000);
     }
     else{
       setNewOrganizationFounderError('');
@@ -209,7 +204,7 @@ const OrgAccountDetails = () => {
       setTimeout(() => {
         setError(false);
       
-      },3000);
+      },5000);
     }
     else{
       setNewRepresentativeFirstNameError('');
@@ -221,7 +216,7 @@ const OrgAccountDetails = () => {
       setTimeout(() => {
         setError(false);
       
-      },3000);
+      },5000);
     }
     else{
       setNewRepresentativeLastNameError('');
@@ -232,7 +227,7 @@ const OrgAccountDetails = () => {
       setTimeout(() => {
         setError(false);
       
-      },3000);
+      },5000);
     }
     else{
       setNewRepresentativeEmailError('');
@@ -243,7 +238,7 @@ const OrgAccountDetails = () => {
       setTimeout(() => {
         setError(false);
       
-      },3000);
+      },5000);
     }
     else{
       setNewRepresentativePasswordError('');
@@ -323,6 +318,8 @@ const OrgAccountDetails = () => {
     setShowPassword(false);
     if(showPassword) {handleToggle();}
     setEdit(false);
+    setError(false);
+    setSaved(false);
 
   }
 
@@ -335,7 +332,7 @@ const OrgAccountDetails = () => {
       { 
         saved &&
            <Row>
-            <Notification color="teal" title="Saved Successfully!" mt="md" onClose={() => setSaved(false)} style={{backgroundColor : 'whitesmoke' , fontSize : "50px" /*,width : '500px' , alignSelf : 'center'*/}}/>  
+            <Notification color="teal" title="Saved Successfully!" mt="md" onClose={() => setSaved(false)} style={{backgroundColor : 'whitesmoke' , fontSize : "50px" ,position : 'relative'  /*,width : '500px' , alignSelf : 'center'*/}}/>  
           </Row>
       }
       {

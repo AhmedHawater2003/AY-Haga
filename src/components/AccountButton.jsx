@@ -51,7 +51,7 @@ function AccountButton({setContent}) {
       <Menu.Divider />
 
       <Menu.Label>Danger zone</Menu.Label>
-      <Menu.Item color="red" leftSection={<IconLogout />} onClick={() => {window.location.href = "http://localhost:5173";}}>
+      <Menu.Item color="red" leftSection={<IconLogout />} onClick={() => {window.location.href = "http://localhost:5173/login";}}>
         Logout
       </Menu.Item>
     </Menu.Dropdown>

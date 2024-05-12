@@ -4,13 +4,12 @@ function DonationCard({
   showDetails,
   donationDetails,
   setShownDonation,
-  setIsVolunteering,
+  setIsVolunteering = () => {},
 }) {
   const handleClick = () => {
     setShownDonation((prev) => donationDetails);
     showDetails();
     setIsVolunteering(donationDetails["isVolunteering"]);
-    console.log(donationDetails);
   };
   return (
     <Card
