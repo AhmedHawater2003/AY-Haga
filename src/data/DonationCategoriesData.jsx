@@ -32,7 +32,7 @@ export const DonationCategoriesData = [
     filters: {
       Age: <NormalFilter inputType="number" />,
       Gender: <DropDownFilter dropDownData={["Boy", "Girl"]} />,
-      SubCategory: <DropDownFilter dropDownData={[
+      'Sub Category' : <DropDownFilter dropDownData={[
         "Board Games",
         "Stuffed Toys",
         "Dolls",
@@ -52,7 +52,7 @@ export const DonationCategoriesData = [
       />
     ),
     filters: {
-      SubCategory: <DropDownFilter dropDownData={[
+      'Sub Category' : <DropDownFilter dropDownData={[
         "Fruits & Vegetables", 
         "Canned Foods",
         "Fresh Meals",
@@ -70,7 +70,7 @@ export const DonationCategoriesData = [
       />
     ),
     filters: {
-      SubCategory: <DropDownFilter dropDownData={[
+      'Sub Category' : <DropDownFilter dropDownData={[
         "Medical Devices",
         "Medical Equipment",
         "Medication", 
@@ -87,7 +87,7 @@ export const DonationCategoriesData = [
       />
     ),
     filters: {
-      SubCategory: <DropDownFilter dropDownData={[ "Books","Stationary" ]} />,
+      'Sub Category' : <DropDownFilter dropDownData={[ "Books","Stationary" ]} />,
     },
   },
 
@@ -100,9 +100,9 @@ export const DonationCategoriesData = [
       />
     ),
     filters: {
-      Hospital: <NormalFilter placeholder="Search Hospital Name" />,
+      'Hospital Name': <NormalFilter placeholder="Search Hospital Name" />,
       Governorate: <DropDownFilter dropDownData={["Cairo", "Alexandria", "Port Said", "Suez", "Damietta", "Dakahlia", "Damietta", "Sharqia", "Gharbia", "Kafr El Sheikh", "Monufia", "Qalyubia", "Beheira", "Red Sea", "North Sinai", "South Sinai", "Fayoum", "Beni Suef", "Minya", "Assiut", "New Valley", "Sohag", "Qena", "Luxor", "Aswan", "Matrouh", "Ismailia"  ]} />,
-      Area: <NormalFilter placeholder="Enter Area" />,
+      'Hospital Area': <NormalFilter placeholder="Enter Area" />,
     },
   },
 
