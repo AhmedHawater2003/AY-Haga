@@ -10,7 +10,6 @@ function DonationCard({
     setShownDonation((prev) => donationDetails);
     showDetails();
     setIsVolunteering(donationDetails["isVolunteering"]);
-    console.log(donationDetails);
   };
   return (
     <Card
