@@ -38,8 +38,14 @@ function DonationCard({ showDetails, donationDetails, setShownDonation }) {
   //   </Card>
   // );
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
-      <Card.Section component="a" href="https://mantine.dev/">
+    <Card
+      shadow="sm"
+      padding="lg"
+      radius="md"
+      withBorder
+      className="justify-content-between "
+    >
+      <Card.Section component="div">
         <Image src={donationDetails["image"]} height={160} alt="Norway" />
       </Card.Section>
 
@@ -53,7 +59,7 @@ function DonationCard({ showDetails, donationDetails, setShownDonation }) {
       </Text>
 
       <Button color="teal" fullWidth mt="md" radius="md" onClick={handleClick}>
-        Book classic tour now
+        View Details
       </Button>
     </Card>
   );
