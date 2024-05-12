@@ -1,0 +1,25 @@
+.how-to-use {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .instruction {
+    margin-bottom: 30px;
+  }
+  
+  .instruction h3 {
+    color: #007bff; /* Blue color for section headings */
+    margin-bottom: 10px;
+  }
+  
+  .instruction ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+  }
+  
+  .instruction ol li {
+    margin-bottom: 10px;
+  }
+  

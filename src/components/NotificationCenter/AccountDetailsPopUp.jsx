@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
+import AccountBriefDetails from '../OrgAccountBrief'
 
-const AccountDetailsPopUp = ({showAccount,back,close}) => {
+const AccountDetailsPopUp = ({showAccount,back}) => {
 
     const handleBack = () =>{
         back();
@@ -13,7 +14,7 @@ const AccountDetailsPopUp = ({showAccount,back,close}) => {
         </Modal.Header>
         <Modal.Body>
           
-            <h1> Nothing to see here</h1>
+            <AccountBriefDetails />
           
         </Modal.Body>
         <Modal.Footer>
@@ -22,7 +23,7 @@ const AccountDetailsPopUp = ({showAccount,back,close}) => {
           </Button>
         </Modal.Footer>
       </Modal>
-  )
+  );
 }
 
-export default AccountDetailsPopUp
+export default AccountDetailsPopUp;

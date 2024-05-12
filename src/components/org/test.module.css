@@ -1,5 +1,5 @@
 .lolo input[type="text"]:disabled,
-input[type="password"]:disabled , input[type="number"]:disabled{
+.lolo input[type="password"]:disabled ,.lolo input[type="number"]:disabled{
   background-color: rgb(229, 229, 229);
   /* padding: 5; */
   border: transparent;
@@ -7,7 +7,7 @@ input[type="password"]:disabled , input[type="number"]:disabled{
   font-size: 1.1rem;
 }
 .lolo input[type="text"],
-input[type="password"], input[type="number"] {
+.lolo input[type="password"],.lolo input[type="number"] {
   margin: 0 0 20px 10px;
   font-size: 1.1rem;
 }

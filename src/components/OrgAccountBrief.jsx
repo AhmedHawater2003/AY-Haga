@@ -64,6 +64,9 @@ const OrgAccountBrief = () => {
                       </svg>
                     </div>
                   </div>
+                  <div style = {{float : 'right'}}>
+                    <CategoryModal/>
+                  </div>
                   <div>
                     <h5 className="menu-header-title">
                       <span style={{ color: "black", fontSize: "50px" }}>

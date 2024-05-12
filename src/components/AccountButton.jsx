@@ -37,14 +37,14 @@ const UserButton = forwardRef((_a, ref) => {
     </Group>
   </UnstyledButton>);
 });
-function AccountButton({setContent}) {
+function AccountButton({setContent, content, email,name}) {
   return (<Menu withArrow>
     <Menu.Target>
-      <UserButton  name="Sherif Abd-Al-Azim" email="sherif.abdalazim@resala.com"/>
+      <UserButton  name={name} email={email}/>
     </Menu.Target>
     <Menu.Dropdown  style={{zIndex: 999}}>
       <Menu.Label>Account</Menu.Label>
-      <Menu.Item leftSection={<IconUserCircle />} onClick={()=>{setContent(<OrgAccountDetails/>);}}>
+      <Menu.Item leftSection={<IconUserCircle />} onClick={()=>{setContent(content)}}>
         Profile management
       </Menu.Item>
 
