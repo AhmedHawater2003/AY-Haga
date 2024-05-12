@@ -99,4 +99,37 @@ export const TeachingData = [
     image:
       "https://tse2.mm.bing.net/th?id=OIP.0U8tUFki3r37wG0wsEuY5wHaE7&pid=Api&P=0&h=220",
   },
+  {
+    id: 16,
+    title: "Computer Skills teacher for Women",
+    summary:
+      "Empower women in Minya with computer skills training to enhance their employability",
+    isVolunteering: true,
+    primaryDetails: {
+      Address: "Minya, Egypt",
+      "Number of students": "25",
+      Subjects: "Computer Skills",
+    },
+    organization: "Minya Women's Development Center",
+    additionalDetails:
+      "Help women gain digital literacy and access to economic opportunities",
+    image:
+    "https://tse3.mm.bing.net/th?id=OIP.l_Tb636B87nL4pYw71_ObAHaE8&pid=Api&P=0&h=220",
+  },
+  {
+    id: 17,
+    title: "Basic English Conversation for adults",
+    summary: "Teach basic English conversation skills to adults in Hurghada",
+    isVolunteering: true,
+    primaryDetails: {
+      Address: "Hurghada, Egypt",
+      "Number of students": "30",
+      Subjects: "Basic English Conversation",
+    },
+    organization: "Hurghada Community Center",
+    additionalDetails:
+      "Empower adults with English language skills to enhance their communication abilities with tourists and employers",
+    image:
+    "https://tse1.mm.bing.net/th?id=OIP.AQJrkHPXg_HkpLXO_MhkFAHaEK&pid=Api&P=0&h=220",  },
+  
 ];
