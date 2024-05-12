@@ -5,11 +5,13 @@ import { DonorSideBarData } from "../data/DonorSideBarData";
 import { DonationCategoriesData } from "../data/DonationCategoriesData";
 import { DonationDetails } from "../data/DonationsData";
 import DonationsGrid from "./Donation/DonationsGrid";
+import AdminAccountDetails from "./Admin/AdminAccountDetails";
+import { AdminData } from "../data/AdminData";
 
 import DonorHome from "./Donation/DonorHome";
 
 const HomePage = <DonorHome />;
-const HowToUse = () => {
+const DonorPage = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(true);
   const [content, setContent] = useState(HomePage);
 
@@ -41,6 +43,11 @@ const HowToUse = () => {
   return (
     <div>
       <Navbar
+        accountName={"Marina Nader"}
+        email={"marinanader.gmail.com"}
+        accountFlag={true}
+        setContent={setContent}
+        content={<AdminAccountDetails adminData={AdminData} />}
         sideBarFlag={true}
         searchBarFlag={true}
         searchBarData={DonationCategoriesData}
@@ -63,4 +70,4 @@ const HowToUse = () => {
     </div>
   );
 };
-export default HowToUse;
+export default DonorPage;
