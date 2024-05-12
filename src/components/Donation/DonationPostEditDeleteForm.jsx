@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button } from "@mantine/core";
+import {  Modal } from "react-bootstrap";
 import DeleteConfirmationModal from "../DeleteConfirmationModal";
 import { Form } from "react-bootstrap";
 import { useState } from "react";
@@ -7,7 +7,7 @@ import { Alert } from "react-bootstrap";
 import { Spinner } from "react-bootstrap";
 // import { Modal } from "react-bootstrap/Modal";
 
-const DonationPostEditDeleteForm = ({ item, deletePost, back }) => {
+const DonationPostEditDeleteForm = ({ item, deletePost, setShowDetails  }) => {
   const [show, setShow] = useState(false);
   const handleBack = () => {
     setShow(false);
@@ -68,11 +68,12 @@ const DonationPostEditDeleteForm = ({ item, deletePost, back }) => {
   const [isSuccess, setSuccess] = useState(false);
   return (
     <>
-      <div>
+      <div style={{display : 'flex' ,flexDirection : 'row' , float : 'right' , width : '130%' , justifyContent: 'flex-end'  , gap : '5px' }}>
         <Button
           onClick={() => {
             setShow(true);
           }}
+          color="grey"
         >
           Edit Post
         </Button>
@@ -81,6 +82,7 @@ const DonationPostEditDeleteForm = ({ item, deletePost, back }) => {
           deletePost={deletePost}
           back={back1}
           hide={hide}
+          setShowDetails = {setShowDetails} 
         />
       </div>
       <Modal show={show} onHide={handleClose}>
@@ -148,10 +150,10 @@ const DonationPostEditDeleteForm = ({ item, deletePost, back }) => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleBack}>
+          <Button color='grey'  onClick={handleBack}>
             Back
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button color='teal'  onClick={handleSubmit}>
             Save Post
           </Button>
         </Modal.Footer>

@@ -8,30 +8,30 @@ import {Row , Col} from "react-bootstrap";
 const OrgAccountBrief = () => {
   return (
     <div>
-      <Row>
-        <Col>
+      {/* <Row> */}
+        {/* <Col>
           <br/>
-        </Col>
-        <Col>
+        </Col> */}
+        {/* <Col>
         <div 
         style={{
           float : 'right',
           // marginTop : '-10px'
           // position : 'relative',
           // top : '-10px'
-        }}
-        // className="col-md-12 col-lg-6 col-xl-6"
-        >
-          <CategoryModal />
-          <br/>
-        </div>
-        </Col>
-      </Row>
+        }} */}
+        {/* // className="col-md-12 col-lg-6 col-xl-6"
+        > */}
+          {/* <CategoryModal /> */}
+          {/* <br/> */}
+        {/* </div>
+        </Col> */}
+      {/* </Row> */}
       <Row justify="flex">
         <br/>
         <div 
         style={{
-          width : '95%', 
+          // width : '95%', 
           margin : 'auto'
         }}
         // className="col-md-12 col-lg-6 col-xl-6"
