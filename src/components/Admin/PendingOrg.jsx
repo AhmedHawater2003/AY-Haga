@@ -91,7 +91,7 @@ const PendingOrg = ({ userData }) => {
         <div className="user-webpage-table-container">
             <div className='user-cards-container'>
                 <h1 style={{ color: "#1b5e39", marginBottom: "20px" }}>Pending Organization Requests</h1>
-                <div style={{ display: "flex",flexWrap:"wrap", justifyContent: "center", alignItems: "center", gap:"20px"}}>
+                <div style={{ marginBottom:"10px",display: "flex",flexWrap:"wrap", justifyContent: "center", alignItems: "center", gap:"20px"}}>
                     <Dropdown>
                         <Dropdown.Toggle  variant="success" id="dropdown-basic">
                             Filter by type
@@ -145,8 +145,8 @@ const PendingOrg = ({ userData }) => {
                         }
                         }>Reset Search</button>}
                 </div>
-                {accept && <Alert variant="success" style={{ fontWeight: "bold" }}>{acceptedOrg}'s Request Accepted</Alert>}
-                {reject && <Alert variant="danger" style={{ fontWeight: "bold" }}>{rejectedOrg}'s Request Rejected</Alert>}
+                {accept && <Alert variant="success" style={{ margin:"10px",fontWeight: "bold" }}>{acceptedOrg}'s Request Accepted</Alert>}
+                {reject && <Alert variant="danger" style={{ margin:"10px",fontWeight: "bold" }}>{rejectedOrg}'s Request Rejected</Alert>}
                 {initialData.map(user => (
                     <Accordion className="user-card" key={user.id}>
                         <Accordion.Item eventKey="0">

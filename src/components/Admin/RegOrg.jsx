@@ -78,8 +78,8 @@ const RegOrg = ({ userData }) => {
     return (
         <div className="user-webpage-table-container">
             <div className="user-cards-container">
-                <h1 className="user-cards-title">Registered Organizations</h1>
-                <div style={{ display: "flex",flexWrap:"wrap", justifyContent: "center", alignItems: "center", gap:"20px"}}>
+                <h1 style={{ color: "#1b5e39", marginBottom: "20px" }}>Registered Organizations</h1>
+                <div style={{marginBottom:"10px" ,display: "flex",flexWrap:"wrap", justifyContent: "center", alignItems: "center", gap:"20px"}}>
                     <Dropdown>
                         <Dropdown.Toggle variant="success" id="dropdown-basic">
                             Filter by Type
@@ -133,7 +133,7 @@ const RegOrg = ({ userData }) => {
                             }
                             }>Reset Search</button>}
                 </div>
-                {deleteFlag && <Alert variant="success" style={{ fontWeight: "bold"}}>Organization {deletedOrg} has been deleted successfully</Alert>}
+                {deleteFlag && <Alert variant="danger" style={{margin:"10px", fontWeight: "bold"}}>Organization {deletedOrg} has been deleted successfully</Alert>}
                 {initialData.map((user) => (
                     <Accordion className='user-card' key={user.id}>
                         <Accordion.Item eventKey={user.id}>
