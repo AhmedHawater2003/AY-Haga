@@ -21,7 +21,7 @@ const NotificationBrief = () => {
 
   return (
     <>
-    <div style={{ display: "flex", flexDirection: "row", gap: "4rem" }}>
+    <div style={{ display: "flex", flexDirection: "row", gap: "4rem", justifyContent:"center",alignItems:"center" }}>
       {/* <div>
         <h1 className="mb-3">
           Announcements <i className="bi bi-bell" style={{ color: "blue" }}></i>
