@@ -61,7 +61,8 @@ export const DonationDetails = [
       Author: "John Smith",
       Language: "English",
       Edition: "5th Edition",
-      Summary: "Covers topics such as algebra, geometry, and calculus with exercises and examples.",
+      Summary:
+        "Covers topics such as algebra, geometry, and calculus with exercises and examples.",
       Quantity: 50,
     },
     organization: "World Health Organization",
@@ -79,7 +80,7 @@ export const DonationDetails = [
       Age: "5",
       Gender: "Girl",
       Category: "Stuffed Toys",
-      Quantity: 50, 
+      Quantity: 50,
     },
     organization: "World Health Organization",
     additionalDetails: "Nothing",
@@ -152,7 +153,7 @@ export const DonationDetails = [
     summary: "Injection for diabetes management.",
     category: "Medical Supplies",
     primaryDetails: {
-      SubCategory :"Medication",
+      SubCategory: "Medication",
       DeviceType: "non",
       Use: "Medication for diabetes management",
       Quantity: "25 vials",
@@ -169,8 +170,8 @@ export const DonationDetails = [
     summary: "Digital thermometer for temperature measurement.",
     category: "Medical Supplies",
     primaryDetails: {
-      SubCategory : "Medical Devices ",
-      DeviceType : "Digital Thermometer",
+      SubCategory: "Medical Devices",
+      DeviceType: "Digital Thermometer",
       Use: "Measuring body temperature.",
       Quantity: "50 units",
     },
@@ -180,7 +181,6 @@ export const DonationDetails = [
       "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
   },
 
-  
   {
     id: 12,
     title: "Blood Donation",
@@ -228,7 +228,4 @@ export const DonationDetails = [
     image:
       "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
   },
-  
-
-  
 ];
