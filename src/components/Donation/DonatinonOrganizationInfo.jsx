@@ -30,7 +30,6 @@ const InfoContainer = styled.div`
 `;
 
 function DonatinonOrganizationInfo({ organizationDetails }) {
-  console.log(organizationDetails);
   return (
     <div
       className="border rounded border-1 m-2"

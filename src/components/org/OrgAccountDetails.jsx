@@ -1,15 +1,21 @@
 import { useState } from 'react';
-import { Row  } from "react-bootstrap";
+import { CardBody, Row  } from "react-bootstrap";
 import { Col } from "react-bootstrap";
-// import OrgAccountBrief from '../OrgAccountBrief';
 import CategoryModal from './CategoryModal';
-// import {ListGroup} from 'react-bootstrap/ListGroup';
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import { Spinner } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
-import { FiEyeOff, FiEye } from 'react-icons/fi'; 
+import { FiEyeOff, FiEye, FiEdit3 } from 'react-icons/fi'; 
 import styles from "./test.module.css"
+import style from "./org.module.css"
+import { Notification } from '@mantine/core';
+import { Card } from '@mantine/core';
+import { CardSection } from '@mantine/core';
+import GoogleLocator from '../GoogleLocator';
+import { IconClick } from '@tabler/icons-react';
+import { FiCheckSquare  , FiX  } from "react-icons/fi";
+
 
 const OrgAccountDetails = () => {
 
@@ -40,7 +46,17 @@ const OrgAccountDetails = () => {
   const [newOrganizationContactEmail , setNewOrganizationContactEmail] = useState(oldOrganizationContactEmail);
   const [newOrganizationContactEmailError , setNewOrganizationContactEmailError] = useState('');
 
-  const [oldOrganizationAddress , aetOldOrganizationAddress] = useState()
+  const [oldOrganizationAddress , setOldOrganizationAddress] = useState('4 Zaky Rostom St From Hassanein Heikal St.');
+  const [newOrganizationAddress , setNewOrganizationAddress] = useState(oldOrganizationAddress);
+  const [newOrganizationAddressError , setNewOrganizationAddressError] = useState('');
+
+  const [oldOrganizationArea , setOldOrganizationArea] = useState('Nasr City');
+  const [newOrganizationArea , setNewOrganizationArea] = useState(oldOrganizationArea);
+  const [newOrganizationAreaError , setNewOrganizationAreaError] = useState('');
+
+  const [oldOrganizationGovernate , setOldOrganizationGovernate] = useState('Cairo');
+  const [newOrganizationGovernate , setNewOrganizationGovernate] = useState(oldOrganizationGovernate);
+  const [newOrganizationGovernateError , setNewOrganizationGovernateError] = useState('');
 
   // Representative Use States
   const [oldRepresentativeFirstName , setOldRepresentativeFirstName] = useState('Mohamed');
@@ -74,7 +90,11 @@ const OrgAccountDetails = () => {
   const [newRepresentativeSecondPhoneNumberError , setNewRepresentativeSecondPhoneNumberError] = useState('');
 
   
-
+  const deleteIconStyling = {
+    cursor : "pointer" ,
+    color : "red" ,
+    
+  }
 
  
   const eyeIconStyling = (!(newRepresentativePasswordError === '')) ? {
@@ -105,7 +125,6 @@ const OrgAccountDetails = () => {
 
   const handleEdit = (event) => {
     event.preventDefault();
-    setNewOrganizationNameError('');
     setEdit(true);
   }
 
@@ -113,33 +132,84 @@ const OrgAccountDetails = () => {
     event.preventDefault();
     if(newOrganizationName === ''){
       setNewOrganizationNameError('Please provide the Organization Name!');
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      
+      },3000);
     }
     else{
       setNewOrganizationNameError('');
     }
+    if(newOrganizationType === ''){
+      setNewOrganizationTypeError('Please provide the Organization Type!');
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      
+      },3000);
+    }
+    else{
+      setNewOrganizationTypeError('');
+    }
     if(newOrganizationFounder === ''){
       setNewOrganizationFounderError('Please provide the Organization Founder!');
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      
+      },3000);
     }
     else{
       setNewOrganizationFounderError('');
     }
-    if(newOrganizationWebsite === ''){
-      setNewOrganizationWebsiteError('Please provide the Organization Website!');
+    // if(newOrganizationWebsite === ''){
+    //   setNewOrganizationWebsiteError('Please provide the Organization Website!');
+    // }
+    // else{
+    //   setNewOrganizationWebsiteError('');
+    // }
+    // if(newOrganizationHotNumber === ''){
+    //   setNewOrganizationHotNumberError('Please provide the Organization Hot Number!');
+    // }
+    // else{
+    //   setNewOrganizationHotNumberError('');
+    // }
+    // if(newOrganizationContactEmail === ''){
+    //   setNewOrganizationContactEmailError('Please provide a Contact Email!');
+    // }
+    // else{
+    //   setNewOrganizationContactEmailError('');
+    // }
+    if(newOrganizationAddress === ''){
+      setNewOrganizationAddressError(oldOrganizationAddress);
     }
-    else{
-      setNewOrganizationWebsiteError('');
+    // else{
+    //   setNewOrganizationAddressError('');
+    // }
+    if(newOrganizationArea === ''){
+      setNewOrganizationAreaError(oldOrganizationArea);
     }
-    if(newOrganizationHotNumber === ''){
-      setNewOrganizationHotNumberError('Please provide the Organization Hot Number!');
+    // else{
+    //   setNewOrganizationAreaError('');
+    // }
+    if(newOrganizationGovernate === ''){
+      setNewOrganizationGovernateError(oldOrganizationGovernate);
     }
-    else{
-      setNewOrganizationHotNumberError('');
-    }
+    // else{
+    //   setNewOrganizationGovernateError('');
+    // }
+    
     
 
 
     if(newRepresentativeFirstName === ''){
       setNewRepresentativeFirstNameError('Please provide your First Name!');
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      
+      },3000);
     }
     else{
       setNewRepresentativeFirstNameError('');
@@ -147,45 +217,75 @@ const OrgAccountDetails = () => {
     }
     if(newRepresentativeLastName === ''){
       setNewRepresentativeLastNameError('Please provide your Last Name!');
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      
+      },3000);
     }
     else{
       setNewRepresentativeLastNameError('');
     }
     if(newRepresentativeEmail === ''){
       setNewRepresentativeEmailError('Please provide an Email!');
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      
+      },3000);
     }
     else{
       setNewRepresentativeEmailError('');
     }
     if(newRepresentativePassword === ''){
       setNewRepresentativePasswordError('Please provide a Password!');
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      
+      },3000);
     }
     else{
       setNewRepresentativePasswordError('');
     }
-    if(newRepresentativeFirstPhoneNumber === ''){
-      setNewRepresentativeFirstPhoneNumberError('Please provide your Phone Number!');
-    }
-    else{
-      setNewRepresentativeFirstPhoneNumberError('');
-    }
-    if(newOrganizationName !== '' &&
+    // if(newRepresentativeFirstPhoneNumber === ''){
+    //   setNewRepresentativeFirstPhoneNumberError('Please provide your Phone Number!');
+    // }
+    // else{
+    //   setNewRepresentativeFirstPhoneNumberError('');
+    // }
+    if(newOrganizationName !== '' && newOrganizationType !== '' && newOrganizationFounder !== '' && /*newOrganizationWebsite !== '' &&
+       newOrganizationHotNumber !== '' && newOrganizationContactEmail !== '' && /*newOrganizationAddress !== '' &&
+       newOrganizationArea !== '' && newOrganizationGovernate !== '' &&*/
        newRepresentativeFirstName !== '' && newRepresentativeFirstName !== '' && newRepresentativeLastName !== '' &&
-       newRepresentativeGender !== '' && newRepresentativePassword !== ''
+       newRepresentativeGender !== '' && newRepresentativePassword !== '' /* && newRepresentativeFirstPhoneNumber !== '' */
       ){
-      setOldOrganizationName(newOrganizationName);
-      setOldOrganizationFounder(newOrganizationFounder);
-      setOldOrganizationWebsite(newOrganizationWebsite);
-      setOldOrganizationHotNumber(newOrganizationHotNumber);
+        setError(false);
+        setOldOrganizationName(newOrganizationName);
+        setOldOrganizationType(newOrganizationType);
+        setOldOrganizationFounder(newOrganizationFounder);
+        setOldOrganizationWebsite(newOrganizationWebsite);
+        setOldOrganizationHotNumber(newOrganizationHotNumber);
+        setOldOrganizationContactEmail(newOrganizationContactEmail);
+        if (newOrganizationAddress !== '' && newOrganizationArea !== '' && newOrganizationGovernate !== '' ){
+          setOldOrganizationAddress(newOrganizationAddress);
+          setOldOrganizationArea(newOrganizationArea);
+          setOldOrganizationGovernate(newOrganizationGovernate);
+        }
+        setOldRepresentativeFirstName(newRepresentativeFirstName);
+        setOldRepresentativeLastName(newRepresentativeLastName);
+        setOldRepresentativeGender(newRepresentativeGender);
+        setOldRepresentativePassword(newRepresentativePassword);
+        setOldRepresentativeFirstPhoneNumber(newRepresentativeFirstPhoneNumber);
+        setShowPassword(false);
 
-      setOldRepresentativeFirstName(newRepresentativeFirstName);
-      setOldRepresentativeLastName(newRepresentativeLastName);
-      setOldRepresentativeGender(newRepresentativeGender);
-      setOldRepresentativePassword(newRepresentativePassword);
-      setOldRepresentativeFirstPhoneNumber(newRepresentativeFirstPhoneNumber);
-      setShowPassword(false);
-      if(showPassword) {handleToggle();}
-      setEdit(false);
+        setSaved(true);
+        setTimeout(() => {
+          setSaved(false);
+        }, 5000);
+
+        if(showPassword) {handleToggle();}
+        setEdit(false);
     }
   }
 
@@ -193,12 +293,22 @@ const OrgAccountDetails = () => {
     event.preventDefault();
     setNewOrganizationNameError('');
     setNewOrganizationName(oldOrganizationName);
+    setNewOrganizationTypeError('');
+    setNewOrganizationType(oldOrganizationType);
     setNewOrganizationFounderError('');
     setNewOrganizationFounder(oldOrganizationFounder);
     setNewOrganizationWebsiteError('');
     setNewOrganizationWebsite(oldOrganizationWebsite);
     setNewOrganizationHotNumberError('');
     setNewOrganizationHotNumber(oldOrganizationHotNumber);
+    setNewOrganizationContactEmailError('');
+    setNewOrganizationContactEmail(oldOrganizationContactEmail);
+    setNewOrganizationAddressError('');
+    setNewOrganizationAddress(oldOrganizationAddress);
+    setNewOrganizationAreaError('');
+    setNewOrganizationArea(oldOrganizationArea);
+    setNewOrganizationGovernateError('');
+    setNewOrganizationGovernate(oldOrganizationGovernate);
 
     setNewRepresentativeFirstNameError('');
     setNewRepresentativeFirstName(oldRepresentativeFirstName);
@@ -207,19 +317,39 @@ const OrgAccountDetails = () => {
     setNewRepresentativeGender(oldRepresentativeGender);
     setNewRepresentativePasswordError('');
     setNewRepresentativePassword(oldRepresentativePassword);
+    setNewRepresentativeFirstPhoneNumberError('');
+    setNewRepresentativeFirstPhoneNumber(oldRepresentativeFirstPhoneNumber);
+
     setShowPassword(false);
     if(showPassword) {handleToggle();}
     setEdit(false);
 
   }
 
+  const [color , setColor] = useState('white');
+  const [saved , setSaved] = useState(false);
+  const [error , setError] = useState(false);
+
   return (
     <div>
+      { 
+        saved &&
+           <Row>
+            <Notification color="teal" title="Saved Successfully!" mt="md" onClose={() => setSaved(false)} style={{backgroundColor : 'whitesmoke' , fontSize : "50px" /*,width : '500px' , alignSelf : 'center'*/}}/>  
+          </Row>
+      }
+      {
+        error &&
+          <Row>
+            <Notification color="red" title="Error!" mt="md" onClose={() => setError(false)} style={{backgroundColor : 'whitesmoke' , fontSize : "50px" /*,width : '500px' , alignSelf : 'center'*/}}/>
+          </Row>
+      }
+      <br/>
         <Row justify="flex">
         <div 
         // style={{transform : 'scale(0.9)'}}
         >
-          <div className="profilecard-shadow-primary profilecard-border mb-3 profilecard">
+          <Card className="profilecard-shadow-primary profilecard-border mb-3 profilecard">
             <div className="dropdown-menu-header">
               <div className="dropdown-menu-header-inner bg-primary">
                 <div className="menu-header-content btn-pane-right p-4">
@@ -244,7 +374,39 @@ const OrgAccountDetails = () => {
                       >
                         <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z" />
                       </svg>
+                      
                     </div>
+                    
+                  </div>
+                  <div style={{float : 'right'}}>
+        
+                    {edit ? 
+                        <>
+                          <Button variant="secondary" onClick={handleCancel} style={{backgroundColor : 'whitesmoke' , color : 'black'}} onMouseEnter={() => setColor('grey')}>
+                            <FiX/>
+                            {' '}
+                            <label>
+                                Cancel
+                            </label>
+                          </Button>
+                          {" "}
+                          <Button variant="primary" onClick={handleSave} style={{backgroundColor : 'whitesmoke' , color : 'black'}} onMouseEnter={() => setColor('grey')}>
+                            <FiCheckSquare />
+                            {" "}
+                            <label>
+                              Save Changes
+                            </label>
+                          </Button>
+                        </>
+                        :
+                        <Button variant="secondary" onClick={handleEdit} style={{backgroundColor : 'whitesmoke' , color : 'black'}} onMouseEnter={() => setColor('grey')} >
+                          <FiEdit3/>
+                          {"  "} {"  "}
+                          <label>
+                            Edit
+                          </label>
+                        </Button>
+                        }
                   </div>
                   <div>
                     <h5 className="menu-header-title">
@@ -258,247 +420,407 @@ const OrgAccountDetails = () => {
                 </div>
               </div>
             </div>
-            
-            
-            <Form style={{padding : '15px'}} className = {styles.lolo}>
-              <Row>
-              <Col>
-              <Form.Group>  
-                <Form.Label style={{fontWeight : 'bold'}}>
-                  <h4>Organization Name 
-                    
-                      {newOrganizationNameError?  <span className="text-danger"> *</span> : null }
-                    
-                    :</h4> 
-                </Form.Label>
-                
-                <Form.Control 
-                      type='text' 
-                      value={edit? newOrganizationName : oldOrganizationName}
-                      disabled = {!edit}
-                      onChange={(e) => setNewOrganizationName(e.target.value)}
-                      isInvalid = {newOrganizationNameError}
-                />
-                <Form.Control.Feedback type="invalid">
-                    {newOrganizationNameError}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group>
-                <Form.Label style={{fontWeight : 'bold'}}>
-                  <h4>
-                    Organization Founder
-                    {newOrganizationFounderError?  <span className="text-danger"> *</span> : null }
-                    :
-                  </h4>
-                </Form.Label>
-                <Form.Control
-                  type='text'
-                  value = {edit? newOrganizationFounder : oldOrganizationFounder}
-                  disabled = {!edit}
-                  onChange = {(e) => setNewOrganizationFounder(e.target.value)}
-                  isInvalid = {newOrganizationFounderError}
-                />
-                <Form.Control.Feedback>
-                  {newOrganizationFounderError}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group>
-                <Form.Label style={{fontWeight : 'bold'}}>
-                  <h4>
-                    Organization Website
-                    {newOrganizationWebsiteError?  <span className="text-danger"> *</span> : null }
-                    :
-                  </h4>
-                </Form.Label>
-                <Form.Control
-                  type='link'
-                  value = {edit? newOrganizationWebsite : oldOrganizationWebsite}
-                  disabled = {!edit}
-                  onChange = {(e) => setNewOrganizationWebsite(e.target.value)}
-                  isInvalid = {newOrganizationWebsiteError}
-                />
-                <Form.Control.Feedback>
-                  {newOrganizationWebsiteError}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group>
-                <Form.Label style = {{fontWeight : 'bold'}}>
-                  <h4>
-                    Organization Hot Number
-                    {newOrganizationHotNumberError? <span className='text-danger'> *</span> : null}
-                    :
-                  </h4>
-                </Form.Label>
-                <Form.Control
-                  type = 'number'
-                  value = {edit? newOrganizationHotNumber : oldOrganizationHotNumber}
-                  onChange = {(event) => setNewOrganizationHotNumber(event.target.value)}
-                  disabled = {!edit}
-                  isInvalid = {newOrganizationHotNumberError}
-                />
-                <Form.Control.Feedback>
-                  {newOrganizationHotNumberError}
-                </Form.Control.Feedback>
-              </Form.Group>
-
-              </Col>
-              {/* <Col>
-              <div className='vl'/>
-              </Col> */}
-              <Col>
-                <Form.Group>
+              <Form style={{padding : '15px'}} className = {styles.lolo}>
+                <Row>
+                <Col>
+                <Form.Group>  
                   <Form.Label style={{fontWeight : 'bold'}}>
-                    
-                    <h4>Representative First Name
-                    
-                      {newRepresentativeFirstNameError?  <span className="text-danger"> *</span> : null }
-                    
-                    :</h4> 
-                  </Form.Label>
-                  <Form.Control
-                    type='text'
-                    value={edit? newRepresentativeFirstName : oldRepresentativeFirstName}
-                    disabled = {!edit}
-                    onChange={(e) => setNewRepresentativeFirstName(e.target.value)}
-                    isInvalid = {newRepresentativeFirstNameError}
-                    />
-                    <Form.Control.Feedback>
-                      {newRepresentativeFirstNameError}
-                    </Form.Control.Feedback>
-
-                  
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label style={{fontWeight : 'bold'}}>
-                    
-                    <h4>Representative Last Name
-                    
-                      {newRepresentativeLastNameError?  <span className="text-danger"> *</span> : null }
-                    
-                    :</h4> 
-                  </Form.Label>
-                  <Form.Control
-                    type='text'
-                    value={edit? newRepresentativeLastName : oldRepresentativeLastName}
-                    disabled = {!edit}
-                    onChange={(e) => setNewRepresentativeLastName(e.target.value)}
-                    isInvalid = {newRepresentativeLastNameError}
-                    />
-                    <Form.Control.Feedback>
-                      {newRepresentativeLastNameError}
-                    </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group >
-                <Form.Label style={{fontWeight : 'bold'}}>
-                  <h4>Representative Gender : </h4>
-                  
-                </Form.Label> 
-                <br/>
-                  { 
-                    edit ? 
-                    <>
-                      <div className="form-check form-check-inline">
-                        <Form.Check
-                          type="radio"
-                          label="Male"
-                          name="gender"
-                          value="Male"
-                          checked={newRepresentativeGender === "Male"}
-                          onChange={(event) => setNewRepresentativeGender(event.target.value)}
-                        />
-                      </div>
-                      <div className="form-check form-check-inline">
-                        <Form.Check
-                          type="radio"
-                          label="Female"
-                          name="gender"
-                          value="Female"
-                          checked={newRepresentativeGender=== "Female"}
-                          onChange={(event) => setNewRepresentativeGender(event.target.value)}
-                        />
-                      </div>
-                    </> 
-                    :  
-                    <>
-                      <Form.Control
-                        type='text'
-                        value={oldRepresentativeGender}
-                        disabled
-                        />
-                    </>
-                  }
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label style = {{fontWeight : 'bold'}}>
                     <h4>
-                      Representative Email
-                      {newRepresentativeEmailError? <span className='text-danger'> *</span> : null}
+                      Organization Name 
+                      {newOrganizationNameError?  <span className="text-danger"> *</span> : null }  
+                      :
+                    </h4> 
+                  </Form.Label>
+                  <Form.Control 
+                    type='text' 
+                    value={edit? newOrganizationName : oldOrganizationName}
+                    disabled = {!edit}
+                    onChange={(e) => setNewOrganizationName(e.target.value)}
+                    isInvalid = {newOrganizationNameError}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {newOrganizationNameError}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label style={{fontWeight : 'bold'}}>
+                    <h4>
+                      Organization Type
+                      {newOrganizationTypeError?  <span className="text-danger"> *</span> : null }
                       :
                     </h4>
                   </Form.Label>
                   <Form.Control
                     type = 'text'
-                    placeholder='example@dom.com'
-                    value = {edit? newRepresentativeEmail : oldRepresentativeEmail}
-                    onChange = {(event) => setNewRepresentativeEmail(event.target.value)}
+                    value = {edit? newOrganizationType : oldOrganizationType}
                     disabled = {!edit}
-                    isInvalid = {newRepresentativeEmailError}
+                    onChange = {(event) => setNewOrganizationType(event.target.value)}
+                    isInvalid = {newOrganizationTypeError}
                   />
                   <Form.Control.Feedback type='invalid'>
-                    {newRepresentativeEmailError}
+                    {newOrganizationTypeError}
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label >
+                  <Form.Label style={{fontWeight : 'bold'}}>
                     <h4>
-                      Password
-                      {newRepresentativePasswordError? <span className='text-danger'> *</span> : null}
+                      Organization Founder
+                      {newOrganizationFounderError?  <span className="text-danger"> *</span> : null }
                       :
                     </h4>
                   </Form.Label>
                   <Form.Control
-                      type={showPassword? 'text' : 'password'}
-                      placeholder="Password"
-                      disabled = {!edit}
-                      value = {edit? newRepresentativePassword : oldRepresentativePassword}
-                      onChange={(e) => setNewRepresentativePassword(e.target.value)}
-                      isInvalid = {newRepresentativePasswordError}
+                    type='text'
+                    value = {edit? newOrganizationFounder : oldOrganizationFounder}
+                    disabled = {!edit}
+                    onChange = {(e) => setNewOrganizationFounder(e.target.value)}
+                    isInvalid = {newOrganizationFounderError}
                   />
-                    <div style={eyeIconStyling} onClick={handleToggle}>
-                        {icon}
-                    </div>
-                    <Form.Control.Feedback type="invalid">
-                        {newRepresentativePasswordError}
-                    </Form.Control.Feedback>
+                  <Form.Control.Feedback type='invalid'>
+                    {newOrganizationFounderError}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label style = {{fontWeight : 'bold' , display: "flex", justifyContent: "space-between"}}>
+                    <h4>
+                      Organization Website
+                      {/* {newOrganizationWebsiteError?  <span className="text-danger"> *</span> : null } */}
+                      :
+                    </h4>
+                    <FiX style={deleteIconStyling} onClick = {() => {
+                      setNewOrganizationWebsite('');
+                      setNewOrganizationWebsiteError('');
+                      setOldOrganizationWebsite('');
+                    } }/>
+                  </Form.Label>
+                  <Form.Control
+                    type='text'
+                    value = {edit? newOrganizationWebsite : oldOrganizationWebsite}
+                    placeholder= {edit && 'Enter Organization Website'}
+                    disabled = {!edit}
+                    onChange = {(e) => setNewOrganizationWebsite(e.target.value)}
+                    // isInvalid = {newOrganizationWebsiteError}
+                  />
+                  {/* <Form.Control.Feedback>
+                    {newOrganizationWebsiteError}
+                  </Form.Control.Feedback> */}
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label style = {{fontWeight : 'bold' , display: "flex", justifyContent: "space-between"}}>
+                    <h4>
+                      Organization Hot Number
+                      {/* {newOrganizationHotNumberError? <span className='text-danger'> *</span> : null} */}
+                      :
+                    </h4>
+                    {/* <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-x" viewBox="0 0 16 16" onClick={handleCancel} >
+                              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg> */}
+                    <FiX style={deleteIconStyling} onClick = {() => {
+                      setNewOrganizationHotNumber('');
+                      setNewOrganizationHotNumberError('');
+                      setOldOrganizationHotNumber('');
+                    } }/>
+                  </Form.Label>
+                  <Form.Control
+                    type = 'number'
+                    value = {edit? newOrganizationHotNumber : oldOrganizationHotNumber}
+                    placeholder= {edit && "Enter Organization Hot Number"}
+                    onChange = {(event) => setNewOrganizationHotNumber(event.target.value)}
+                    disabled = {!edit}
+                    // isInvalid = {newOrganizationHotNumberError}
+                  />
+                  {/* <Form.Control.Feedback>
+                    {newOrganizationHotNumberError}
+                  </Form.Control.Feedback> */}
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label style = {{fontWeight : 'bold' , display: "flex", justifyContent: "space-between"}}>
+                    <h4>
+                      Organization Contact Email
+                      {/* {newOrganizationContactEmailError? <span className='text-danger'> *</span> : null} */}
+                      :
+                    </h4>
+                    <FiX style={deleteIconStyling} onClick = {() => {
+                      setNewOrganizationContactEmail('');
+                      setNewOrganizationContactEmailError('');
+                      setOldOrganizationContactEmail('');
+                    } }/>
+                  </Form.Label>
+                  <Form.Control
+                    type = 'text'
+                    placeholder = {edit && 'Enter Organization Contact Email'}
+                    value = {edit? newOrganizationContactEmail : oldOrganizationContactEmail}
+                    onChange = {(event) => setNewOrganizationContactEmail(event.target.value)}
+                    disabled = {!edit}
+                    // isInvalid = {newOrganizationContactEmailError}
+                  />
+                  {/* <Form.Control.Feedback>
+                    {newOrganizationContactEmailError}
+                  </Form.Control.Feedback> */}
+                </Form.Group>
+
+                </Col>
+                {/* <Col>
+                <div className='vl'/>
+                </Col> */}
+                <Col>
+                  <Form.Group>
+                    <Form.Label style={{fontWeight : 'bold'}}>
+                      
+                      <h4>Representative First Name
+                      
+                        {newRepresentativeFirstNameError?  <span className="text-danger"> *</span> : null }
+                      
+                      :</h4> 
+                    </Form.Label>
+                    <Form.Control
+                      type='text'
+                      value={edit? newRepresentativeFirstName : oldRepresentativeFirstName}
+                      disabled = {!edit}
+                      onChange={(e) => setNewRepresentativeFirstName(e.target.value)}
+                      isInvalid = {newRepresentativeFirstNameError}
+                      />
+                      <Form.Control.Feedback type='invalid'>
+                        {newRepresentativeFirstNameError}
+                      </Form.Control.Feedback>
+
+                    
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label style={{fontWeight : 'bold'}}>
+                      
+                      <h4>Representative Last Name
+                      
+                        {newRepresentativeLastNameError?  <span className="text-danger"> *</span> : null }
+                      
+                      :</h4> 
+                    </Form.Label>
+                    <Form.Control
+                      type='text'
+                      value={edit? newRepresentativeLastName : oldRepresentativeLastName}
+                      disabled = {!edit}
+                      onChange={(e) => setNewRepresentativeLastName(e.target.value)}
+                      isInvalid = {newRepresentativeLastNameError}
+                      />
+                      <Form.Control.Feedback type='invalid'>
+                        {newRepresentativeLastNameError}
+                      </Form.Control.Feedback>
+                  </Form.Group>
+                  <Form.Group >
+                  <Form.Label style={{fontWeight : 'bold'}}>
+                    <h4>Representative Gender : </h4>
+                    
+                  </Form.Label> 
+                  <br/>
+                    { 
+                      edit ? 
+                      <>
+                        <div className="form-check form-check-inline">
+                          <Form.Check
+                            type="radio"
+                            label="Male"
+                            name="gender"
+                            value="Male"
+                            checked={newRepresentativeGender === "Male"}
+                            onChange={(event) => setNewRepresentativeGender(event.target.value)}
+                          />
+                        </div>
+                        <div className="form-check form-check-inline">
+                          <Form.Check
+                            type="radio"
+                            label="Female"
+                            name="gender"
+                            value="Female"
+                            checked={newRepresentativeGender=== "Female"}
+                            onChange={(event) => setNewRepresentativeGender(event.target.value)}
+                          />
+                        </div>
+                      </> 
+                      :  
+                      <>
+                        <Form.Control
+                          type='text'
+                          value={oldRepresentativeGender}
+                          disabled
+                          />
+                      </>
+                    }
                   </Form.Group>
                   <Form.Group>
                     <Form.Label style = {{fontWeight : 'bold'}}>
                       <h4>
-                        Representaive Phone Number
-                        {newRepresentativeFirstPhoneNumberError? <span className='text-danger'> *</span> : null}
+                        Representative Email
+                        {newRepresentativeEmailError? <span className='text-danger'> *</span> : null}
                         :
                       </h4>
                     </Form.Label>
                     <Form.Control
                       type = 'text'
-                      placeholder='Phone Number'
-                      value = {edit? newRepresentativeFirstPhoneNumber : oldRepresentativeFirstPhoneNumber}
-                      onChange = {(event) => setNewRepresentativeFirstPhoneNumber(event.target.value)}
+                      placeholder='example@dom.com'
+                      value = {edit? newRepresentativeEmail : oldRepresentativeEmail}
+                      onChange = {(event) => setNewRepresentativeEmail(event.target.value)}
                       disabled = {!edit}
-                      isInvalid = {newRepresentativeFirstPhoneNumberError}
+                      isInvalid = {newRepresentativeEmailError}
                     />
-                    <Form.Control.Feedback>
-                      {newRepresentativeFirstPhoneNumberError}
+                    <Form.Control.Feedback type='invalid'>
+                      {newRepresentativeEmailError}
                     </Form.Control.Feedback>
                   </Form.Group>
-              </Col>
-              </Row>
-              
-            </Form>
-          </div>
+                  <Form.Group>
+                    <Form.Label >
+                      <h4>
+                        Password
+                        {newRepresentativePasswordError? <span className='text-danger'> *</span> : null}
+                        :
+                      </h4>
+                    </Form.Label>
+                    <Form.Control
+                        type={showPassword? 'text' : 'password'}
+                        placeholder="Password"
+                        disabled = {!edit}
+                        value = {edit? newRepresentativePassword : oldRepresentativePassword}
+                        onChange={(e) => setNewRepresentativePassword(e.target.value)}
+                        isInvalid = {newRepresentativePasswordError}
+                    />
+                      <div style={eyeIconStyling} onClick={handleToggle}>
+                          {icon}
+                      </div>
+                      <Form.Control.Feedback type="invalid">
+                          {newRepresentativePasswordError}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label style = {{fontWeight : 'bold' , display: "flex", justifyContent: "space-between"}}>
+                        <h4>
+                          Representative Phone Number
+                          {/* {newRepresentativeFirstPhoneNumberError? <span className='text-danger'> *</span> : null} */}
+                          :
+                        </h4>
+                        <FiX style={deleteIconStyling} onClick = {() => {
+                          setNewRepresentativeFirstPhoneNumber('');
+                          setNewRepresentativeFirstPhoneNumberError('');
+                          setOldRepresentativeFirstPhoneNumber('');
+                        } }/>
+                      </Form.Label>
+                      <Form.Control
+                        type = 'text'
+                        placeholder={edit && 'Enter Phone Number'}
+                        value = {edit? newRepresentativeFirstPhoneNumber : oldRepresentativeFirstPhoneNumber}
+                        onChange = {(event) => setNewRepresentativeFirstPhoneNumber(event.target.value)}
+                        disabled = {!edit}
+                        // isInvalid = {newRepresentativeFirstPhoneNumberError}
+                      />
+                      {/* <Form.Control.Feedback>
+                        {newRepresentativeFirstPhoneNumberError}
+                      </Form.Control.Feedback> */}
+                    </Form.Group>
+                </Col>
+                </Row>
+                <Row>
+                  <Col>
+                  <br/>
+                  <br/>
+                    <Form.Group>
+                      <Form.Label style = {{fontWeight : 'bold' , display: "flex", justifyContent: "space-between"}}>
+                        <h4>
+                          Organization Address
+                          {/* {newOrganizationAddressError? <span className='text-danger'> *</span> : null} */}
+                          :
+                        </h4>
+                        {
+                          !edit &&
+                          <FiX style={deleteIconStyling} onClick = {() => {
+                          setNewOrganizationAddress('');
+                          setNewOrganizationAddressError('');
+                          setOldOrganizationAddress('');
+                          } }/>
+                        }
+                      </Form.Label>
+                      <Form.Control
+                        type = 'text'
+                        placeholder = {(edit && (oldOrganizationAddress === ''))? 'Enter Address' : oldOrganizationAddress}
+                        value = {edit? ((newOrganizationAddress !== '') ? newOrganizationAddress : null) : oldOrganizationAddress}
+                        onChange = {(event) => setNewOrganizationAddress(event.target.value)}
+                        disabled = {!edit}
+                        // isInvalid = {newOrganizationAddressError}
+                      />
+                      {/* <Form.Control.Feedback>
+                        {newOrganizationAddressError}
+                      </Form.Control.Feedback> */}
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label style = {{fontWeight : 'bold' , display: "flex", justifyContent: "space-between"}}>
+                        <h4>
+                          Organization Area
+                          {/* {newOrganizationAreaError? <span className='text-danger'> *</span> : null} */}
+                          :
+                        </h4>
+                        {
+                          !edit &&
+                          <FiX style={deleteIconStyling} onClick = {() => {
+                          setNewOrganizationArea('');
+                          setNewOrganizationAreaError('');
+                          setOldOrganizationArea('');
+                          }
+                        }/>
+                        }
+                      </Form.Label>
+                      <Form.Control
+                        type = 'text'
+                        placeholder = {(edit && (oldOrganizationArea === ''))? 'Enter Area' : oldOrganizationArea}
+                        value = {edit? ((newOrganizationArea !== '')? newOrganizationArea : null) : oldOrganizationArea}
+                        onChange = {(event) => setNewOrganizationArea(event.target.value)}
+                        disabled = {!edit}
+                        // isInvalid = {newOrganizationAreaError}
+                      />
+                      {/* <Form.Control.Feedback>
+                        {newOrganizationAreaError}
+                      </Form.Control.Feedback> */}
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label style = {{fontWeight : 'bold' , display: "flex", justifyContent: "space-between"}}>
+                        <h4>
+                          Organization Governorate
+                          {/* {newOrganizationGovernateError? <span className='text-danger'> *</span> : null} */}
+                          :
+                        </h4>
+                        {
+                          !edit &&
+                          <FiX style={deleteIconStyling} onClick = {() => {
+                          setNewOrganizationGovernate('');
+                          setNewOrganizationGovernateError('');
+                          setOldOrganizationGovernate('');
+                          } }/>
+                        }
+                      </Form.Label>
+                      <Form.Control
+                        type = 'text'
+                        placeholder = {(edit && (oldOrganizationGovernate ===''))? 'Enter Governate' :oldOrganizationGovernate }
+                        value = {edit? ((newOrganizationGovernate !== '')? newOrganizationGovernate : null) : oldOrganizationGovernate}
+                        onChange = {(event) => setNewOrganizationGovernate(event.target.value)}
+                        disabled = {!edit}
+                        // isInvalid = {newOrganizationGovernateError}
+                      />
+                      {/* <Form.Control.Feedback>
+                        {newOrganizationGovernateError}
+                      </Form.Control.Feedback> */}
+                    </Form.Group>
+                  </Col>
+                  {
+                    edit &&
+                    <Col>
+                      <GoogleLocator
+                      getAddress={(newOrganizationAddress) => setNewOrganizationAddress(newOrganizationAddress)}
+                      getArea={(newOrganizationArea) => setNewOrganizationArea(newOrganizationArea)}
+                      getGovernorate={(newOrganizationGovernate) => setNewOrganizationGovernate(newOrganizationGovernate)}/>
+                    </Col>
+                  }
+                </Row>
+              </Form>
+          </Card>
         </div>
       </Row>
-      <div style={{float : 'right'}}>
+      {/* <div style={{float : 'right'}}>
         
         {edit ? 
             <>
@@ -516,8 +838,8 @@ const OrgAccountDetails = () => {
             }
         
         
-      </div>
-      </div>
+      </div> */}
+    </div>
     
     
   )

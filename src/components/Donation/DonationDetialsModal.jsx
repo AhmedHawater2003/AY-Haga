@@ -50,9 +50,11 @@ function DonationDetialsModal({
                 RegisteredOrgs[donationCardDetials["organization"]]
               }
             />
-            {isDoner && <DonationSubmitForm hideModal={hide} isVolunteer = {isVolunteer} /> }
-            {isFulfilled && <DonationPostFulfilledForm/>}
-            {(isWaiting || isPending) && <DonationPostEditDeleteForm/>}
+            {isDoner && (
+              <DonationSubmitForm hideModal={hide} isVolunteer={isVolunteer} />
+            )}
+            {isFulfilled && <DonationPostFulfilledForm />}
+            {(isWaiting || isPending) && <DonationPostEditDeleteForm />}
           </div>
         </div>
       </Modal.Body>

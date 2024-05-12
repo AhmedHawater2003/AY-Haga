@@ -438,7 +438,10 @@
 .dropdown-menu-header .menu-header-content {
   text-align: left;
   position: relative;
-  background-image: url("assets/nav_back.png");
+  background-image: url("assets/Teal_Love.jpg");
+  /* background-image: url("assets/nav_back.png"); */
+  /* background-image: url("assets/Quepal.jpg"); */
+  /* background-image: url("assets/AccountDetails.jpg");  */
   z-index: 500;
   background-size: cover;
   background-position: center;

@@ -1,9 +1,16 @@
+import { Badge } from "@mantine/core";
+
 export const DonationDetails = [
   {
     id: 1,
     title: "Medical Case",
     summary: "Summary of the case",
     category: "Medical",
+    badges: (
+      <>
+        <Badge color="red">URGENT</Badge>
+      </>
+    ),
     primaryDetails: {
       name: "Ali",
       age: 25,

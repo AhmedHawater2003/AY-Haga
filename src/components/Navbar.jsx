@@ -2,8 +2,8 @@ import logo from "../assets/logo_no_bg.png";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
+import { useDisclosure } from "@mantine/hooks";
+import { Burger } from "@mantine/core";
 import Sidebar from "./Sidebar";
 import SearchBar from "./SearchBar/SearchBar";
 import NotificationCenter from "./NotificationCenter/NotificationCenter";
@@ -77,13 +77,14 @@ const Navbar = ({
       >
         {sideBarFlag ? (
           <>
-            <NavIcon to="#">
-              {isSideBarOpen ? (
-                <AiIcons.AiOutlineClose onClick={showSideBar} />
-              ) : (
-                <FaIcons.FaBars onClick={showSideBar} />
-              )}
-            </NavIcon>
+            <Burger
+              color="#0ca678"
+              size="lg"
+              opened={isSideBarOpen}
+              onClick={showSideBar}
+              style={{ margin: "0 2rem" }}
+              aria-label="Toggle navigation"
+            />
             {searchBarFlag && (
               <SearchBar
                 inputStyle={{
@@ -120,11 +121,17 @@ const Navbar = ({
             {notificationCenterFlag && (
               <>
                 <li className="nav-item">
-                  <div style={{display:"flex",gap:"10px", alignItems: "center"}}>
-                  <NotificationCenter
-                    notificationData={OrgNotificationData}
-                  />
-                  <AccountButton setContent={setContent}/>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <NotificationCenter
+                      notificationData={OrgNotificationData}
+                    />
+                    <AccountButton setContent={setContent} />
                   </div>
                 </li>
               </>

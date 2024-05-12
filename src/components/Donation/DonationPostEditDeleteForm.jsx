@@ -1,14 +1,13 @@
-import React from 'react'
-import { Button } from 'react-bootstrap';
-import DeleteConfirmationModal from '../DeleteConfirmationModal';
+import React from "react";
+import { Button } from "react-bootstrap";
 
 const DonationPostEditDeleteForm = () => {
   return (
     <div>
       <Button>Edit Post</Button>
-      <DeleteConfirmationModal/>
+      <DeleteConfirmationModal />
     </div>
-  )
-}
+  );
+};
 
 export default DonationPostEditDeleteForm;

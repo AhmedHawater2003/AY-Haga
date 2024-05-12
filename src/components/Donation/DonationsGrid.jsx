@@ -7,7 +7,6 @@ import OrgPendingPostData from "../../data/OrgPendingPostData";
 
 function DonationsGrid({
   data,
-  isVolunteer,
   filterFunction = (donation) => true,
   isDoner,
   isFulfilled,
@@ -16,6 +15,7 @@ function DonationsGrid({
 }) {
   const [showDonationDetails, setShowDetails] = useState(false);
   const [shownDonation, setShownDonation] = useState([]);
+  const [isVolunteering, setIsVolunteering] = useState(false);
 
   return (
     <>
@@ -37,6 +37,7 @@ function DonationsGrid({
                 showDetails={() => setShowDetails(true)}
                 donationDetails={donation}
                 setShownDonation={() => setShownDonation(donation)}
+                setIsVolunteering={setIsVolunteering}
               />
             ))}
 
@@ -80,7 +81,7 @@ function DonationsGrid({
       </div>
 
       <DonationDetialsModal
-      isVolunteer={isVolunteer}
+        isVolunteer={isVolunteering}
         isDoner={isDoner}
         isFulfilled={isFulfilled}
         isPending={isPending}

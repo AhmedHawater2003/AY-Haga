@@ -9,7 +9,9 @@
 }
 
 .track .accordion-button::after {
-  display: none;
+  order: -1;
+  margin-left: 0;
+  color: #0ca678;
 }
 
 .track .accordion-button {
