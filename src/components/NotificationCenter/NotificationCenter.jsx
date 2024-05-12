@@ -7,6 +7,8 @@ import RequestPopUp from "./RequestPopUp";
 import AnnouncementPopUp from "./AnnouncementPopUp";
 import { ActionIcon, Indicator } from "@mantine/core";
 import DeliveryPopUp from "./DeliveryPopUp";
+import AccountDetailsPopUp from "./AccountDetailsPopUp";
+import PostPopUp  from "./PostPopUp" 
 
 
 
