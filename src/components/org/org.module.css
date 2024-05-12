@@ -1,0 +1,19 @@
+ .edit Button {
+    background-color: white;
+    color: black;
+ }
+ .delete{
+    background-color: white;
+    border: "black";
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .delete:hover {
+    background-color: red;
+    color: white;
+  }
