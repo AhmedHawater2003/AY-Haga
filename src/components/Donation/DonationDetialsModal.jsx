@@ -15,8 +15,6 @@ import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Alert } from "react-bootstrap";
 
-
-
 function DonationDetialsModal({
   isDoner,
   isVolunteer,
@@ -28,11 +26,11 @@ function DonationDetialsModal({
   hide,
   deletePost,
   back,
-  setShowFlag
+  setShowFlag,
 }) {
-  const [address , setAdress] = useState('');
-  const [area , setArea] = useState('');
-  const [governorate , setGovernorate] = useState(''); 
+  const [address, setAdress] = useState("");
+  const [area, setArea] = useState("");
+  const [governorate, setGovernorate] = useState("");
   const [validated, setValidated] = useState(false);
   const [alertFlag, setAlertFlag] = useState(false);
   const handleSubmit = (event) => {
@@ -72,24 +70,7 @@ function DonationDetialsModal({
                 donationCardDetials["additionalDetails"]
               }
             />
-            {/* <GoogleLocator
-              getAddress={ (address) => setAdress(address)}
-              getArea={(area) => setArea(area)}
-              getGovernorate={(governorate) => setGovernorate(governorate)}
-            /> */}
-            <h5>Location:</h5>
-                <iframe
-                  loading="lazy"
-                  width="100%"
-                  height="350"
-                  // src="https://www.openstreetmap.org/export/embed.html?bbox=31.49055272340775%2C30.05854335635291%2C31.49306327104569%2C30.060217136224946\&layer=mapnik\&marker=30.059380249826162%2C31.491807997226715"
-                  src = 'https://www.openstreetmap.org/export/embed.html?bbox=31.49055272340775%2C30.05854335635291%2C31.49306327104569%2C30.060217136224946'
-                  style={{
-                    border: "2px solid #0ca678",
-                    width: "50%",
-                    borderRadius: "20px",
-                  }}
-                  ></iframe>
+            <DonationLocation />
           </div>
 
           <div
@@ -101,47 +82,60 @@ function DonationDetialsModal({
                 RegisteredOrgs[donationCardDetials["organization"]]
               }
             />
-            {(isFulfilled) &&<div>
-            <h4>Donor Details</h4>
-            <DonorDetialsPost/>
-            <Form className="d-flex flex-column justify-content-center"
-            noValidate
-            validated={validated}
-            onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicAdditionalDetails">
-              <Form.Label>Acknowledge Donor Contributions</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder="Enter gentle message to the donor..."
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-          <Alert
-            variant="success"
-            style={{ marginTop: "10px", textAlign: "center" }}
-            show={alertFlag}
-          >
-            Donation scheduled&#128154;
-          </Alert>
-            </div>}
+            {isFulfilled && (
+              <div>
+                <h4>Donor Details</h4>
+                <DonorDetialsPost />
+                <Form
+                  className="d-flex flex-column justify-content-center"
+                  noValidate
+                  validated={validated}
+                  onSubmit={handleSubmit}
+                >
+                  <Form.Group
+                    className="mb-3"
+                    controlId="formBasicAdditionalDetails"
+                  >
+                    <Form.Label>Acknowledge Donor Contributions</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows={3}
+                      placeholder="Enter gentle message to the donor..."
+                    />
+                  </Form.Group>
+                  <Button variant="primary" type="submit">
+                    Submit
+                  </Button>
+                </Form>
+                <Alert
+                  variant="success"
+                  style={{ marginTop: "10px", textAlign: "center" }}
+                  show={alertFlag}
+                >
+                  Donation scheduled&#128154;
+                </Alert>
+              </div>
+            )}
             {isDoner && (
               <DonationSubmitForm hideModal={hide} isVolunteer={isVolunteer} />
             )}
-                        {/*{isFulfilled && <DonationPostFulfilledForm item = {donationCardDetials} deletePost={deletePost} />}
-            {(isWaiting || isPending) && <DonationPostEditDeleteForm item = {donationCardDetials} deletePost={deletePost} setShowDetails={setShowFlag} />} */}
           </div>
         </div>
       </Modal.Body>
       <Modal.Footer>
-            {/* {isDoner && (
-              <DonationSubmitForm hideModal={hide} isVolunteer={isVolunteer} />
-            )} */}
-            {isFulfilled && <DonationPostFulfilledForm item = {donationCardDetials} deletePost={deletePost} />}
-            {(isWaiting || isPending) && <DonationPostEditDeleteForm item = {donationCardDetials} deletePost={deletePost} setShowDetails={setShowFlag} />}
+        {isFulfilled && (
+          <DonationPostFulfilledForm
+            item={donationCardDetials}
+            deletePost={deletePost}
+          />
+        )}
+        {(isWaiting || isPending) && (
+          <DonationPostEditDeleteForm
+            item={donationCardDetials}
+            deletePost={deletePost}
+            setShowDetails={setShowFlag}
+          />
+        )}
       </Modal.Footer>
     </Modal>
   );

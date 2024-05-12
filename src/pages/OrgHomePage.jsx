@@ -26,6 +26,8 @@ const OrgHomePage = () => {
         content={<OrgAccountDetails/>}
         accountFlag={true}
         isOrg={true}
+        accountName='Mohamed ElSayed'
+        email = 'mohamed.elsayed@resala.org'
       />
       <div
         style={{
