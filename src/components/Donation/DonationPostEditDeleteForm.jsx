@@ -30,6 +30,8 @@ const DonationPostEditDeleteForm = ({ item, deletePost, setShowDetails  }) => {
   const handleClose = () => {
     // resetInsertions();
     setShow(false);
+    setSuccess(false);
+    setShowAlert(false);
   };
 
   // const handleBack = () => {
@@ -114,6 +116,7 @@ const DonationPostEditDeleteForm = ({ item, deletePost, setShowDetails  }) => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 isInvalid={titleError}
+                disabled = {showAlert}
               />
               <Form.Control.Feedback type="invalid">
                 {titleError}
@@ -131,6 +134,8 @@ const DonationPostEditDeleteForm = ({ item, deletePost, setShowDetails  }) => {
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
                 isInvalid={quantityError}
+                disabled = {showAlert}
+
               />
               <Form.Control.Feedback type="invalid">
                 {quantityError}
@@ -145,6 +150,8 @@ const DonationPostEditDeleteForm = ({ item, deletePost, setShowDetails  }) => {
                 placeholder="Enter additional details"
                 value={additionalDetails}
                 onChange={(e) => setAdditionalDetails(e.target.value)}
+                disabled = {showAlert}
+
               />
             </Form.Group>
           </Form>
