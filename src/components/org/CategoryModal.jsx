@@ -111,7 +111,7 @@ function CategoryModal() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" onClick={handleShow} >
         New Donation Post
       </Button>
 
@@ -120,7 +120,7 @@ function CategoryModal() {
       aria-labelledby="contained-modal-title-vcenter"
       centered>
         <Modal.Header closeButton>
-          <Modal.Title>Choose Category</Modal.Title>
+          <Modal.Title>Choose Category of Donation</Modal.Title>
         </Modal.Header>
         <Modal.Body >
                 <div style={{
@@ -133,37 +133,37 @@ function CategoryModal() {
                     <div className="card" onClick={showMedicalForm}>
                         <br/>
                         <img src={med_icon} alt='medical_icon' className="card-icon"></img>
-                        <div className="card-title">Medical Sector</div>
+                        <div className="card-title">Medical Supplies</div>
                         
                     </div>
                     <div className="card" onClick={showBloodForm}>
                         <br/>
                         <img src={blood_icon} alt='blood_icon' className="card-icon"></img>
-                        <div className="card-title">Blood Donations</div>
+                        <div className="card-title">Blood</div>
                         
                     </div>
                     <div className="card" onClick={showSchoolForm}>
                         <br/>
                         <img src={school_icon} alt='school_icon' className="card-icon"></img>
-                        <div className="card-title">School Donations</div>
+                        <div className="card-title">School Supplies</div>
                        
                     </div>
                     <div className="card" onClick={showFoodForm}>
                         <br/>
                         <img src={food_icon} alt='food_icon' className="card-icon"></img>
-                        <div className="card-title">Food Donations</div>
+                        <div className="card-title">Food</div>
                       
                     </div>
                     <div className="card" onClick={showClothingForm }>
                         <br/>
                         <img src={clothing_icon} alt='clothing_icon' className="card-icon"></img>
-                        <div className="card-title">Clothing Donations</div>
+                        <div className="card-title">Clothes</div>
                         
                     </div>
                     <div className="card" onClick={showToysForm} >
                         <br/>
                         <img src={toy_icon} alt='toy_icon' className="card-icon"></img>
-                        <div className="card-title">Toy Donations</div>
+                        <div className="card-title">Toys</div>
                         
                     </div>
                     <div className="card" onClick={showVolunteerForm}>

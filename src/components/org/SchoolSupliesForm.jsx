@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
-import GoogleLocator from "../GoogleLocator";
+import { Spinner } from "react-bootstrap";
 
 const SchoolSupliesForm = ({showSchool , back , close}) => {
     const [type , setType] = useState('');
@@ -110,12 +110,12 @@ const SchoolSupliesForm = ({showSchool , back , close}) => {
                 setQuantityError('');
             }
             if(title !== '' && stationaryType !== '' && quantity !== ''){
-                setAlertMessage('Post Submitted Successfully');
+                setAlertMessage('Post Submitted Successfully!');
                 setShowAlert(true);
                 setSuccess(true);
                 setTimeout(() => {
                     handleClose();
-                }, 10000);
+                }, 4000);
             }
         }
         if(type === 'Books'){
@@ -168,28 +168,74 @@ const SchoolSupliesForm = ({showSchool , back , close}) => {
                 setBookQuantityError('');
             }
             if(title !== '' && bookName !== '' && author !== '' && language !== '' && edition !== '' && shortSummary !== '' && pictureOfBook !== '' && bookQuantity !== ''){
-                setAlertMessage('Post Submitted Successfully');
+                setAlertMessage('Post Submitted Successfully!');
                 setShowAlert(true);
                 setSuccess(true);
                 setTimeout(() => {
                     handleClose();
-                }, 10000);
+                }, 4000);
             }
         }
     }
 
 
 
+// const handleFileChange = (event) => {
+//   const file = event.target.files[0];
+//   if (!file) return;
+
+//   const fileSize = file.size / 1024 / 1024; // in MB
+//   if (fileSize > 5) {
+//     setPictureOfBookError('File size exceeds 5MB');
+//     return;
+//   }
+
+//   const fileType = file.type;
+//   if (!['image/png', 'image/jpeg', 'image/jfif', 'image/pjpeg', 'image/pjp', 'image/svg+xml', 'image/webp'].includes(fileType)) {
+//     setPictureOfBookError('Invalid file type');
+//     return;
+//   }
+
+//   setPictureOfBook(file);
+//   setPictureOfBookError(null);
+// };
+
+// const handleUpload = async () => {
+//   if (!pictureOfBook) return;
+
+//   const formData = new FormData();
+//   formData.append('pictureOfBook', pictureOfBook);
+
+//   try {
+//     const response = await fetch('./uploads', {
+//       method: 'POST',
+//       body: formData,
+//     });
+
+//     if (response.ok) {
+//       console.log('File uploaded successfully!');
+//     } else {
+//       console.error('Failed to upload file');
+//     }
+//   } catch (error) {
+//     console.error('Error uploading file:', error);
+//   }
+// };
+
+
   return (
     <>
     <Modal show={showSchool} onHide={handleClose} size="lg" scrollable={true} onSubmit={handleSubmit}>
     <Modal.Header closeButton>
-            <Modal.Title>School Supplies Donations</Modal.Title>
+            <Modal.Title>School Supplies</Modal.Title>
         </Modal.Header>
-        <Modal.Body onSubmit={handleSubmit}>
-        {showAlert && <Alert variant= {(isSuccess)? 'success':'danger'}>
-                {alertMessage}
+        {showAlert&&<Alert style={{ textAlign: 'center'  }}  variant={(isSuccess)?'success':'danger'}>
+                {alertMessage}. Redirecting <Spinner animation="border" size="sm" className="ms-2" />
             </Alert>}
+        <Modal.Body onSubmit={handleSubmit}>
+        {/* {showAlert && <Alert variant= {(isSuccess)? 'success':'danger'}>
+                {alertMessage}
+            </Alert>} */}
             <Form onSubmit = {handleSubmit} >
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label style={{fontSize:'25px' , fontWeight : "bold"}}>Volunteer As
@@ -278,6 +324,10 @@ const SchoolSupliesForm = ({showSchool , back , close}) => {
                             {quantityError}
                         </Form.Control.Feedback>
                     </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicAdditionalDetails">
+                <Form.Label>Additional Details</Form.Label>
+                <Form.Control as="textarea" rows={3} placeholder="Enter Additional Details (optional)" value={additionalDetails} onChange={(e) => setAdditionalDetails(e.target.value)} />
+                </Form.Group>
                 </Form>
             }
             {chose &&
@@ -381,8 +431,10 @@ const SchoolSupliesForm = ({showSchool , back , close}) => {
                         <Form.Control
                             type="file"
                             placeholder="Enter Picture of Book"
+                            accept=".png, .jpg, .jpeg, .jfif, .pjpeg, .pjp, .svg, .webp"
                             value = {pictureOfBook}
                             onChange ={(event) => setPictureOfBook(event.target.value)}
+                            // onChange={(event) => handleFileChange(event)}
                             isInvalid = {pictureOfBookError}
                          />
                         <Form.Control.Feedback type="invalid">
@@ -404,6 +456,10 @@ const SchoolSupliesForm = ({showSchool , back , close}) => {
                             {bookQuantityError}
                         </Form.Control.Feedback>
                     </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicAdditionalDetails">
+                <Form.Label>Additional Details</Form.Label>
+                <Form.Control as="textarea" rows={3} placeholder="Enter Additional Details (optional)" value={additionalDetails} onChange={(e) => setAdditionalDetails(e.target.value)} />
+                </Form.Group>
                     </Form>
             }    
         </Modal.Body>

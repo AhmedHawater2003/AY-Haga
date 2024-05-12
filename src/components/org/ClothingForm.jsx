@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import { Spinner } from "react-bootstrap";
 
 
 
@@ -104,12 +105,12 @@ const ClothingForm = ({showClothing , back , close}) => {
         setMaterialError('');
       }
       if(title !== '' && type !== '' && age !== '' && gender !== '' && quantity !== '' && season !== '' && material !== ''){
-        setAlertMessage('Post Submitted Successfully');
+        setAlertMessage('Post Submitted Successfully!');
         setShowAlert(true);
         setSuccess(true);
         setTimeout(() => {
             handleClose();
-        } ,10000);
+        } ,4000);
 
     }
   }
@@ -124,12 +125,15 @@ const ClothingForm = ({showClothing , back , close}) => {
   
         <Modal show={showClothing} onHide={handleClose} size="lg" scrollable={true} onSubmit={handleSubmit} >
           <Modal.Header closeButton>
-            <Modal.Title>Clothing Post</Modal.Title>
+            <Modal.Title>Clothes</Modal.Title>
           </Modal.Header>
+          {showAlert&&<Alert style={{ textAlign: 'center'  }}  variant={(isSuccess)?'success':'danger'}>
+                {alertMessage}. Redirecting <Spinner animation="border" size="sm" className="ms-2" />
+            </Alert>}
           <Modal.Body>
-          {showAlert&&<Alert variant={(isSuccess)?'success':'danger'}>
+          {/* {showAlert&&<Alert variant={(isSuccess)?'success':'danger'}>
             {alertMessage}
-          </Alert>}
+          </Alert>} */}
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Title

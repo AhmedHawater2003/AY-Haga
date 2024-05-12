@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import { Spinner } from "react-bootstrap";
 
 
 const MedicalForm = ({showMedical , back,close}) => {
@@ -84,12 +85,12 @@ const MedicalForm = ({showMedical , back,close}) => {
             setPhotoError('');
         } 
         if(title !== '' && deviceType !== '' && use !== '' && quantity !== '' && photo !== ''){
-            setAlertMessage('Post Submitted Successfully');
+            setAlertMessage('Post Submitted Successfully!');
             setShowAlert(true);
             setSuccess(true);
             setTimeout(() => {
                 handleClose();
-            } ,10000);
+            } ,4000);
         }
     }
  
@@ -97,18 +98,21 @@ const MedicalForm = ({showMedical , back,close}) => {
     <>
         <Modal show={showMedical} onHide={handleClose} scrollable >
             <Modal.Header closeButton>
-            <Modal.Title>Medical Donation Form</Modal.Title>
+            <Modal.Title>Medical Supplies</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-            {showAlert&&<Alert variant={(isSuccess)?'success':'danger'}>
-                {alertMessage}
+            {showAlert&&<Alert style={{ textAlign: 'center'  }}  variant={(isSuccess)?'success':'danger'}>
+                {alertMessage}. Redirecting <Spinner animation="border" size="sm" className="ms-2" />
             </Alert>}
+            <Modal.Body>
+            {/* {showAlert&&<Alert variant={(isSuccess)?'success':'danger'}>
+                {alertMessage}
+            </Alert>} */}
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicTitle">
                 <Form.Label>Title
                   {titleError?  <span className="text-danger"> *</span> : null }
                 </Form.Label>
-                <Form.Control type="text" placeholder="Enter title" value={title} onChange={(e) => setTitle(e.target.value)} isInvalid = {titleError} />
+                <Form.Control type="text" placeholder="Enter Post Title" value={title} onChange={(e) => setTitle(e.target.value)} isInvalid = {titleError} />
                 <Form.Control.Feedback type="invalid">
                   {titleError}
                 </Form.Control.Feedback>
@@ -119,7 +123,7 @@ const MedicalForm = ({showMedical , back,close}) => {
                   {deviceTypeError?  <span className="text-danger"> *</span> : null }
                 </Form.Label>
                 <Form.Control type="text" 
-                              placeholder="Enter device type" 
+                              placeholder="Enter Device Type" 
                               value={deviceType} 
                               onChange={(e) => setDeviceType(e.target.value)} 
                               isInvalid = {deviceTypeError}
@@ -133,7 +137,7 @@ const MedicalForm = ({showMedical , back,close}) => {
                 <Form.Label>Use
                   {useError?  <span className="text-danger"> *</span> : null }
                 </Form.Label>
-                <Form.Control type="text" placeholder="Enter use" value={use} onChange={(e) => setUse(e.target.value)} isInvalid = {useError} />
+                <Form.Control type="text" placeholder="Enter Use" value={use} onChange={(e) => setUse(e.target.value)} isInvalid = {useError} />
                 <Form.Control.Feedback type="invalid">
                   {useError}
                 </Form.Control.Feedback>
@@ -143,7 +147,7 @@ const MedicalForm = ({showMedical , back,close}) => {
                 <Form.Label>Quantity Requested
                   {quantityError?  <span className="text-danger"> *</span> : null }
                 </Form.Label>
-                <Form.Control type="number" placeholder="Enter quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} isInvalid = {quantityError} />
+                <Form.Control type="number" placeholder="Enter Quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} isInvalid = {quantityError} />
                 <Form.Control.Feedback type="invalid">
                   {quantityError}
                 </Form.Control.Feedback>
@@ -153,7 +157,7 @@ const MedicalForm = ({showMedical , back,close}) => {
                 <Form.Label>Upload Photo of Requested Medical Supplies
                   {photoError?  <span className="text-danger"> *</span> : null }
                 </Form.Label>
-                <Form.Control type="file" placeholder="Enter photo" value={photo} onChange={(e) => setPhoto(e.target.value)} isInvalid = {photoError} />
+                <Form.Control type="file" placeholder="Upload Photo" value={photo} onChange={(e) => setPhoto(e.target.value)} isInvalid = {photoError}  accept=".png, .jpg, .jpeg, .jfif, .pjpeg, .pjp, .svg, .webp"/>
                 <Form.Control.Feedback type="invalid">
                   {photoError}
                 </Form.Control.Feedback>
@@ -161,7 +165,7 @@ const MedicalForm = ({showMedical , back,close}) => {
     
                 <Form.Group className="mb-3" controlId="formBasicAdditionalDetails">
                 <Form.Label>Additional Details</Form.Label>
-                <Form.Control as="textarea" rows={3} placeholder="Enter additional details" value={additionalDetails} onChange={(e) => setAdditionalDetails(e.target.value)} />
+                <Form.Control as="textarea" rows={3} placeholder="Enter Additional Details (optional)" value={additionalDetails} onChange={(e) => setAdditionalDetails(e.target.value)} />
                 </Form.Group>
             </Form>
             </Modal.Body>
