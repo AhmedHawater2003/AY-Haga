@@ -18,6 +18,9 @@ function DonationDetialsModal({
   donationCardDetials,
   showFlag,
   hide,
+  deletePost,
+  back,
+  setHide
 }) {
   return (
     <Modal size="xl" show={showFlag} onHide={hide} scrollable>
@@ -53,8 +56,8 @@ function DonationDetialsModal({
             {isDoner && (
               <DonationSubmitForm hideModal={hide} isVolunteer={isVolunteer} />
             )}
-            {isFulfilled && <DonationPostFulfilledForm />}
-            {(isWaiting || isPending) && <DonationPostEditDeleteForm />}
+            {isFulfilled && <DonationPostFulfilledForm item = {donationCardDetials} deletePost={deletePost} />}
+            {(isWaiting || isPending) && <DonationPostEditDeleteForm item = {donationCardDetials} deletePost={deletePost}  />}
           </div>
         </div>
       </Modal.Body>

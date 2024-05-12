@@ -1,13 +1,15 @@
-import { useState } from "react";
 import { Button, Text } from '@mantine/core';
 import { modals } from '@mantine/modals';
+import { useState } from 'react';
+import { MantineProvider } from '@mantine/core';
+import { ModalsProvider } from '@mantine/modals';
 
-const DeleteConfirmationModal = () => {
+const DeleteConfirmationModal = ({item , deletePost,close ,back,hide }) => {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const openDeleteModal = () => modals.openConfirmModal({
+  const handleClose = () => {setShow(false);};
+  const handleBack = () => {setShow(false);};
+  const openDeleteModal = () => {hide();modals.openConfirmModal({
     title: 'Delete your profile',
     centered: true,
     children: (<Text size="sm">
@@ -16,11 +18,21 @@ const DeleteConfirmationModal = () => {
     </Text>),
     labels: { confirm: 'Delete account', cancel: "No don't delete it" },
     confirmProps: { color: 'red' },
-    onCancel: () => console.log('Cancel'),
-    onConfirm: () => console.log('Confirmed'),
-});
+    onCancel: () => {
+      handleBack();
+    },
+    onConfirm: () => {
+      deletePost(item);
+      handleClose();
+    }
+});};
   return (
-    <Button onClick={openDeleteModal} color="red">Delete account</Button>
+    <MantineProvider>
+      <ModalsProvider>
+      <Button onClick={()=>{openDeleteModal();}} color="red">Delete account</Button>
+      </ModalsProvider>
+    </MantineProvider>
+
   );
 };
 

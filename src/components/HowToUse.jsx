@@ -46,6 +46,7 @@ const HowToUse = () => {
         sideBarData={DonorSideBarData}
         sideBarFunction={sideBarFunction}
         notificationCenterFlag={true}
+        isDoner={true}
       />
       <div
         style={{
