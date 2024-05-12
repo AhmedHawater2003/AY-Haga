@@ -1,15 +1,14 @@
 import Navbar from "./Navbar";
 import { useState } from "react";
-import DonationsGrid from "./Donation/DonationsGrid";
-import styled from "styled-components";
 import { IconArrowLeft } from "@tabler/icons-react";
-import { DonorSideBarData, allData } from "../data/DonorSideBarData";
+import { DonorSideBarData } from "../data/DonorSideBarData";
 import { DonationCategoriesData } from "../data/DonationCategoriesData";
-import CategoryFilter from "./FiltrationBar/CategoryFilter";
-import FilterBar from "./FiltrationBar/FilterBar";
+import { DonationDetails } from "../data/DonationsData";
+import DonationsGrid from "./Donation/DonationsGrid";
+
 import DonorHome from "./Donation/DonorHome";
 
-const HomePage = <DonorHome/>;
+const HomePage = <DonorHome />;
 const HowToUse = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(true);
   const [content, setContent] = useState(HomePage);
@@ -30,7 +29,11 @@ const HowToUse = () => {
           />
           <h3 style={{ margin: "auto" }}>Search Results</h3>
         </div>
-        {category.content}
+        <DonationsGrid
+          data={DonationDetails}
+          isDoner={true}
+          filterFunction={(item) => item.category === category.title}
+        />
       </>
     ));
   };

@@ -3,6 +3,7 @@ import OrgSidebarData from "../data/OrgSideBarData";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import HomeDiv from "../components/org/HomeDiv";
+import OrgAccountDetails from "../components/org/OrgAccountDetails";
 
 const OrgHomePage = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(true);
@@ -22,6 +23,8 @@ const OrgHomePage = () => {
         sideBarFunction={sideBarFunction}
         notificationCenterFlag={true}
         setContent={setContent}
+        content={<OrgAccountDetails/>}
+        accountFlag={true}
         isOrg={true}
       />
       <div
