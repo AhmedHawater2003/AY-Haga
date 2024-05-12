@@ -2,7 +2,8 @@ import { useState } from 'react';
 import {  Row  } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
+import { Button } from '@mantine/core';
 import { FiEyeOff, FiEye, FiEdit3 } from 'react-icons/fi'; 
 import styles from "./test.module.css"
 import { Notification } from '@mantine/core';
@@ -379,7 +380,10 @@ const OrgAccountDetails = () => {
         
                     {edit ? 
                         <>
-                          <Button variant="secondary" onClick={handleCancel} style={{backgroundColor : 'whitesmoke' , color : 'black'}} onMouseEnter={() => setColor('grey')}>
+                          <Button color='red'
+                                  onClick={handleCancel} radius='xl' variant='filled' 
+                          // style={{backgroundColor : 'green' , color : 'black'}} onMouseEnter={() => setColor('grey')}
+                          >
                             <FiX/>
                             {' '}
                             <label>
@@ -387,7 +391,9 @@ const OrgAccountDetails = () => {
                             </label>
                           </Button>
                           {" "}
-                          <Button variant="primary" onClick={handleSave} style={{backgroundColor : 'whitesmoke' , color : 'black'}} onMouseEnter={() => setColor('grey')}>
+                          <Button color= 'grey' radius='xl' variant='filled' onClick={handleSave} 
+                          //</>style={{backgroundColor : 'whitesmoke' , color : 'black'}} onMouseEnter={() => setColor('grey')}
+                          >
                             <FiCheckSquare />
                             {" "}
                             <label>
@@ -396,7 +402,9 @@ const OrgAccountDetails = () => {
                           </Button>
                         </>
                         :
-                        <Button variant="secondary" onClick={handleEdit} style={{backgroundColor : 'whitesmoke' , color : 'black'}} onMouseEnter={() => setColor('grey')} >
+                        <Button color= 'grey' radius='xl' variant='filled'onClick={handleEdit} 
+                        // style={{backgroundColor : 'whitesmoke' , color : 'black'}} onMouseEnter={() => setColor('grey')} 
+                        >
                           <FiEdit3/>
                           {"  "} {"  "}
                           <label>
@@ -608,7 +616,7 @@ const OrgAccountDetails = () => {
                     <h4>Representative Gender : </h4>
                     
                   </Form.Label> 
-                  <br/>
+                  {/* <br/>
                     { 
                       edit ? 
                       <>
@@ -633,7 +641,7 @@ const OrgAccountDetails = () => {
                           />
                         </div>
                       </> 
-                      :  
+                      :   */}
                       <>
                         <Form.Control
                           type='text'
@@ -641,7 +649,7 @@ const OrgAccountDetails = () => {
                           disabled
                           />
                       </>
-                    }
+                    {/* } */}
                   </Form.Group>
                   <Form.Group>
                     <Form.Label style = {{fontWeight : 'bold'}}>
