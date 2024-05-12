@@ -4,6 +4,47 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import "../Donation/customStyle.css";
 import { useState } from "react";
+import styled from "styled-components";
+import { Divider } from "@mantine/core";
+import { Container } from "react-bootstrap";
+import DonationDetialsModal from "../Donation/DonationDetialsModal";
+
+// const[showPost, setShowPost] = useState(false);
+// const handleShowPost = () => {setShowPost(true);};
+
+const ProfilePicture = styled.img`
+  border-radius: 0.6rem;
+  width: 6rem;
+  height: 6rem;
+  object-fit: contain;
+  margin: 0.5rem;
+`;
+
+const OrganizationNameHeader = styled.span`
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+`;
+
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+`;
+
+const DetialsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+
+
+const Info = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+`;
 
 const RequestPopUp = ({ show, back }) => {
   const [validated, setValidated] = useState(false);
@@ -36,10 +77,54 @@ const RequestPopUp = ({ show, back }) => {
         </Modal.Header>
         <Modal.Body>
           <div>
-            <h3>
-            hello i wanted to fulfill this donation post need with : details
-            </h3>
+          <h5>
+            This user wants to fulfill donatin post <a href="#">#123</a>
+            </h5>
+            
+            <div
+      className="border rounded border-1 m-2"
+      style={{ borderColor: "#edeeee" }}
+    >
+      <Container>
+        <InfoContainer>
+          <OrganizationNameHeader>
+            Farid youns
+          </OrganizationNameHeader>
+          <span>phone No. : 010982482374824</span>
+          <span>mail : alksjdf@ksdjfhhs.com</span>
+          <a
+            href="#"
+            rel="noreferrer"
+            style={{ textDecoration: "none" }}
+          >
+            view profile
+          </a>
+        </InfoContainer>
+      </Container>
+    </div>
+    
+            <Divider margins="md" label="Donation Details" />
+            <DetialsContainer>
+              <InfoContainer>
+                <Info>
+                  <span style={{ flexBasis: "50%" }}>Quantity</span>
+                  <span style={{  fontWeight: "bold" }}>
+                    1KG of Rice
+                  </span>
+                </Info>
+              </InfoContainer>
+              <InfoContainer>
+                <Info>
+                  <span style={{ flexBasis: "50%" }}>Additional Details</span>
+                  <span style={{ fontWeight: "bold" }}>
+                   Lorem, ipsum dolor.
+                  </span>
+                </Info>
+              </InfoContainer>
+            </DetialsContainer>
           </div>
+          
+          <Divider margins="md" label="Schedule Pickup" />
           <Form
             className="d-flex flex-column justify-content-center"
             noValidate
@@ -47,7 +132,7 @@ const RequestPopUp = ({ show, back }) => {
             onSubmit={handleSubmit}
           >
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label> Schedule Pickup </Form.Label>
+              <Form.Label> Time Slot </Form.Label>
               <Form.Control type="datetime-local" required />
               <Form.Control.Feedback type="invalid">
                 Please choose a time slot.
@@ -79,6 +164,7 @@ const RequestPopUp = ({ show, back }) => {
           </Button>
         </Modal.Footer>
       </Modal>
+      {/* <DonationDetialsModal /> */}
     </>
   );
 };
