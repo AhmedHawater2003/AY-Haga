@@ -2,7 +2,6 @@ import { FaIceCream } from "react-icons/fa";
 import {
   NormalFilter,
   DropDownFilter,
-  ToggleFilter,
   
 } from "../components/FiltrationBar/FiltersEnum";
 
@@ -88,10 +87,7 @@ export const DonationCategoriesData = [
       />
     ),
     filters: {
-      SubCategory: <DropDownFilter dropDownData={[
-        Books,
-        Stationary,
-      ]} />,
+      SubCategory: <DropDownFilter dropDownData={[ "Books","Stationary" ]} />,
     },
   },
 
