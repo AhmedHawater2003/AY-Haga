@@ -7,7 +7,6 @@ import OrgPendingPostData from "../../data/OrgPendingPostData";
 
 function DonationsGrid({
   data,
-  isVolunteer,
   filterFunction = (donation) => true,
   isDoner,
   isFulfilled,
@@ -16,6 +15,29 @@ function DonationsGrid({
 }) {
   const [showDonationDetails, setShowDetails] = useState(false);
   const [shownDonation, setShownDonation] = useState([]);
+  const [isVolunteering, setIsVolunteering] = useState(false);
+  const [fulfilledPosts , setFulfilledPosts] = useState(OrgFulfilledPostData);
+  const [waitingPosts , setWaitingPosts] = useState(OrgWaitingPostData);
+  const [pendingPosts , setPendingPosts] = useState(OrgPendingPostData);
+
+ 
+
+  const back = () => {
+    setShowDetails(true);
+  }
+
+  const deletePost = (item) => {
+    if(isFulfilled){
+      setFulfilledPosts(fulfilledPosts.filter(post => post["id"]!==item["id"]));
+    }else if(isWaiting){
+      setWaitingPosts(waitingPosts.filter(post => post["id"]!==item["id"]))
+    }else if(isPending){
+      setPendingPosts(pendingPosts.filter(post => post["id"]!==item["id"]))
+     }
+     setShowDetails(false);
+  }
+
+  const [editPost , setEditPost] = useState(false);
 
   return (
     <>
@@ -37,11 +59,12 @@ function DonationsGrid({
                 showDetails={() => setShowDetails(true)}
                 donationDetails={donation}
                 setShownDonation={() => setShownDonation(donation)}
+                setIsVolunteering={setIsVolunteering}
               />
             ))}
 
         {isFulfilled &&
-          OrgFulfilledPostData.map((donation) => (
+          fulfilledPosts.map((donation) => (
             <DonationCard
               key={donation.id}
               isFulfilled={isFulfilled}
@@ -50,11 +73,12 @@ function DonationsGrid({
               showDetails={() => setShowDetails(true)}
               donationDetails={donation}
               setShownDonation={() => setShownDonation(donation)}
+              
             />
           ))}
 
         {isWaiting &&
-          OrgWaitingPostData.map((donation) => (
+          waitingPosts.map((donation) => (
             <DonationCard
               key={donation.id}
               isFulfilled={false}
@@ -66,7 +90,7 @@ function DonationsGrid({
             />
           ))}
         {isPending &&
-          OrgPendingPostData.map((donation) => (
+          pendingPosts.map((donation) => (
             <DonationCard
               key={donation.id}
               isFulfilled={false}
@@ -80,7 +104,7 @@ function DonationsGrid({
       </div>
 
       <DonationDetialsModal
-      isVolunteer={isVolunteer}
+        isVolunteer={isVolunteering}
         isDoner={isDoner}
         isFulfilled={isFulfilled}
         isPending={isPending}
@@ -88,6 +112,7 @@ function DonationsGrid({
         donationCardDetials={shownDonation}
         showFlag={showDonationDetails}
         hide={() => setShowDetails(false)}
+        deletePost = {deletePost}
       />
     </>
   );

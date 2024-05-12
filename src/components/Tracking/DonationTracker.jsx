@@ -1,7 +1,7 @@
 import Accordion from "react-bootstrap/Accordion";
 import "./trackerStyle.css";
 import Stepper from "./Stepper";
-import { Badge } from "@mantine/core";
+import { Badge, Rating } from "@mantine/core";
 import TrackingDetials from "./TrackingDetails";
 
 const tempData = [
@@ -25,7 +25,7 @@ const tempData = [
     "Deliverd By": "Omar Ali",
     Contact: "+201873456789",
     "Actual Delivery Time": "3 April 2024",
-    "Orgnization FeedBack": `5 / 5`,
+    "Orgnization FeedBack": <Rating defaultValue={5} color="green" />,
   },
 ];
 

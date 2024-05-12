@@ -5,15 +5,15 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import "./customStyle.css";
 
-function DonationSubmitForm({ hideModal, isVolunteer}) {
+function DonationSubmitForm({ hideModal, isVolunteer }) {
   const [transportationType, setTransportationType] = useState("");
   const [validated, setValidated] = useState(false);
   const [alertFlag, setAlertFlag] = useState(false);
   const handleVolunteer = () => {
     setAlertFlag(true);
-    setTimeout(() => {setAlertFlag(false), 
-      hideModal();
-    } ,2000); 
+    setTimeout(() => {
+      setAlertFlag(false), hideModal();
+    }, 2000);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,27 +31,41 @@ function DonationSubmitForm({ hideModal, isVolunteer}) {
       }, 2000);
     }
   };
-  return (
-    isVolunteer ?
-    <h1>
-    <Button variant="primary" type="button" onClick={handleVolunteer}>
-  Volunteer
-</Button>
-      
-    {alertFlag && (
-      <Alert variant="success" style={{ marginTop: "10px", textAlign: "center" }}>
+  return isVolunteer ? (
+    <>
+      {!alertFlag && (
+        <Button
+          className="m-2"
+          variant="primary"
+          type="button"
+          onClick={handleVolunteer}
+          style={{
+            borderRadius: "calc(0.375rem - (1px))",
+            fontSize: "1.2rem",
+            fontWeight: "bold",
+            border: "2px solid #dee2e6",
+          }}
+        >
+          Volunteer
+        </Button>
+      )}
+
+      <Alert
+        show={alertFlag}
+        variant="success"
+        style={{ marginTop: "10px", textAlign: "center" }}
+      >
         Thank you for volunteering &#128154;
       </Alert>
-    )}
-  </h1>
-
-      
-    
-    
-    :<div className="border rounded border-1 m-2">
+    </>
+  ) : (
+    <div className="border rounded border-1 m-2">
       <Accordion>
         <Accordion.Item eventKey="0">
-          <Accordion.Header style={{ justifyContent: "center" } } className = "donation">
+          <Accordion.Header
+            style={{ justifyContent: "center" }}
+            className="donation"
+          >
             {" "}
             Donate{" "}
           </Accordion.Header>

@@ -2,12 +2,14 @@ import logo from "../assets/logo_no_bg.png";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
+import { useDisclosure } from "@mantine/hooks";
+import { Burger } from "@mantine/core";
 import Sidebar from "./Sidebar";
 import SearchBar from "./SearchBar/SearchBar";
 import NotificationCenter from "./NotificationCenter/NotificationCenter";
 import OrgNotificationData from "../data/OrgNotificationData";
+import AdminNotificaionData from "../data/AdminNotificationData";
+import DonerNotificaionData from "../data/DonerNotificationData";
 import AccountButton from "./AccountButton";
 
 const NavIcon = styled(Link)`
@@ -37,6 +39,8 @@ const Navbar = ({
   accountFlag = false,
   accountName,
   email,
+  isDoner =false,
+  isOrg =false,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
@@ -81,13 +85,14 @@ const Navbar = ({
       >
         {sideBarFlag ? (
           <>
-            <NavIcon to="#">
-              {isSideBarOpen ? (
-                <AiIcons.AiOutlineClose onClick={showSideBar} />
-              ) : (
-                <FaIcons.FaBars onClick={showSideBar} />
-              )}
-            </NavIcon>
+            <Burger
+              color="#0ca678"
+              size="lg"
+              opened={isSideBarOpen}
+              onClick={showSideBar}
+              style={{ margin: "0 2rem" }}
+              aria-label="Toggle navigation"
+            />
             {searchBarFlag && (
               <SearchBar
                 inputStyle={{
@@ -124,11 +129,17 @@ const Navbar = ({
             {notificationCenterFlag && (
               <>
                 <li className="nav-item">
-                  <div style={{display:"flex",gap:"10px", alignItems: "center"}}>
-                  <NotificationCenter
-                    notificationData={OrgNotificationData}
-                  />
-                  {accountFlag&&<AccountButton setContent={setContent} content={content} email={email} name={accountName} />}
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <NotificationCenter
+                      notificationData={(isOrg)?OrgNotificationData:(isDoner)?DonerNotificaionData:AdminNotificaionData}
+                    />
+                    {accountFlag&&<AccountButton setContent={setContent}  content={content} email={email} name={accountName} />}
                   </div>
                 </li>
               </>

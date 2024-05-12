@@ -1,9 +1,16 @@
+import { Badge } from "@mantine/core";
+
 export const DonationDetails = [
   {
     id: 1,
     title: "Medical Case",
     summary: "Summary of the case",
     category: "Medical",
+    badges: (
+      <>
+        <Badge color="red">URGENT</Badge>
+      </>
+    ),
     primaryDetails: {
       name: "Ali",
       age: 25,
@@ -91,16 +98,34 @@ export const DonationDetails = [
   },
   {
     id: 6,
-    title: "Clothes Case",
+    title: "Clothes Case Age 25",
     summary: "Summary of the case",
     category: "Clothes",
     primaryDetails: {
-      name: "Ali",
-      age: 25,
-      school: "LUMS",
-      grade: "A",
-      favTeam: "Barcelona",
-      location: "Lahore",
+      Name: "Ali",
+      Age: 25,
+      School: "LUMS",
+      Grade: "A",
+      "Favourite Team": "Barcelona",
+      Location: "Lahore",
+    },
+    organization: "World Health Organization",
+    additionalDetails: "Nothing",
+    image:
+      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+  },
+  {
+    id: 7,
+    title: "Clothes Case Age 20",
+    summary: "Summary of the case",
+    category: "Clothes",
+    primaryDetails: {
+      Name: "Ali",
+      Age: 20,
+      School: "LUMS",
+      Grade: "A",
+      "Favourite Team": "Barcelona",
+      Location: "Lahore",
     },
     organization: "World Health Organization",
     additionalDetails: "Nothing",

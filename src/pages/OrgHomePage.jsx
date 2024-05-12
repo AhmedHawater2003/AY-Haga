@@ -25,6 +25,7 @@ const OrgHomePage = () => {
         setContent={setContent}
         content={<OrgAccountDetails/>}
         accountFlag={true}
+        isOrg={true}
       />
       <div
         style={{
