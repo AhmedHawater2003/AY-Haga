@@ -10,6 +10,10 @@ import DonationPostFulfilledForm from "./DonationPostFulfilledForm";
 import DonationPostEditDeleteForm from "./DonationPostEditDeleteForm";
 import GoogleLocator from "../GoogleLocator";
 import { useState } from "react";
+import DonorDetialsPost from "./DonorDetialsPost";
+import { Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 
 
 
@@ -29,6 +33,23 @@ function DonationDetialsModal({
   const [address , setAdress] = useState('');
   const [area , setArea] = useState('');
   const [governorate , setGovernorate] = useState(''); 
+  const [validated, setValidated] = useState(false);
+  const [alertFlag, setAlertFlag] = useState(false);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.currentTarget.checkValidity() === false) {
+      setValidated(true);
+    } else {
+      setValidated(false);
+      event.target.reset();
+      setAlertFlag(true);
+      setTimeout(() => {
+        setAlertFlag(false);
+        handleClose();
+      }, 2000);
+    }
+  };
 
   return (
     <Modal size="xl" show={showFlag} onHide={hide} scrollable>
@@ -82,9 +103,30 @@ function DonationDetialsModal({
             />
             {(isFulfilled) &&<div>
             <h4>Donor Details</h4>
-            <DonatinonOrganizationInfo
-                    organizationDetails
-                  />
+            <DonorDetialsPost/>
+            <Form className="d-flex flex-column justify-content-center"
+            noValidate
+            validated={validated}
+            onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicAdditionalDetails">
+              <Form.Label>Acknowledge Donor Contributions</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                placeholder="Enter gentle message to the donor..."
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+          <Alert
+            variant="success"
+            style={{ marginTop: "10px", textAlign: "center" }}
+            show={alertFlag}
+          >
+            Donation scheduled&#128154;
+          </Alert>
             </div>}
             {isDoner && (
               <DonationSubmitForm hideModal={hide} isVolunteer={isVolunteer} />
