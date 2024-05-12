@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import {  Button } from '@mantine/core';
-import { Badge } from '@mantine/core';
+import { Button } from "@mantine/core";
+import { Badge } from "@mantine/core";
 
 const NotificationWrapper = styled.div`
   display: flex;
@@ -14,6 +14,7 @@ const NotificationTable = ({
   notificationData,
   handleShowRequest,
   handleShowAnnounce,
+  handleShowDelivery,
 }) => {
   return (
     <NotificationWrapper>
@@ -32,7 +33,9 @@ const NotificationTable = ({
             {notificationData.map((notification) => (
               <tr key={notification.id}>
                 <td>
-                  <Badge variant="light" color={notification.color}>{notification.priority}</Badge>
+                  <Badge variant="light" color={notification.color}>
+                    {notification.priority}
+                  </Badge>
                 </td>
                 <td>
                   <div>
@@ -47,11 +50,14 @@ const NotificationTable = ({
                 </td>
                 <td>
                   <Button
-                  variant="filled" color="teal"
+                    variant="filled"
+                    color="teal"
                     onClick={
                       notification.type == "request"
                         ? handleShowRequest
-                        : handleShowAnnounce
+                        : notification.type == "annoumcement"
+                        ? handleShowAnnounce
+                        : handleShowDelivery
                     }
                   >
                     View

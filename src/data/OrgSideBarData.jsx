@@ -46,6 +46,7 @@ const OrgSidebarData = [
   },
   {
     title: "Support",
+    path: "/how-to-use",
     icon: <IoIcons.IoMdHelpCircle />,
   },
 ];

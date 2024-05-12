@@ -8,6 +8,8 @@ import Sidebar from "./Sidebar";
 import SearchBar from "./SearchBar/SearchBar";
 import NotificationCenter from "./NotificationCenter/NotificationCenter";
 import OrgNotificationData from "../data/OrgNotificationData";
+import AdminNotificaionData from "../data/AdminNotificationData";
+import DonerNotificaionData from "../data/DonerNotificationData";
 import AccountButton from "./AccountButton";
 
 const NavIcon = styled(Link)`
@@ -33,6 +35,8 @@ const Navbar = ({
   notificationCenterData = [],
   resetSearch,
   setContent,
+  isDoner =false,
+  isOrg =false,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
@@ -129,7 +133,7 @@ const Navbar = ({
                     }}
                   >
                     <NotificationCenter
-                      notificationData={OrgNotificationData}
+                      notificationData={(isOrg)?OrgNotificationData:(isDoner)?DonerNotificaionData:AdminNotificaionData}
                     />
                     <AccountButton setContent={setContent} />
                   </div>

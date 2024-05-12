@@ -1,10 +1,33 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
+import "../Donation/customStyle.css";
+import { useState } from "react";
 
 const RequestPopUp = ({ show, back }) => {
+  const [validated, setValidated] = useState(false);
+  const [alertFlag, setAlertFlag] = useState(false);
+
   const handleClose = () => {
     back();
   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.currentTarget.checkValidity() === false) {
+      setValidated(true);
+    } else {
+      setValidated(false);
+      event.target.reset();
+      setAlertFlag(true);
+      setTimeout(() => {
+        setAlertFlag(false);
+        handleClose();
+      }, 2000);
+    }
+  };
+
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -12,81 +35,43 @@ const RequestPopUp = ({ show, back }) => {
           <Modal.Title>New Donation</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          hello i wanted to fulfill this donation post need with : details
-          <Button>schedule delivery timing</Button>
-          {/* <div className="border rounded border-1 m-2">
-      <Accordion>
-        <Accordion.Item eventKey="0">
-          <Accordion.Header style={{ justifyContent: "center" }}>
-            {" "}
-            Donate{" "}
-          </Accordion.Header>
-          <Accordion.Body>
-            <Form
-              className="d-flex flex-column justify-content-center"
-              noValidate
-              validated={validated}
-              onSubmit={handleSubmit}
-            >
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label> Quantity </Form.Label>
-                <Form.Control type="number" required />
-                <Form.Control.Feedback type="invalid">
-                  Please enter a quantity.
-                </Form.Control.Feedback>
-              </Form.Group>
-
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label>Type Of Transportation</Form.Label>
-                <select
-                  className="form-select"
-                  value={transportationType}
-                  onChange={(event) =>
-                    setTransportationType(event.target.value)
-                  }
-                  required
-                >
-                  <option value="" disabled>
-                    Please Select
-                  </option>
-                  <option value="Truck">Truck</option>
-                  <option value="Car">Car</option>
-                  <option value="Momotorcycle">Momotorcycle</option>
-                </select>
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label> Time Slot </Form.Label>
-                <Form.Control type="datetime-local" required />
-                <Form.Control.Feedback type="invalid">
-                  Please choose a time slot.
-                </Form.Control.Feedback>
-              </Form.Group>
-              {!alertFlag && (
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
-              )}
-            </Form>
-            <Alert
-              variant="success"
-              style={{ marginTop: "10px", textAlign: "center" }}
-              show={alertFlag}
-            >
-              Thank you for your donation &#128154;
-            </Alert>
-          </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
-    </div> */}
+          <div>
+            <h3>
+            hello i wanted to fulfill this donation post need with : details
+            </h3>
+          </div>
+          <Form
+            className="d-flex flex-column justify-content-center"
+            noValidate
+            validated={validated}
+            onSubmit={handleSubmit}
+          >
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label> Schedule Pickup </Form.Label>
+              <Form.Control type="datetime-local" required />
+              <Form.Control.Feedback type="invalid">
+                Please choose a time slot.
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicAdditionalDetails">
+              <Form.Label>Acknowledge Donor Contributions</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                placeholder="Enter gentle message to the donor..."
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+          <Alert
+            variant="success"
+            style={{ marginTop: "10px", textAlign: "center" }}
+            show={alertFlag}
+          >
+            Donation scheduled&#128154;
+          </Alert>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>

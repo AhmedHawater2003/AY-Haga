@@ -22,6 +22,7 @@ const OrgHomePage = () => {
         sideBarFunction={sideBarFunction}
         notificationCenterFlag={true}
         setContent={setContent}
+        isOrg={true}
       />
       <div
         style={{
