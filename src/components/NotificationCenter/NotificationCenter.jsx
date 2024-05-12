@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Badge from "react-bootstrap/Badge";
 import { FaRegBell } from "react-icons/fa6";
 import OrgNotificationData from "../../data/OrgNotificationData";
 import NotificationTable from "./NotificationTable";
 import RequestPopUp from "./RequestPopUp";
 import AnnouncementPopUp from "./AnnouncementPopUp";
-import { Avatar } from "@mantine/core";
-import { ActionIcon } from "@mantine/core";
+import { ActionIcon,Indicator  } from "@mantine/core";
 
 const NotificationCenter = ({ notificationData }) => {
   const [show, setShow] = useState(false);
@@ -45,6 +43,7 @@ const NotificationCenter = ({ notificationData }) => {
 
   return (
     <>
+    <Indicator inline label="4"  color="red" size={16}>
       <ActionIcon
         variant="filled"
         radius="md"
@@ -54,7 +53,7 @@ const NotificationCenter = ({ notificationData }) => {
       >
         <FaRegBell style={{ width: "70%", height: "70%" }} stroke="1.5" />
       </ActionIcon>
-
+      </Indicator>
       <Modal show={show} onHide={handleClose} size="lg" scrollable>
         <Modal.Header closeButton>
           <Modal.Title>Notification Center</Modal.Title>
