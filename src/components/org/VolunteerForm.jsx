@@ -237,7 +237,7 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
         if((type === 'Teacher') && !(title === '' ) && !(description === '') && !(subject === '') && !(googleAddress === '' || googleArea === '' || googleGovernate === '')
         // && !(schoolName === '') 
       && !(schoolAddress === '') && !(schoolContact === '') && !(numberOfStudents === '')){
-            setAlertMessage('Post Submitted Successfully!');
+            setAlertMessage('Post Submitted Successfully! Redirecting');
             setShowAlert(true);
             setSuccess(true);
             setTimeout(() => {       
@@ -247,7 +247,7 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
           }
           if((type === 'Doctor') && !(title === '' ) && !(description === '') && !(patientName === '') && !(patientAge === '') && !(patientGender === '') 
             && !(patientWeight === '') && !(medicalSpeciality === '') && !(patientAddress === '') && !(googleAddress === '' || googleArea === '' || googleGovernate === '')){
-            setAlertMessage('Post Submitted Successfully!');
+            setAlertMessage('Post Submitted Successfully! Redirecting ');
             setShowAlert(true);
             setSuccess(true);
             setTimeout(() => {       
@@ -273,7 +273,7 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
             <Modal.Title>Ask For Volunteers</Modal.Title>
         </Modal.Header>
         {showAlert&&<Alert style={{ textAlign: 'center'  }}  variant={(isSuccess)?'success':'danger'}>
-                {alertMessage}. Redirecting <Spinner animation="border" size="sm" className="ms-2" />
+                {alertMessage}.  {isSuccess && <Spinner animation="border" size="sm" className="ms-2" />}
             </Alert>}
         <Modal.Body onSubmit={handleSubmit}>
             {/* {showAlert && <Alert variant= {(isSuccess)? 'success':'danger'}>
