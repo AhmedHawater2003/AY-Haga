@@ -1,11 +1,13 @@
 import { useState } from "react";
 import LocationPicker from "react-leaflet-location-picker";
 
-const GoogleLocator = ({getAddress,getArea,getGovernorate}) => {
-    const [pointVals, setPointVals] = useState([[29.9867, 31.439]]);
+const GoogleLocator = ({getAddress,getArea,getGovernorate,pointVal = [[29.9867, 31.439]]}) => {
+    const [pointVals, setPointVals] = useState(pointVal);
     const [address, setAddress] = useState("");
     const [area, setArea] = useState("");
     const [governorate, setGovernorate] = useState("");
+
+    // default props
 
     const handlePointClick = async (point) => {
         setPointVals([point]);
@@ -49,7 +51,7 @@ const GoogleLocator = ({getAddress,getArea,getGovernorate}) => {
 
     const startPort = {
         center: [29.9867, 31.439],
-        zoom: 30,
+        zoom: 40,
     };
 
     const styles = {

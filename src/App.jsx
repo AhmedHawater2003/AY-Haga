@@ -3,7 +3,7 @@ import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
 import HowToUse from "./components/HowToUse";
 import OrgHomePage from "./pages/OrgHomePage";
-import { Navbar } from "react-bootstrap";
+import AdminPage from "./pages/AdminPage";
 import Register from "./components/Register";
 import DonorRegForm from "./components/DonorRegForm";
 import "@mantine/core/styles.css";

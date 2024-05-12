@@ -1,9 +1,22 @@
 import "./SearchResultsList.css";
 import SearchResult from "./SearchResult";
 
-export const SearchResultsList = ({ data, onSearchResultSelection, resultLabellKey }) => {
+export const SearchResultsList = ({ data, onSearchResultSelection, resultLabellKey,
+  styling = {
+      width: "75%",
+      backgroundColor: "#fffffc",
+      display: "flex",
+      flexDirection: "column",
+      borderRadius: "10px",
+      maxHeight: "300px",
+      overflowY: "auto",
+      position: "absolute",
+      zIndex: "1000",
+      top: "5rem",
+  }
+ }) => {
   return (
-    <div className="results-list shadow">
+    <div style={styling}>
       {data.map((resultData) => {
         return (
           <SearchResult
@@ -12,6 +25,7 @@ export const SearchResultsList = ({ data, onSearchResultSelection, resultLabellK
             onClick={onSearchResultSelection}
             label={resultData[resultLabellKey]}
           />
+          
         );
       })}
     </div>
