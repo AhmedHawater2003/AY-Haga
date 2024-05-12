@@ -2,7 +2,6 @@ import { FaIceCream } from "react-icons/fa";
 import {
   NormalFilter,
   DropDownFilter,
-  
 } from "../components/FiltrationBar/FiltersEnum";
 
 export const DonationCategoriesData = [
@@ -17,7 +16,7 @@ export const DonationCategoriesData = [
     filters: {
       Age: <NormalFilter inputType="number" />,
       Gender: <DropDownFilter dropDownData={["Male", "Female"]} />,
-      Seaseon: <DropDownFilter dropDownData={["Winter", "Summer"]} />,
+      Season: <DropDownFilter dropDownData={["Winter", "Summer"]} />,
     },
   },
 
@@ -32,14 +31,18 @@ export const DonationCategoriesData = [
     filters: {
       Age: <NormalFilter inputType="number" />,
       Gender: <DropDownFilter dropDownData={["Boy", "Girl"]} />,
-      'Sub Category' : <DropDownFilter dropDownData={[
-        "Board Games",
-        "Stuffed Toys",
-        "Dolls",
-        "Sports", 
-        "Cars", 
-        "Outdoor", 
-      ]} />,
+      "Sub Category": (
+        <DropDownFilter
+          dropDownData={[
+            "Board Games",
+            "Stuffed Toys",
+            "Dolls",
+            "Sports",
+            "Cars",
+            "Outdoor",
+          ]}
+        />
+      ),
     },
   },
 
@@ -52,12 +55,16 @@ export const DonationCategoriesData = [
       />
     ),
     filters: {
-      'Sub Category' : <DropDownFilter dropDownData={[
-        "Fruits & Vegetables", 
-        "Canned Foods",
-        "Fresh Meals",
-        "Baked Goods",
-      ]} />,
+      "Sub Category": (
+        <DropDownFilter
+          dropDownData={[
+            "Fruits & Vegetables",
+            "Canned Foods",
+            "Fresh Meals",
+            "Baked Goods",
+          ]}
+        />
+      ),
     },
   },
 
@@ -70,11 +77,11 @@ export const DonationCategoriesData = [
       />
     ),
     filters: {
-      'Sub Category' : <DropDownFilter dropDownData={[
-        "Medical Devices",
-        "Medical Equipment",
-        "Medication", 
-      ]} />,
+      "Sub Category": (
+        <DropDownFilter
+          dropDownData={["Medical Devices", "Medical Equipment", "Medication"]}
+        />
+      ),
     },
   },
 
@@ -87,7 +94,7 @@ export const DonationCategoriesData = [
       />
     ),
     filters: {
-      'Sub Category' : <DropDownFilter dropDownData={[ "Books","Stationary" ]} />,
+      "Sub Category": <DropDownFilter dropDownData={["Books", "Stationary"]} />,
     },
   },
 
@@ -100,43 +107,72 @@ export const DonationCategoriesData = [
       />
     ),
     filters: {
-      'Hospital Name': <NormalFilter placeholder="Search Hospital Name" />,
-      Governorate: <DropDownFilter dropDownData={["Cairo", "Alexandria", "Port Said", "Suez", "Damietta", "Dakahlia", "Damietta", "Sharqia", "Gharbia", "Kafr El Sheikh", "Monufia", "Qalyubia", "Beheira", "Red Sea", "North Sinai", "South Sinai", "Fayoum", "Beni Suef", "Minya", "Assiut", "New Valley", "Sohag", "Qena", "Luxor", "Aswan", "Matrouh", "Ismailia"  ]} />,
-      'Hospital Area': <NormalFilter placeholder="Enter Area" />,
+      "Hospital Name": <NormalFilter placeholder="Search Hospital Name" />,
+      Governorate: (
+        <DropDownFilter
+          dropDownData={[
+            "Cairo",
+            "Alexandria",
+            "Port Said",
+            "Suez",
+            "Damietta",
+            "Dakahlia",
+            "Damietta",
+            "Sharqia",
+            "Gharbia",
+            "Kafr El Sheikh",
+            "Monufia",
+            "Qalyubia",
+            "Beheira",
+            "Red Sea",
+            "North Sinai",
+            "South Sinai",
+            "Fayoum",
+            "Beni Suef",
+            "Minya",
+            "Assiut",
+            "New Valley",
+            "Sohag",
+            "Qena",
+            "Luxor",
+            "Aswan",
+            "Matrouh",
+            "Ismailia",
+          ]}
+        />
+      ),
+      "Hospital Area": <NormalFilter placeholder="Enter Area" />,
     },
   },
 
-//   {
-//     id: 7,
-//     title: "Teaching Posts",
-//     icon: (
-//       <FaIceCream
-//         style={{ marginRight: "10px", position: "relative", top: "-1px" }}
-//       />
-//     ),
-//     filters: {
-//       Subject: <NormalFilter placeholder="Enter Subject" />, 
-//   Area: <NormalFilter placeholder="Enter Area" />, 
-//   Governorate: <DropDownFilter dropDownData={["Cairo", "Alexandria", "Port Said", "Suez", "Damietta", "Dakahlia", "Damietta", "Sharqia", "Gharbia", "Kafr El Sheikh", "Monufia", "Qalyubia", "Beheira", "Red Sea", "North Sinai", "South Sinai", "Fayoum", "Beni Suef", "Minya", "Assiut", "New Valley", "Sohag", "Qena", "Luxor", "Aswan", "Matrouh", "Ismailia"  ]} />,
-// },
-//     },
+  //   {
+  //     id: 7,
+  //     title: "Teaching Posts",
+  //     icon: (
+  //       <FaIceCream
+  //         style={{ marginRight: "10px", position: "relative", top: "-1px" }}
+  //       />
+  //     ),
+  //     filters: {
+  //       Subject: <NormalFilter placeholder="Enter Subject" />,
+  //   Area: <NormalFilter placeholder="Enter Area" />,
+  //   Governorate: <DropDownFilter dropDownData={["Cairo", "Alexandria", "Port Said", "Suez", "Damietta", "Dakahlia", "Damietta", "Sharqia", "Gharbia", "Kafr El Sheikh", "Monufia", "Qalyubia", "Beheira", "Red Sea", "North Sinai", "South Sinai", "Fayoum", "Beni Suef", "Minya", "Assiut", "New Valley", "Sohag", "Qena", "Luxor", "Aswan", "Matrouh", "Ismailia"  ]} />,
+  // },
+  //     },
 
-//     {
-//       id: 8,
-//       title: "Medical Cases",
-//       icon: (
-//         <FaIceCream
-//           style={{ marginRight: "10px", position: "relative", top: "-1px" }}
-//         />
-//       ),
-//       filters: {
-//         "Medical Specialty": <NormalFilter placeholder="Search Specialty" />,
-//         "Organization Name": <NormalFilter placeholder="Search Organization" />, 
-//         Area: <NormalFilter placeholder="Enter Area" />,
-//         Governorate: <DropDownFilter dropDownData={["Cairo", "Alexandria", "Port Said", "Suez", "Damietta", "Dakahlia", "Damietta", "Sharqia", "Gharbia", "Kafr El Sheikh", "Monufia", "Qalyubia", "Beheira", "Red Sea", "North Sinai", "South Sinai", "Fayoum", "Beni Suef", "Minya", "Assiut", "New Valley", "Sohag", "Qena", "Luxor", "Aswan", "Matrouh", "Ismailia"  ]} />,
-//   },
-//       },
-  
-  
-  
+  //     {
+  //       id: 8,
+  //       title: "Medical Cases",
+  //       icon: (
+  //         <FaIceCream
+  //           style={{ marginRight: "10px", position: "relative", top: "-1px" }}
+  //         />
+  //       ),
+  //       filters: {
+  //         "Medical Specialty": <NormalFilter placeholder="Search Specialty" />,
+  //         "Organization Name": <NormalFilter placeholder="Search Organization" />,
+  //         Area: <NormalFilter placeholder="Enter Area" />,
+  //         Governorate: <DropDownFilter dropDownData={["Cairo", "Alexandria", "Port Said", "Suez", "Damietta", "Dakahlia", "Damietta", "Sharqia", "Gharbia", "Kafr El Sheikh", "Monufia", "Qalyubia", "Beheira", "Red Sea", "North Sinai", "South Sinai", "Fayoum", "Beni Suef", "Minya", "Assiut", "New Valley", "Sohag", "Qena", "Luxor", "Aswan", "Matrouh", "Ismailia"  ]} />,
+  //   },
+  //       },
 ];
