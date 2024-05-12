@@ -8,6 +8,7 @@ import styled from "styled-components";
 import { Divider } from "@mantine/core";
 import { Container } from "react-bootstrap";
 import DonationDetialsModal from "../Donation/DonationDetialsModal";
+import AccountDetailsPopUp from "./AccountDetailsPopUp";
 
 // const[showPost, setShowPost] = useState(false);
 // const handleShowPost = () => {setShowPost(true);};
@@ -49,6 +50,10 @@ const Info = styled.div`
 const RequestPopUp = ({ show, back }) => {
   const [validated, setValidated] = useState(false);
   const [alertFlag, setAlertFlag] = useState(false);
+  const [showAccount, setShowAccount] = useState(false);
+  const handleAccountDetails = () => {
+    setShowAccount(true);
+  };
 
   const handleClose = () => {
     back();
@@ -92,13 +97,14 @@ const RequestPopUp = ({ show, back }) => {
           </OrganizationNameHeader>
           <span>phone No. : 010982482374824</span>
           <span>mail : alksjdf@ksdjfhhs.com</span>
-          <a
-            href="#"
+          <p
+            onClick={handleAccountDetails}
+           
             rel="noreferrer"
             style={{ textDecoration: "none" }}
           >
             view profile
-          </a>
+          </p>
         </InfoContainer>
       </Container>
     </div>
@@ -165,6 +171,7 @@ const RequestPopUp = ({ show, back }) => {
         </Modal.Footer>
       </Modal>
       {/* <DonationDetialsModal /> */}
+      <AccountDetailsPopUp show={showAccount} back={() => {setShowAccount(false);}} />
     </>
   );
 };
