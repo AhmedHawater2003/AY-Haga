@@ -1,15 +1,8 @@
-import React from 'react'
-import { Button } from 'react-bootstrap';
-import DonatinonOrganizationInfo from './DonatinonOrganizationInfo';
-
+import { Button } from "@mantine/core";
 const DonationPostFulfilledForm = ({item , deletePost}) => {
   return (
     <div>
-      <h4>Donor Details</h4>
-      <DonatinonOrganizationInfo
-              organizationDetails
-            />
-      <Button onClick ={() => deletePost(item)}>Delete Post</Button>
+      <Button color ="red" onClick ={() => deletePost(item)}>Delete Post</Button>
     </div>
   )
 }

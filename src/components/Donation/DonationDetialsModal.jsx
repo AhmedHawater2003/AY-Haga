@@ -9,6 +9,8 @@ import DonationSubmitForm from "./DonationSubmitForm";
 import DonationPostFulfilledForm from "./DonationPostFulfilledForm";
 import DonationPostEditDeleteForm from "./DonationPostEditDeleteForm";
 
+
+
 function DonationDetialsModal({
   isDoner,
   isVolunteer,
@@ -20,7 +22,7 @@ function DonationDetialsModal({
   hide,
   deletePost,
   back,
-  setHide
+  setShowFlag
 }) {
   return (
     <Modal size="xl" show={showFlag} onHide={hide} scrollable>
@@ -53,14 +55,27 @@ function DonationDetialsModal({
                 RegisteredOrgs[donationCardDetials["organization"]]
               }
             />
-            {isDoner && (
+            <div>
+            <h4>Donor Details</h4>
+            <DonatinonOrganizationInfo
+                    organizationDetails
+                  />
+            </div>
+            {/* {isDoner && (
               <DonationSubmitForm hideModal={hide} isVolunteer={isVolunteer} />
             )}
             {isFulfilled && <DonationPostFulfilledForm item = {donationCardDetials} deletePost={deletePost} />}
-            {(isWaiting || isPending) && <DonationPostEditDeleteForm item = {donationCardDetials} deletePost={deletePost}  />}
+            {(isWaiting || isPending) && <DonationPostEditDeleteForm item = {donationCardDetials} deletePost={deletePost} setShowDetails={setShowFlag} />} */}
           </div>
         </div>
       </Modal.Body>
+      <Modal.Footer>
+      {isDoner && (
+              <DonationSubmitForm hideModal={hide} isVolunteer={isVolunteer} />
+            )}
+            {isFulfilled && <DonationPostFulfilledForm item = {donationCardDetials} deletePost={deletePost} />}
+            {(isWaiting || isPending) && <DonationPostEditDeleteForm item = {donationCardDetials} deletePost={deletePost} setShowDetails={setShowFlag} />}
+      </Modal.Footer>
     </Modal>
   );
 }
