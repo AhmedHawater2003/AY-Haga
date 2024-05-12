@@ -31,6 +31,7 @@ const HowToUse = () => {
         showSideBar={() => setIsSideBarOpen(!isSideBarOpen)}
         sideBarData={DonorSideBarData}
         sideBarFunction={sideBarFunction}
+        notificationCenterFlag={true}
       />
       <div
         style={{

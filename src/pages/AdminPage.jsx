@@ -5,34 +5,48 @@ import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
 import {PendingOrgData} from "../data/PendingOrgData";
 import PendingOrg from "../components/Admin/PendingOrg";
-import { Button } from "react-bootstrap";
 import { RegOrgData } from "../data/RegOrgData";
 import RegOrg from "../components/Admin/RegOrg";
+import PendingDonor from "../components/Admin/PendingDonor";
+import { PendingDonorData } from "../data/PendingDonorData";
+import RegDonor from "../components/Admin/RegDonor";
+import { RegDonorData } from "../data/RegDonorData";
+import { IoPersonSharp } from "react-icons/io5";
+import { VscOrganization } from "react-icons/vsc";
 const AdminPage = () => {
     const [isSideBarOpen, setIsSideBarOpen] = useState(false);
     const sideBarData = [
         {
-            title: "Donors",
+            title: "Dashboard",
             icon: <AiIcons.AiFillHome />,
+            iconClosed: <RiIcons.RiArrowDownSFill />,
+            iconOpened: <RiIcons.RiArrowUpSFill />,
+            content: <h1>Dashboard</h1>,
+        },
+        {
+            title: "Donors",
+            icon: <IoPersonSharp />,
             iconClosed: <RiIcons.RiArrowDownSFill />,
             iconOpened: <RiIcons.RiArrowUpSFill />,
 
             subNav: [
                 {
                     title: "Active Donor Accounts",
-                    content: <h1>Active</h1>,
+                    content: <RegDonor userData={RegDonorData}/>,
                     icon: <IoIcons.IoIosPaper />,
+                    data: RegDonorData
                 },
                 {
                     title: "Pending Probono Requests",
-                    content: <PendingOrg />,
+                    content: <PendingDonor userData={PendingDonorData}/>,
                     icon: <IoIcons.IoIosPaper />,
+                    data: PendingDonorData
                 },
             ],
         },
         {
             title: "Organizations",
-            icon: <AiIcons.AiFillHome />,
+            icon: <VscOrganization />,
             iconClosed: <RiIcons.RiArrowDownSFill />,
             iconOpened: <RiIcons.RiArrowUpSFill />,
 

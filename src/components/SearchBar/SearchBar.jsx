@@ -77,7 +77,7 @@ const SearchBar = ({
           onChange={(e) => setQuery(e.target.value)}
           style={mergedInputStyle}
           type="text"
-          placeholder="Search By Organization Name"
+          placeholder="Search By Name"
         />
         <SearchButton
           style={mergedButtonStyle}

@@ -126,14 +126,14 @@
 }
 
 .admin.btn-reject {
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 15px;
-  cursor: pointer;
-  margin-right: 10px;
-  transition: background-color 0.3s ease;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease;
 }
 
 .admin.btn-reject:hover {
@@ -141,14 +141,14 @@
 }
 
 .admin.btn-download {
-  background-color: #45a049;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 15px;
-  cursor: pointer;
-  margin-right: 10px;
-  transition: background-color 0.3s ease;
+    background-color: #45a049;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease;
 }
 
 .admin.btn-download:hover {

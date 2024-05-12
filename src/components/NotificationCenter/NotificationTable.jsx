@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Badge, Button } from "react-bootstrap";
-import NotificationPopUp from "./NotificationPopUp";
 
 const NotificationWrapper = styled.div`
   display: flex;
@@ -11,15 +10,13 @@ const NotificationWrapper = styled.div`
 `;
 
 const NotificationTable = ({
-  showNotificationDetails,
-  back,
-  close,
   notificationData,
-  handleShow,
+  handleShowRequest,
+  handleShowAnnounce,
 }) => {
   return (
     <NotificationWrapper>
-      <div class="table-wrap">
+      <div className="table-wrap">
         <table className="table">
           <thead className="thead-primary">
             <tr>
@@ -32,9 +29,12 @@ const NotificationTable = ({
           </thead>
           <tbody>
             {notificationData.map((notification) => (
-              <tr style={{ color: "red" }}>
+              <tr key={notification.id}>
                 <td>
-                  <Badge bg="warning" style={{ width: "100%", height: "100%" }}>
+                  <Badge
+                    bg={notification.priority}
+                    style={{ width: "100%", height: "100%" }}
+                  >
                     Mid
                   </Badge>
                 </td>
@@ -50,11 +50,18 @@ const NotificationTable = ({
                   <span>{notification.user}</span>
                 </td>
                 <td>
-                  <NotificationPopUp close={close} back={back}/>
+                  <Button
+                    onClick={
+                      notification.type == "request"
+                        ? handleShowRequest
+                        : handleShowAnnounce
+                    }
+                  >
+                    View
+                  </Button>
                 </td>
               </tr>
             ))}
-            
           </tbody>
         </table>
       </div>
