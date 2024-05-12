@@ -20,6 +20,7 @@ function App() {
             <Route path="/donorreg" component={DonorRegForm} />
             <Route path="/how-to-use" component={HowToUse} />
             <Route path="/org" component={OrgHomePage} />
+            <Route path="/admin" component={AdminPage} />
             <Route path="/" component={LandingPage} />
           </Switch>
         </Router>

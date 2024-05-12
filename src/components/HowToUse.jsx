@@ -4,8 +4,6 @@ import DonationsGrid from "./Donation/DonationsGrid";
 import FilterBar from "./FiltrationBar/FilterBar";
 import { DonorSideBarData, allData } from "../data/DonorSideBarData";
 import { DonationCategoriesData } from "../data/DonationCategoriesData";
-import TrackTest from "./Tracking/TrackTest";
-import Demo from "./Tracking/Stepper";
 
 const HowToUse = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -40,7 +38,7 @@ const HowToUse = () => {
           transition: "200ms",
         }}
       >
-        <FilterBar />
+        {/* <FilterBar /> */}
         {content}
       </div>
     </div>

@@ -5,7 +5,7 @@
 
 /* change styling of button when clicked */
 :not(.btn-check) + .btn:active {
-  background-color: #1b5e39;
+  background-color: #0ca678;
 }
 
 .form-control:focus {
@@ -19,9 +19,9 @@
 }
 
 .btn {
-  background-color: #1b5e39;
+  background-color: #0ca678;
   color: white;
-  border: 1px solid #1b5e39;
+  border: 1px solid #0ca678;
   padding: 10px;
   border-radius: 100px;
   cursor: pointer;
@@ -32,8 +32,8 @@
 
 .btn:hover {
   background-color: white;
-  color: #1b5e39;
-  border: 1px solid #1b5e39;
+  color: #0ca678;
+  border: 1px solid #0ca678;
   padding: 10px;
   border-radius: 100px;
   cursor: pointer;
@@ -44,8 +44,8 @@
 
 .btn-middle {
   background-color: white;
-  color: #1b5e39;
-  border: 1px solid #1b5e39;
+  color: #0ca678;
+  border: 1px solid #0ca678;
   padding: 10px;
   border-radius: 100px;
   cursor: pointer;
@@ -56,8 +56,8 @@
 
 .btn-middle:hover {
   background-color: #ddf9e8;
-  color: #1b5e39;
-  border: 1px solid #1b5e39;
+  color: #0ca678;
+  border: 1px solid #0ca678;
   padding: 10px;
   border-radius: 100px;
   cursor: pointer;
@@ -113,7 +113,7 @@
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #1b5e39;
+  color: #0ca678;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
@@ -231,7 +231,7 @@
   width: 225px;
   /* Set a fixed width for cards */
   background-color: #ddf9e8;
-  border: 1px solid #1b5e39;
+  border: 1px solid #0ca678;
   border-radius: 8px;
   padding: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -246,7 +246,7 @@
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #1b5e39;
+  color: #0ca678;
 }
 
 .card-wrapper {
@@ -266,7 +266,7 @@
 
 .card-description {
   font-size: 14px;
-  color: #1b5e39;
+  color: #0ca678;
   text-align: center;
 }
 
@@ -275,7 +275,7 @@
   font-size: 24px;
   font-weight: bold;
   margin: 20px;
-  color: #1b5e39;
+  color: #0ca678;
 }
 
 .sections {
@@ -344,12 +344,12 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #1b5e39;
+  color: #0ca678;
 }
 
 .who-description {
   font-size: 18px;
-  color: #1b5e39;
+  color: #0ca678;
 }
 
 .avatar-icon-xl .avatar-icon {
@@ -458,7 +458,7 @@
   align-items: left;
   text-align: left;
 
-  background-color: #1b5e39;
+  background-color: #0ca678;
 }
 
 .avatar-icon-wrapper {
@@ -551,7 +551,7 @@
 }
 
 .form-control:focus {
-  border-color: #1b5e39;
+  border-color: #0ca678;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
@@ -582,14 +582,14 @@
 .input-field {
   width: 100%;
   padding: 10px;
-  border: 1px solid #1b5e39;
+  border: 1px solid #0ca678;
   border-radius: 100px;
   outline: none;
 }
 .input-field:focus {
   width: 100%;
   padding: 10px;
-  border: 1px solid #1b5e39;
+  border: 1px solid #0ca678;
   border-radius: 100px;
   outline: none;
 }
@@ -605,12 +605,12 @@
 
 .login-text {
   font-size: 15px;
-  color: #1b5e39;
+  color: #0ca678;
 }
 
 .login-text2 {
   font-size: 20px;
-  color: #1b5e39;
+  color: #0ca678;
 }
 
 .login-text-warning {
@@ -624,14 +624,14 @@
 .login-title {
   font-size: 50px;
   font-weight: bold;
-  color: #1b5e39;
+  color: #0ca678;
   text-align: center;
 }
 
 .login-btn {
-  background-color: #1b5e39;
+  background-color: #0ca678;
   color: white;
-  border: 1px solid #1b5e39;
+  border: 1px solid #0ca678;
   padding: 10px;
   border-radius: 100px;
   cursor: pointer;
@@ -643,8 +643,8 @@
 
 .login-btn:hover {
   background-color: white;
-  color: #1b5e39;
-  border: 1px solid #1b5e39;
+  color: #0ca678;
+  border: 1px solid #0ca678;
   padding: 10px;
   border-radius: 100px;
   cursor: pointer;
@@ -664,7 +664,7 @@
 }
 
 .login-link {
-  color: #1b5e39;
+  color: #0ca678;
   font-weight: bold;
   text-align: left;
 }

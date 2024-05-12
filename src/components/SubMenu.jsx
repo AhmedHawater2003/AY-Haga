@@ -5,7 +5,7 @@ import styled from "styled-components";
 const SidebarLink = styled.div`
   display: flex;
   margin: 10px;
-  color: #1b5e39;
+  color: #0ca678;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -15,7 +15,7 @@ const SidebarLink = styled.div`
   font-size: 18px;
 
   &:hover {
-    background: #1b5e39;
+    background: #0ca678;
     border-left: 4px solid green;
     cursor: pointer;
     color: #ddf9e8;
@@ -51,12 +51,12 @@ const SubMenu = ({ item, sideBarFunction }) => {
 
   return (
     <>
-      <SidebarLink onClick={() => {
-        if(item.subNav)
-          showSubnav()
-        else
-          sideBarFunction(item)
-      }}>
+      <SidebarLink
+        onClick={() => {
+          if (item.subNav) showSubnav();
+          else sideBarFunction(item);
+        }}
+      >
         <div>
           {item.icon}
           <SidebarLabel>{item.title}</SidebarLabel>

@@ -16,7 +16,7 @@ const SearchInput = styled.input`
   font-weight: 500;
   :focus {
     outline: none;
-    border-color: #1b5e39; /* YouTube's blue color */
+    border-color: #0ca678; /* YouTube's blue color */
   }
 `;
 
@@ -24,8 +24,8 @@ const SearchButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #1b5e39;
-  background-color: #1b5e39;
+  border: 1px solid #0ca678;
+  background-color: #0ca678;
   border-radius: 0 40px 40px 0;
   cursor: pointer;
   height: inherit;
@@ -34,18 +34,17 @@ const SearchButton = styled.button`
 `;
 
 const searchResultsListStyle = {
-    width: "75%",
-    backgroundColor: "#fffffc",
-    display: "flex",
-    flexDirection: "column",
-    borderRadius: "10px",
-    maxHeight: "300px",
-    overflowY: "auto",
-    position: "absolute",
-    zIndex: "1000",
-    top: "5rem",
-
-}
+  width: "75%",
+  backgroundColor: "#fffffc",
+  display: "flex",
+  flexDirection: "column",
+  borderRadius: "10px",
+  maxHeight: "300px",
+  overflowY: "auto",
+  position: "absolute",
+  zIndex: "1000",
+  top: "5rem",
+};
 const SearchBar = ({
   globalStyling,
   formStyling,
@@ -82,15 +81,17 @@ const SearchBar = ({
         />
         <SearchButton
           style={mergedButtonStyle}
-          onClick={(e)=>{e.preventDefault();}}
+          onClick={(e) => {
+            e.preventDefault();
+          }}
         >
           <FaSearch />
         </SearchButton>
       </SearchForm>
       <SearchResultsList
-        styling={searchResultsListStyle} 
+        styling={searchResultsListStyle}
         data={filterdResults}
-        resultLabellKey = {resultLabellKey}
+        resultLabellKey={resultLabellKey}
         onSearchResultSelection={(resultData) => {
           onSearchResultSelection(resultData);
           setQuery((prev) => "");
