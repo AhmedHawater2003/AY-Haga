@@ -47,13 +47,9 @@ const Info = styled.div`
   margin: 1rem 0;
 `;
 
-const RequestPopUp = ({ show, back }) => {
+const RequestPopUp = ({ show, back ,handleShowAccountDetails,handleShowPost}) => {
   const [validated, setValidated] = useState(false);
   const [alertFlag, setAlertFlag] = useState(false);
-  const [showAccount, setShowAccount] = useState(false);
-  const handleAccountDetails = () => {
-    setShowAccount(true);
-  };
 
   const handleClose = () => {
     back();
@@ -83,7 +79,7 @@ const RequestPopUp = ({ show, back }) => {
         <Modal.Body>
           <div>
           <h5>
-            This user wants to fulfill donatin post <a href="#">#123</a>
+            This user wants to fulfill donatin post <a href="#" onClick={handleShowPost}>#123</a>
             </h5>
             
             <div
@@ -97,14 +93,15 @@ const RequestPopUp = ({ show, back }) => {
           </OrganizationNameHeader>
           <span>phone No. : 010982482374824</span>
           <span>mail : alksjdf@ksdjfhhs.com</span>
-          <p
-            onClick={handleAccountDetails}
-           
+          <a
+            
+            href="#"
+            onClick={handleShowAccountDetails}
             rel="noreferrer"
             style={{ textDecoration: "none" }}
           >
             view profile
-          </p>
+          </a>
         </InfoContainer>
       </Container>
     </div>
@@ -170,8 +167,6 @@ const RequestPopUp = ({ show, back }) => {
           </Button>
         </Modal.Footer>
       </Modal>
-      {/* <DonationDetialsModal /> */}
-      <AccountDetailsPopUp show={showAccount} back={() => {setShowAccount(false);}} />
     </>
   );
 };
