@@ -13,12 +13,13 @@ import CategoryFilter from "../components/FiltrationBar/CategoryFilter";
 import RegOrg from "../components/Admin/RegOrg";
 import { RegOrgData } from "./RegOrgData";
 import DonationsPage from "../components/Donation/DonationsPage";
+import DonorHome from "../components/Donation/DonorHome";
 export const allData = [...DonationDetails, ...TeachingData, ...DoctorData];
 
 export const DonorSideBarData = [
   {
     title: "Home",
-    content: <h1>Home</h1>,
+    content: <DonorHome/>,
 
     icon: <AiIcons.AiFillHome />,
   },
