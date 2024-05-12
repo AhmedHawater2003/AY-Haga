@@ -3,11 +3,10 @@ import OrgSidebarData from "../data/OrgSideBarData";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import HomeDiv from "../components/org/HomeDiv";
-import OrgAccountDetails from "../components/org/OrgAccountDetails";
 
 const OrgHomePage = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(true);
-  const [content, setContent] = useState(<OrgAccountDetails />);
+  const [content, setContent] = useState(<HomeDiv />);
 
   const sideBarFunction = (value) => {
     setContent(value.content);
