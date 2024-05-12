@@ -3,6 +3,7 @@ export const DoctorData = [
     id: 20,
     title: "Medical Opportunity 1",
     summary: "Summary of the case",
+    isVolunteering: true,
     primaryDetails: {
       "Patient Name": "Patient Name",
       Age: "Age",
@@ -20,6 +21,7 @@ export const DoctorData = [
     id: 21,
     title: "Medical Opportunity 2",
     summary: "Summary of the case",
+    isVolunteering: true,
     primaryDetails: {
       "Patient Name": "Patient Name",
       Age: "Age",
@@ -36,6 +38,7 @@ export const DoctorData = [
     id: 23,
     title: "Medical Opportunity 3",
     summary: "Summary of the case",
+    isVolunteering: true,
     primaryDetails: {
       "Patient Name": "Patient Name",
       Age: "Age",
@@ -52,6 +55,7 @@ export const DoctorData = [
     id: 24,
     title: "Medical Opportunity 4",
     summary: "Summary of the case",
+    isVolunteering: true,
     primaryDetails: {
       "Patient Name": "Patient Name",
       Age: "Age",
@@ -68,6 +72,7 @@ export const DoctorData = [
     id: 25,
     title: "Medical Opportunity 5",
     summary: "Summary of the case",
+    isVolunteering: true,
     primaryDetails: {
       "Patient Name": "Patient Name",
       Age: "Age",
@@ -84,6 +89,7 @@ export const DoctorData = [
     id: 26,
     title: "Medical Opportunity 6",
     summary: "Summary of the case",
+    isVolunteering: true,
     primaryDetails: {
       "Patient Name": "Patient Name",
       Age: "Age",
@@ -100,6 +106,7 @@ export const DoctorData = [
     id: 27,
     title: "Medical Opportunity 7",
     summary: "Summary of the case",
+    isVolunteering: true,
     primaryDetails: {
       "Patient Name": "Patient Name",
       Age: "Age",
@@ -116,6 +123,7 @@ export const DoctorData = [
     id: 28,
     title: "Medical Opportunity 8",
     summary: "Summary of the case",
+    isVolunteering: true,
     primaryDetails: {
       "Patient Name": "Patient Name",
       Age: "Age",

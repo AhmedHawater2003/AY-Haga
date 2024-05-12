@@ -48,7 +48,6 @@ export const DonorSideBarData = [
         content: (
           <DonationsGrid
             data={TeachingData}
-            isVolunteer={true}
             isDoner={true}
             isFullfilled={false}
             isPending={false}
@@ -63,7 +62,7 @@ export const DonorSideBarData = [
         content: (
           <DonationsGrid
             data={DoctorData}
-            isVolunteer={true} isDoner={true}
+            isDoner={true}
             isFullfilled={false}
             isPending={false}
             isWaiting={false}

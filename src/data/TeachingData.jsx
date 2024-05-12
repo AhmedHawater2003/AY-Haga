@@ -3,6 +3,7 @@ export const TeachingData = [
     id: 10,
     title: "Math Teacher for Orphans in Giza",
     summary: "Volunteer to teach mathematics to orphaned children in Giza.",
+    isVolunteering: true,
     primaryDetails: {
       Address: "Giza, Egypt",
       "Number of students": "20",
@@ -19,6 +20,7 @@ export const TeachingData = [
     title: "Science Teacher at Cancer Hospital (57357)",
     summary:
       "Join the education team at 57357 Hospital to teach science to young patients",
+    isVolunteering: true,
     primaryDetails: {
       Address: "Cairo, Egypt",
       "Number of students": "15",
@@ -34,6 +36,7 @@ export const TeachingData = [
     title: "English Instructor for Rural Schools in Aswan",
     summary:
       "Teach English language skills to students in rural schools along the Nile in Aswan",
+    isVolunteering: true,
     primaryDetails: {
       Address: "Aswan,Egypt",
       "Number of students": "20",
@@ -50,6 +53,7 @@ export const TeachingData = [
     title: "STEM Educator for After-School Program in Cairo",
     summary:
       "Lead engaging STEM (Science, Technology, Engineering, Mathematics) activities for students in an after-school program in Cairo",
+    isVolunteering: true,
     primaryDetails: {
       Address: "Caio, Egypt",
       "Number of students": "30",
@@ -66,6 +70,7 @@ export const TeachingData = [
     title: "Art Teacher for Community Center in Alexandria",
     summary:
       "Develop and implement art curriculum for children, fostering creativity and self-expression",
+    isVolunteering: true,
     primaryDetails: {
       Address: "Alexandria, Egypt",
       "Number of students": "15",
@@ -82,6 +87,7 @@ export const TeachingData = [
     title: "Arabic Tutor for Refugee Center in Cairo",
     summary:
       "Support newly arrived refugees in Cairo by teaching them Arabic language skills",
+    isVolunteering: true,
     primaryDetails: {
       Address: "Cairo, Egypt",
       "Number of students": "35",

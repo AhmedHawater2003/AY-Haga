@@ -1,42 +1,17 @@
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 
-function DonationCard({ showDetails, donationDetails, setShownDonation }) {
+function DonationCard({
+  showDetails,
+  donationDetails,
+  setShownDonation,
+  setIsVolunteering,
+}) {
   const handleClick = () => {
     setShownDonation((prev) => donationDetails);
     showDetails();
+    setIsVolunteering(donationDetails["isVolunteering"]);
+    console.log(donationDetails);
   };
-
-  // const oo = (
-  //   <Card
-  //     style={{
-  //       width: "18rem",
-  //       display: "flex",
-  //       flexDirection: "column",
-  //     }}
-  //   >
-  //     <Card.Img
-  //       variant="top"
-  //       src={donationDetails["image"]}
-  //       style={{ height: "15rem", objectFit: "fill" }}
-  //     />
-  //     <Card.Body>
-  //       <Card.Title>{donationDetails["title"]}</Card.Title>
-  //       <Card.Text>{donationDetails["summary"]}</Card.Text>
-  //       <Button
-  //         variant="primary"
-  //         onClick={handleClick}
-  //         style={{
-  //           display: "block",
-  //           width: "100%",
-  //           padding: "10px",
-  //           marginBottom: "-20px",
-  //         }}
-  //       >
-  //         View Details
-  //       </Button>
-  //     </Card.Body>
-  //   </Card>
-  // );
   return (
     <Card
       shadow="sm"
@@ -51,7 +26,7 @@ function DonationCard({ showDetails, donationDetails, setShownDonation }) {
 
       <Group justify="space-between" mt="md" mb="xs">
         <Text fw={500}>{donationDetails["title"]}</Text>
-        <Badge color="red">URGENT</Badge>
+        {donationDetails["badges"]}
       </Group>
 
       <Text size="sm" c="dimmed">
