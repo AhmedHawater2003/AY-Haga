@@ -5,19 +5,14 @@ import styled from "styled-components";
 import { IconArrowLeft } from "@tabler/icons-react";
 import { DonorSideBarData, allData } from "../data/DonorSideBarData";
 import { DonationCategoriesData } from "../data/DonationCategoriesData";
+import CategoryFilter from "./FiltrationBar/CategoryFilter";
+import FilterBar from "./FiltrationBar/FilterBar";
 
-const HomePage = (
-  <DonationsGrid
-    data={allData}
-    isDoner={true}
-    isFullfilled={false}
-    isPending={false}
-    isWaiting={false}
-  />
-);
+const HomePage = <h1>Home</h1>;
 const HowToUse = () => {
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(true);
   const [content, setContent] = useState(HomePage);
+
   const sideBarFunction = (value) => {
     setContent((prev) => value.content);
   };
@@ -58,7 +53,6 @@ const HowToUse = () => {
           transition: "200ms",
         }}
       >
-        {/* <FilterBar /> */}
         {content}
       </div>
     </div>

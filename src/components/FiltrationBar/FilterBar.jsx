@@ -4,14 +4,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import Filter from "./Filter";
 import "./customStyle.css";
 
-const mapping = {
-  int: "number",
-  str: "text",
-  dateTime: "datetime-local",
-};
-
-function FilterBar() {
-  const [filters, setFilters] = useState([]);
+function FilterBar({ filterOptions, appliedFilters, setAppliedFilters }) {
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
   const [chosenFilterCategory, setChosenFilter] = useState("test");
@@ -41,13 +34,13 @@ function FilterBar() {
         value: event.target[0].value,
       };
 
-      setFilters((prev) => [...prev, newFilter]);
+      setAppliedFilters((prev) => [...prev, newFilter]);
       setId((prev) => prev + 1);
     }
   };
 
   const removeFilter = (id) => {
-    setFilters((prev) => prev.filter((item) => item.id !== id));
+    setAppliedFilters((prev) => prev.filter((item) => item.id !== id));
   };
 
   return (
@@ -62,12 +55,12 @@ function FilterBar() {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item onClick={handleShow}>int</Dropdown.Item>
-          <Dropdown.Item onClick={handleShow}>str</Dropdown.Item>
-          <Dropdown.Item onClick={handleShow}>dateTime</Dropdown.Item>
+          {Object.entries(filterOptions).map(([key, _]) => (
+            <Dropdown.Item onClick={handleShow}>{key}</Dropdown.Item>
+          ))}
         </Dropdown.Menu>
       </Dropdown>
-      {filters.map((filter) => (
+      {appliedFilters.map((filter) => (
         <Filter
           id={filter.id}
           filterCategory={filter.category}
@@ -87,12 +80,7 @@ function FilterBar() {
             validated={validated}
             onSubmit={handleSubmit}
           >
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control type={mapping[chosenFilterCategory]} required />
-              <Form.Control.Feedback type="invalid">
-                Please enter a quantity.
-              </Form.Control.Feedback>
-            </Form.Group>
+            {filterOptions[chosenFilterCategory]}
             <Button
               variant="primary"
               type="submit"
