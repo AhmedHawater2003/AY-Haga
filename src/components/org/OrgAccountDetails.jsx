@@ -215,20 +215,6 @@ const OrgAccountDetails = () => {
 
   return (
     <div>
-      <div>
-            <Row>
-                <Col>
-                    {/* <h1 style={{fontWeight : 'bold'}}>Account Details</h1> */}
-                </Col>  
-                <Col style={{
-                      display: "flex",
-                      alignItems: "end",
-                      justifyContent: "end" 
-                    }}>
-                <CategoryModal/>
-                </Col>
-            </Row>
-         </div>
         <Row justify="flex">
         <div 
         // style={{transform : 'scale(0.9)'}}

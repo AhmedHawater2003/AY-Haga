@@ -7,6 +7,8 @@ import * as AiIcons from "react-icons/ai";
 import Sidebar from "./Sidebar";
 import SearchBar from "./SearchBar/SearchBar";
 import NotificationCenter from "./NotificationCenter/NotificationCenter";
+import OrgNotificationData from "../data/OrgNotificationData";
+import AccountButton from "./AccountButton";
 
 const NavIcon = styled(Link)`
   margin-left: 2rem;
@@ -30,6 +32,7 @@ const Navbar = ({
   notificationCenterFlag = false,
   notificationCenterData = [],
   resetSearch,
+  setContent,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
@@ -117,9 +120,12 @@ const Navbar = ({
             {notificationCenterFlag && (
               <>
                 <li className="nav-item">
+                  <div style={{display:"flex",gap:"10px", alignItems: "center"}}>
                   <NotificationCenter
-                    notificationData={notificationCenterData}
+                    notificationData={OrgNotificationData}
                   />
+                  <AccountButton setContent={setContent}/>
+                  </div>
                 </li>
               </>
             )}

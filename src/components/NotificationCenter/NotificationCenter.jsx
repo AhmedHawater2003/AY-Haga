@@ -7,8 +7,10 @@ import OrgNotificationData from "../../data/OrgNotificationData";
 import NotificationTable from "./NotificationTable";
 import RequestPopUp from "./RequestPopUp";
 import AnnouncementPopUp from "./AnnouncementPopUp";
+import { Avatar } from "@mantine/core";
+import { ActionIcon } from "@mantine/core";
 
-const NotificationCenter = ({notificationData}) => {
+const NotificationCenter = ({ notificationData }) => {
   const [show, setShow] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
   const [showAnnounce, setShowAnnounce] = useState(false);
@@ -43,16 +45,15 @@ const NotificationCenter = ({notificationData}) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        <FaRegBell style={{ fontSize: 30 }} />
-        <Badge
-          className="icon"
-          bg="danger"
-          // style={{ position: "absolute", top: "15px", right: "80px" }}
-        >
-          {notificationData.length}
-        </Badge>
-      </Button>
+      <ActionIcon
+        variant="filled"
+        radius="md"
+        color="teal"
+        onClick={handleShow}
+        size={"xl"}
+      >
+        <FaRegBell style={{ width: "70%", height: "70%" }} stroke="1.5" />
+      </ActionIcon>
 
       <Modal show={show} onHide={handleClose} size="lg" scrollable>
         <Modal.Header closeButton>

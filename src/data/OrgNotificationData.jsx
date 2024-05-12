@@ -1,7 +1,8 @@
 const OrgNotificationData = [
     {
         id: 1,
-        priority: "warning",
+        priority: "Warning",
+        color: "yellow",
         type: "request",
         title: "New donation request!!",
         date: "2021-09-01",
@@ -9,7 +10,8 @@ const OrgNotificationData = [
     },
     {
         id: 2,
-        priority: "danger",
+        priority: "Urgent",
+        color: "red",
         type: "annoumcement",
         title: "terms updated",
         date: "2021-09-01",
@@ -17,7 +19,8 @@ const OrgNotificationData = [
     },
     {
         id: 3,
-        priority: "warning",
+        priority: "Warning",
+        color: "yellow",
         type: "annoumcement",
         title: "baghhizzzzz",
         date: "2021-09-01",
@@ -25,7 +28,8 @@ const OrgNotificationData = [
     },
     {
         id: 4,
-        priority: "danger",
+        priority: "Urgent",
+        color: "red",
         type: "request",
         title: "New donation request!!",
         date: "2021-09-01", 
