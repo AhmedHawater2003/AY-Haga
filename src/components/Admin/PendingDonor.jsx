@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './adminStyle.css';
 import { Accordion, Alert, Col, Dropdown, Modal, Row } from 'react-bootstrap';
 import SearchBar from '../SearchBar/SearchBar';
 import { MdDownloadForOffline } from "react-icons/md";
+import { PendingDonorData } from '../../data/PendingDonorData';
 
 
 const PendingDonor = ({ userData }) => {
     const [initialData, setInitialData] = useState(userData); // [userData, setUserData]
+    useEffect(() => {
+        setInitialData(userData);
+    }, [userData]);
     const [show, setShow] = useState(false);
     const [acceptFlag, setAcceptFlag] = useState(false);
     const [rejectFlag, setRejectFlag] = useState(false);
@@ -46,19 +50,19 @@ const PendingDonor = ({ userData }) => {
     };
 
     const applyTypeFilter = (typeFilter) => {
-        if (typeFilter === 'All') setInitialData(userData);
+        if (typeFilter === 'All') setInitialData(PendingDonorData);
         else
             setInitialData(initialData.filter(user => user.donorType === typeFilter));
     }
 
     const applyAreaFilter = (areaFilter) => {
-        if (areaFilter === 'All') setInitialData(userData);
+        if (areaFilter === 'All') setInitialData(PendingDonorData);
         else
             setInitialData(initialData.filter(user => user.area === areaFilter));
     }
 
     const applyGovFilter = (govFilter) => {
-        if (govFilter === 'All') setInitialData(userData);
+        if (govFilter === 'All') setInitialData(PendingDonorData);
         else
             setInitialData(initialData.filter(user => user.governorate === govFilter));
     }

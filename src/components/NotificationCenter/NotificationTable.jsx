@@ -11,6 +11,9 @@ const NotificationWrapper = styled.div`
 `;
 
 const NotificationTable = ({
+  isAdmin,
+  setShow,
+  setContentNotification,
   notificationData,
   handleShowRequest,
   handleShowAnnounce,
@@ -49,7 +52,7 @@ const NotificationTable = ({
                   <span>{notification.user}</span>
                 </td>
                 <td>
-                  <Button
+                  {!isAdmin ? <Button
                     variant="filled"
                     color="teal"
                     onClick={
@@ -62,6 +65,15 @@ const NotificationTable = ({
                   >
                     View
                   </Button>
+                  :
+                  <Button
+                    variant="filled"
+                    color="teal"
+                    onClick={() => {setShow(false); setContentNotification(notification.content)}}
+                  >
+                    View
+                  </Button> 
+                  }
                 </td>
               </tr>
             ))}

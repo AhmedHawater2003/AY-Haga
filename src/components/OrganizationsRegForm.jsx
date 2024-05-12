@@ -364,7 +364,7 @@ const OrganizationsRegForm = () => {
               </Form.Group>
               <Form.Group style={formGroupStyling}>
                 <Form.Label style={labelStyling}>
-                  upload your document(s) :
+                  Upload your document(s) :
                 </Form.Label>
                 <Form.Control
                   type="file"

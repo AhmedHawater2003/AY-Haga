@@ -7,10 +7,10 @@ import RequestPopUp from "./RequestPopUp";
 import AnnouncementPopUp from "./AnnouncementPopUp";
 import { ActionIcon, Indicator } from "@mantine/core";
 import DeliveryPopUp from "./DeliveryPopUp";
-import AccountDetailsPopUp from "./AccountDetailsPopUp";
-import PostPopUp from "./PostPopUp";
 
-const NotificationCenter = ({ notificationData }) => {
+
+
+const NotificationCenter = ({ notificationData, isAdmin,setContentNotification }) => {
   const [show, setShow] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
   const [showAnnounce, setShowAnnounce] = useState(false);
@@ -104,10 +104,13 @@ const NotificationCenter = ({ notificationData }) => {
         <Modal.Body>
           {notificationData.length > 0 ? (
             <NotificationTable
+              isAdmin={isAdmin}
+              setContentNotification={setContentNotification}
               notificationData={notificationData}
               handleShowRequest={handleShowRequest}
               handleShowAnnounce={handleShowAnnounce}
               handleShowDelivery={handleShowDelivery}
+              setShow={setShow}
               handleShowAccountDetails={handleShowAccountDetails}
             />
           ) : (

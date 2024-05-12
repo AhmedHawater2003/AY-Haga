@@ -534,13 +534,26 @@ const DonorRegForm = () => {
 
                   <Form.Group style={formGroupStyling}>
                     <Form.Label style={labelStyling}>
-                      Number of pro-bonos cases:
+                      Number of pro-bono classes:
                     </Form.Label>
 
                     <Form.Control
                       style={styling}
                       type="number"
-                      placeholder="Number of pro-bonos cases you can help"
+                      placeholder="Number of pro-bono classes you can teach"
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group style={formGroupStyling}>
+                    <Form.Label style={labelStyling}>
+                      Number of pro-bono students:
+                    </Form.Label>
+
+                    <Form.Control
+                      style={styling}
+                      type="number"
+                      placeholder="Number of pro-bono students you can help"
                       required
                     />
                   </Form.Group>

@@ -14,10 +14,10 @@ export const DonationDetails = [
       Material: "Wool",
       Quantity: 25,
     },
-    organization: "World Health Organization",
+    organization: "Alexandria Community Center",
     additionalDetails: "Nothing",
     image:
-      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+      "https://tse4.mm.bing.net/th?id=OIP.dDGxkbK-mtbGnSzgaOy6twHaEK&pid=Api&P=0&h=220",
   },
   {
     id: 2,
@@ -32,10 +32,10 @@ export const DonationDetails = [
       Material: "Cotton",
       Quantity: 100,
     },
-    organization: "World Health Organization",
+    organization: "Egyptian Red Crescent",
     additionalDetails: "Nothing",
     image:
-      "https://nagalandpage.com/wp-content/uploads/2024/05/organ-donation.jpg",
+      "https://tse3.mm.bing.net/th?id=OIP.oWdOhc0RxBGDAfuqpstO-wHaED&pid=Api&P=0&h=220",
   },
   {
     id: 3,
@@ -43,13 +43,14 @@ export const DonationDetails = [
     summary: "Notebooks for students.",
     category: "School Supplies",
     primaryDetails: {
+      "Sub Category": "Stationary",
       Type: "Notebook",
       AmountRequested: 100,
     },
-    organization: "World Health Organization",
+    organization: "Nile Education Initiative",
     additionalDetails: "Nothing",
     image:
-      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+      "https://tse1.mm.bing.net/th?id=OIP.Ujrfw5kvZoo_O4aVv26qywHaE8&pid=Api&P=0&h=220",
   },
   {
     id: 4,
@@ -57,6 +58,7 @@ export const DonationDetails = [
     summary: "Comprehensive textbook covering various mathematical concepts.",
     category: "School Supplies",
     primaryDetails: {
+      "Sub Category": "Books",
       Name: "Mathematics Textbook",
       Author: "John Smith",
       Language: "English",
@@ -65,10 +67,10 @@ export const DonationDetails = [
         "Covers topics such as algebra, geometry, and calculus with exercises and examples.",
       Quantity: 50,
     },
-    organization: "World Health Organization",
+    organization: "Cairo STEM Academy",
     additionalDetails: "Nothing",
     image:
-      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+      "https://tse2.mm.bing.net/th?id=OIP.ClhOBdF12EcsuwxkQ2arvAHaKs&pid=Api&P=0&h=220",
   },
   {
     id: 5,
@@ -76,16 +78,17 @@ export const DonationDetails = [
     summary: "Soft and cuddly teddy bear for children.",
     category: "Toys",
     primaryDetails: {
-      Type: "Stuffed Toy",
+      "Sub Category": "Stuffed Toys",
+      Type: "Stuffed animals",
       Age: "5",
       Gender: "Girl",
       Category: "Stuffed Toys",
       Quantity: 50,
     },
-    organization: "World Health Organization",
+    organization: "Hope Haven Orphanage",
     additionalDetails: "Nothing",
     image:
-      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+      "https://tse4.mm.bing.net/th?id=OIP.4DxB_-F37GtzxXnT9_C9uwHaFS&pid=Api&P=0&h=220",
   },
   {
     id: 6,
@@ -93,29 +96,31 @@ export const DonationDetails = [
     summary: "Standard size basketball for outdoor play.",
     category: "Toys",
     primaryDetails: {
-      Type: "Sports",
+      "Sub Category": "Sports",
+      Type: "Balls",
       Age: "11",
       Gender: "Boy",
       Quantity: 10,
     },
-    organization: "World Health Organization",
+    organization: "Tanta Orphanage",
     additionalDetails: "Nothing",
     image:
-      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+      "https://tse3.mm.bing.net/th?id=OIP.S-Tsi8pLvKKPSJ2FwdOkDwHaFj&pid=Api&P=0&h=220",
   },
   {
     id: 7,
-    title: "Rice",
-    summary: "Long-grain white rice.",
+    title: "Grapes",
+    summary: "Fresh fruits",
     category: "Food",
     primaryDetails: {
-      ItemName: "Rice",
+      "Sub Category": "Fruits & Vegetables",
+      ItemName: "Grapes",
       Quantity: "50 kg",
     },
-    organization: "World Health Organization",
+    organization: "57357 Hospital",
     additionalDetails: "Nothing",
     image:
-      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+      "https://tse2.mm.bing.net/th?id=OIP.UjJWFFyvjaTVscGftWC8hgHaFt&pid=Api&P=0&h=220",
   },
   {
     id: 8,
@@ -123,13 +128,14 @@ export const DonationDetails = [
     summary: "Canned tuna in oil.",
     category: "Food",
     primaryDetails: {
+      "Sub Category": "Canned Foods",
       ItemName: "Canned Tuna",
       Quantity: "100 cans",
     },
-    organization: "World Health Organization",
+    organization: "Hurghada Community Center",
     additionalDetails: "Nothing",
     image:
-      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+      "https://tse3.mm.bing.net/th?id=OIP.tah1xIYSDf9LwUyX4JUnRAHaEK&pid=Api&P=0&h=220",
   },
   {
     id: 9,
@@ -137,15 +143,15 @@ export const DonationDetails = [
     summary: "Standard wheelchair suitable for adults.",
     category: "Medical Supplies",
     primaryDetails: {
-      SubCategory: "Medical Equipment",
+      "Sub Category": "Medical Equipment",
       DeviceType: "Wheelchair",
       Use: "Mobility Aid for disabled individuals",
       Quantity: "3",
     },
-    organization: "World Health Organization",
+    organization: "Elderly Care Foundation",
     additionalDetails: "Nothing",
     image:
-      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+      "https://tse4.mm.bing.net/th?id=OIP.5xCW2ResXrT-2GLZsyvT3wHaHa&pid=Api&P=0&h=220",
   },
   {
     id: 10,
@@ -153,7 +159,7 @@ export const DonationDetails = [
     summary: "Injection for diabetes management.",
     category: "Medical Supplies",
     primaryDetails: {
-      SubCategory: "Medication",
+      "Sub Category": "Medication",
       DeviceType: "non",
       Use: "Medication for diabetes management",
       Quantity: "25 vials",
@@ -161,7 +167,7 @@ export const DonationDetails = [
     organization: "World Health Organization",
     additionalDetails: "Nothing",
     image:
-      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+      "https://tse4.mm.bing.net/th?id=OIP.9coBAnA8UhhMfwLtgF6n6AHaD4&pid=Api&P=0&h=220",
   },
 
   {
@@ -170,15 +176,15 @@ export const DonationDetails = [
     summary: "Digital thermometer for temperature measurement.",
     category: "Medical Supplies",
     primaryDetails: {
-      SubCategory: "Medical Devices",
+      "Sub Category": "Medical Devices ",
       DeviceType: "Digital Thermometer",
       Use: "Measuring body temperature.",
       Quantity: "50 units",
     },
-    organization: "World Health Organization",
+    organization: "Dar Al-Salam Retirement Home",
     additionalDetails: "Nothing",
     image:
-      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+      "https://tse2.mm.bing.net/th?id=OIP.Wg8ZrR5GGBHMm3MuyQGGUAHaE3&pid=Api&P=0&h=220",
   },
 
   {
@@ -192,17 +198,17 @@ export const DonationDetails = [
       </>
     ),
     primaryDetails: {
-      PatientName: "Ahmed Ali",
-      BloodType: "O+",
-      HospitalName: "Cairo University Hospital",
-      HospitalArea: "Giza",
-      Governorate: "Giza",
-      HospitalAddress: "123 Hospital Street, Giza",
+      "Patient Name": "Ahmed Ali",
+      "Blood Type": "O+",
+      "Hospital Name": "Cairo University Hospital",
+      "Hospital Area": "Cairo",
+      Governorate: "Cairo",
+      "Hospital Address": "123 Hospital Street, Giza",
     },
-    organization: "World Health Organization",
+    organization: "Cairo Medical Center",
     additionalDetails: "Nothing",
     image:
-      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+      "https://tse3.mm.bing.net/th?id=OIP.lQy7alhScQT29Hu39yS_JAHaEo&pid=Api&P=0&h=220",
   },
 
   {
@@ -216,16 +222,16 @@ export const DonationDetails = [
       </>
     ),
     primaryDetails: {
-      PatientName: "Fatma Omar",
-      BloodType: "A-",
-      HospitalName: "Alexandria Main Hospital",
-      HospitalArea: "El Attarin",
+      "Patient Name": "Fatma Omar",
+      "Blood Type": "A-",
+      "Hospital Name": "Alexandria Main Hospital",
+      "Hospital Area": "El Attarin",
       Governorate: "Alexandria",
-      HospitalAddress: "456 Hospital Street, Alexandria",
+      "Hospital Address": "456 Hospital Street, Alexandria",
     },
-    organization: "World Health Organization",
+    organization: "57357 Hospital",
     additionalDetails: "Nothing",
     image:
-      "https://media.istockphoto.com/id/1318617341/photo/low-angle-view-group-of-volunteers-busy-working-by-arranging-vegetables-and-clothes-on.jpg?s=612x612&w=0&k=20&c=CJsDJ1nIMKr5NPBQufc5eyjsbSV_3XhqgcQusavGXIk=",
+      "https://tse3.mm.bing.net/th?id=OIP.aovDTvyfL--zjQxczUd1SQHaEK&pid=Api&P=0&h=220",
   },
 ];

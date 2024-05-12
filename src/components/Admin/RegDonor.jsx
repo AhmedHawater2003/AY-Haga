@@ -78,7 +78,7 @@ const RegDonor = ({ userData }) => {
     return (
         <div className="user-webpage-table-container">
             <div className="user-cards-container">
-                <h1 style={{ color: "#1b5e39", marginBottom: "20px" }}>Pending Pro-bono Requests</h1>
+                <h1 style={{ color: "#1b5e39", marginBottom: "20px" }}>Active Donor Accounts</h1>
                 <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "20px" }}>
                     <Dropdown>
                         <Dropdown.Toggle variant="success" id="dropdown-basic">
