@@ -14,6 +14,7 @@ import DonorDetialsPost from "./DonorDetialsPost";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Alert } from "react-bootstrap";
+import DonationLocation from "./DonationLocation";
 
 function DonationDetialsModal({
   isDoner,
