@@ -61,7 +61,8 @@ function DonationDetialsModal({
                   loading="lazy"
                   width="100%"
                   height="350"
-                  src={user.mapLocation}
+                  // src="https://www.openstreetmap.org/export/embed.html?bbox=31.49055272340775%2C30.05854335635291%2C31.49306327104569%2C30.060217136224946\&layer=mapnik\&marker=30.059380249826162%2C31.491807997226715"
+                  src = 'https://www.openstreetmap.org/export/embed.html?bbox=31.49055272340775%2C30.05854335635291%2C31.49306327104569%2C30.060217136224946'
                   style={{
                     border: "2px solid #0ca678",
                     width: "50%",
