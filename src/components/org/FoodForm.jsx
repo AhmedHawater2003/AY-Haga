@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import { Spinner } from "react-bootstrap";
 
 
 const FoodForm = ({showFood , back , close}) => {
@@ -52,12 +53,12 @@ const FoodForm = ({showFood , back , close}) => {
             setQuantityError('');
         }
         if(title !== '' && quantity !== ''){
-            setAlertMessage('Post Submitted Successfully');
+            setAlertMessage('Post Submitted Successfully!');
             setShowAlert(true);
             setSuccess(true);
             setTimeout(() => {
                 handleClose();
-            } ,10000);
+            } ,4000);
         }
     }
 
@@ -68,12 +69,15 @@ const FoodForm = ({showFood , back , close}) => {
     <>
         <Modal show={showFood} onHide={handleClose} >
             <Modal.Header closeButton>
-            <Modal.Title>Food Donation Form</Modal.Title>
+            <Modal.Title>Food</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-            {showAlert&&<Alert variant={(isSuccess)?'success':'danger'}>
-                {alertMessage}
+            {showAlert&&<Alert style={{ textAlign: 'center'  }}  variant={(isSuccess)?'success':'danger'}>
+                {alertMessage}. Redirecting <Spinner animation="border" size="sm" className="ms-2" />
             </Alert>}
+            <Modal.Body>
+            {/* {showAlert&&<Alert variant={(isSuccess)?'success':'danger'}>
+                {alertMessage}
+            </Alert>} */}
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicTitle">
                 <Form.Label>Title

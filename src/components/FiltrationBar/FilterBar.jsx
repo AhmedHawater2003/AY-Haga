@@ -51,7 +51,7 @@ function FilterBar() {
   };
 
   return (
-    <div className="d-flex flex-row-reverse flex-wrap  gap-2 py-2 px-2">
+    <div className="d-flex flex-row-reverse flex-wrap  gap-2 py-2 px-2 mb-1">
       <Dropdown className="d-flex align-items-center">
         <Dropdown.Toggle
           className="hide-arrow"

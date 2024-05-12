@@ -7,7 +7,15 @@ import { DonationCategoriesData } from "../data/DonationCategoriesData";
 
 const HowToUse = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-  const [content, setContent] = useState(<DonationsGrid data={allData} isDoner={true} isFullfilled={false} isPending={false} isWaiting={false} />,);
+  const [content, setContent] = useState(
+    <DonationsGrid
+      data={allData}
+      isDoner={true}
+      isFullfilled={false}
+      isPending={false}
+      isWaiting={false}
+    />
+  );
   const sideBarFunction = (value) => {
     setContent(value.content);
   };
@@ -16,13 +24,14 @@ const HowToUse = () => {
     <div>
       <Navbar
         sideBarFlag={true}
-        searchBarFlag = {true}
+        searchBarFlag={true}
         searchBarData={DonationCategoriesData}
         searchBarFunction={(item) => setContent(item.content)}
         isSideBarOpen={isSideBarOpen}
         showSideBar={() => setIsSideBarOpen(!isSideBarOpen)}
         sideBarData={DonorSideBarData}
         sideBarFunction={sideBarFunction}
+        notificationCenterFlag={true}
       />
       <div
         style={{
@@ -30,7 +39,7 @@ const HowToUse = () => {
           transition: "200ms",
         }}
       >
-        <FilterBar />
+        {/* <FilterBar /> */}
         {content}
       </div>
     </div>

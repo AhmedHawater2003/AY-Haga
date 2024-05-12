@@ -1,11 +1,14 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import CategoryModal from "./org/CategoryModal";
+import { Card } from "react-bootstrap";
+import {Row , Col} from "react-bootstrap";
 
-const AccountBrief = () => {
+
+const OrgAccountBrief = () => {
   return (
     <div>
-      <div className="row" justify="flex">
+      <Row justify="flex">
         <div className="col-md-12 col-lg-6 col-xl-6">
           <div className="profilecard-shadow-primary profilecard-border mb-3 profilecard">
             <div className="dropdown-menu-header">
@@ -28,7 +31,7 @@ const AccountBrief = () => {
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="black"
-                        class="bi bi-bank"
+                        className="bi bi-bank"
                         viewBox="0 0 16 16"
                       >
                         <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z" />
@@ -70,7 +73,6 @@ const AccountBrief = () => {
                         </div>
                       </div>
                     </div>
-                    <hr />
                   </li>
                   <li className="list-group-item">
                     <div className="widget-content p-0">
@@ -92,9 +94,33 @@ const AccountBrief = () => {
         <div className="col-md-12 col-lg-6 col-xl-6">
           <CategoryModal />
         </div>
-      </div>
+      </Row>
     </div>
+    // <Card>
+    //   <Card.Header>
+    //   <div
+    //     className="avatar-icon rounded-circle"
+    //     style={{
+    //       padding: "10px",
+    //       fill: "black",
+    //       color: "black",
+    //       borderColor: "black",
+    //     }}
+    //   >
+    //     <svg
+    //       xmlns="http://www.w3.org/2000/svg"
+    //       fill="black"
+    //       class="bi bi-bank"
+    //       viewBox="0 0 16 16"
+    //     >
+    //       <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z" />
+    //     </svg>
+    //   </div>
+    
+    //   </Card.Header>
+    // </Card>
+
   );
 };
 
-export default AccountBrief;
+export default OrgAccountBrief;

@@ -1,57 +1,23 @@
-import React, { useState } from "react";
-import { Button } from "react-bootstrap";
-import Accordion from "react-bootstrap/Accordion";
-import Form from "react-bootstrap/Form";
-import Alert from "react-bootstrap/Alert";
-import "./customStyle.css";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
-function DonationSubmitForm({ hideModal, isVolunteer}) {
-  const [transportationType, setTransportationType] = useState("");
-  const [validated, setValidated] = useState(false);
-  const [alertFlag, setAlertFlag] = useState(false);
-  const handleVolunteer = () => {
-    setAlertFlag(true);
-    setTimeout(() => {setAlertFlag(false), 
-      hideModal();
-    } ,2000); 
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    if (event.currentTarget.checkValidity() === false) {
-      setValidated(true);
-    } else {
-      setValidated(false);
-      event.target.reset();
-      setTransportationType("");
-      setAlertFlag(true);
-      setTimeout(() => {
-        setAlertFlag(false);
-        hideModal();
-      }, 2000);
-    }
+const RequestPopUp = ({ show, back }) => {
+  const handleClose = () => {
+    back();
   };
   return (
-    isVolunteer ?
-    <h1>
-    <Button variant="primary" type="button" onClick={handleVolunteer}>
-  Volunteer
-</Button>
-      
-    {alertFlag && (
-      <Alert variant="success" style={{ marginTop: "10px", textAlign: "center" }}>
-        Thank you for volunteering &#128154;
-      </Alert>
-    )}
-  </h1>
-
-      
-    
-    
-    :<div className="border rounded border-1 m-2">
+    <>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>New Donation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          hello i wanted to fulfill this donation post need with : details
+          <Button>schedule delivery timing</Button>
+          {/* <div className="border rounded border-1 m-2">
       <Accordion>
         <Accordion.Item eventKey="0">
-          <Accordion.Header style={{ justifyContent: "center" } } className = "donation">
+          <Accordion.Header style={{ justifyContent: "center" }}>
             {" "}
             Donate{" "}
           </Accordion.Header>
@@ -120,8 +86,16 @@ function DonationSubmitForm({ hideModal, isVolunteer}) {
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
-    </div>
+    </div> */}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
-}
+};
 
-export default DonationSubmitForm;
+export default RequestPopUp;

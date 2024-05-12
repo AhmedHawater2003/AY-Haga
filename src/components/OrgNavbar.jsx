@@ -15,7 +15,7 @@ const NavIcon = styled(Link)`
   padding-right: 20px;
   justify-content: flex-start;
   align-items: center;
-  color: #1b5e39;
+  color: #0ca678;
 `;
 
 const OrgNavbar = ({ isLanding, showSideBar, sideBarFlag }) => {
