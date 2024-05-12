@@ -33,6 +33,10 @@ const Navbar = ({
   notificationCenterData = [],
   resetSearch,
   setContent,
+  content,
+  accountFlag = false,
+  accountName,
+  email,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
@@ -124,7 +128,7 @@ const Navbar = ({
                   <NotificationCenter
                     notificationData={OrgNotificationData}
                   />
-                  <AccountButton setContent={setContent}/>
+                  {accountFlag&&<AccountButton setContent={setContent} content={content} email={email} name={accountName} />}
                   </div>
                 </li>
               </>

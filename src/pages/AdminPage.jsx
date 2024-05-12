@@ -13,6 +13,9 @@ import RegDonor from "../components/Admin/RegDonor";
 import { RegDonorData } from "../data/RegDonorData";
 import { IoPersonSharp } from "react-icons/io5";
 import { VscOrganization } from "react-icons/vsc";
+import AdminAccountDetails from "../components/Admin/AdminAccountDetails";
+import { AdminData } from "../data/AdminData";
+import Dashboard from "../components/Admin/Dashboard";
 const AdminPage = () => {
     const [isSideBarOpen, setIsSideBarOpen] = useState(false);
     const sideBarData = [
@@ -21,7 +24,7 @@ const AdminPage = () => {
             icon: <AiIcons.AiFillHome />,
             iconClosed: <RiIcons.RiArrowDownSFill />,
             iconOpened: <RiIcons.RiArrowUpSFill />,
-            content: <h1>Dashboard</h1>,
+            content: <Dashboard />,
         },
         {
             title: "Donors",
@@ -66,7 +69,7 @@ const AdminPage = () => {
             ],
         },
     ];
-    const [content, setContent] = useState(<h1>home</h1>);
+    const [content, setContent] = useState(<Dashboard/>);
     const sideBarFunction = (value) => {
         setContent(value.content);
     };
@@ -79,6 +82,11 @@ const AdminPage = () => {
                 sideBarData={sideBarData}
                 sideBarFunction={sideBarFunction}
                 notificationCenterFlag={true}
+                accountFlag={true}
+                setContent={setContent}
+                content={<AdminAccountDetails adminData={AdminData}/>}
+                accountName={AdminData[0].firstName+" "+AdminData[0].lastName}
+                email={AdminData[0].email}
             />
             <div
                 style={{

@@ -1,88 +1,63 @@
 import React, { useState } from "react";
 import logo from "../assets/logo_no_bg.png";
 import bg from "../assets/login_bg.jpg";
-import { FiEyeOff, FiEye } from "react-icons/fi"; // Import eye and eyeOff icons from react-icons/fi
 import { SlArrowLeftCircle } from "react-icons/sl";
-import { Alert, Button, Form } from "react-bootstrap";
+import { PasswordInput, Button, TextInput } from '@mantine/core';
+import { useForm } from '@mantine/form';
+import { Alert, Fade } from "react-bootstrap";
+import { Spinner } from 'react-bootstrap';
+import { AdminData } from "../data/AdminData";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [validated, setValidated] = useState(false);
   const [wrong, setWrong] = useState(false);
   const [right, setRight] = useState(false);
-  const [type, setType] = useState("password");
-  const [icon, setIcon] = useState(<FiEyeOff className="icon" />); // Initialize icon state with FiEyeOff icon
-  const handleToggle = () => {
-    if (type === "password") {
-      setIcon(<FiEye className="icon" />); // Change icon to FiEye when showing password
-      setType("text");
-    } else {
-      setIcon(<FiEyeOff className="icon" />); // Change icon to FiEyeOff when hiding password
-      setType("password");
-    }
+
+  const textDanger = {
+    color: "red",
+    fontSize: "15px",
+    fontWeight: "bold",
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setEmail(e.target[0].value);
-    setPassword(e.target[1].value);
-    const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.stopPropagation();
-      setValidated(true);
-    } else {
-      setValidated(false);
-      if (email === "marina@gmail.com" && password === "guc2021") {
-        setRight(true);
-        setWrong(false);
-        setTimeout(() => {
-          window.location.href = "/admin";
-        }, 5000);
-      } else {
-        setWrong(true);
-        setRight(false);
-      }
-    }
-  };
-  const styling = {
-    width: "100%",
-    padding: "10px",
-    borderRadius: "100px",
-    transition: "0.5s",
-  };
-
-  const formGroupStyling = {
-    width: "100%",
+  const alertBox = {
     display: "flex",
-    flexDirection: "column",
-    gap: "2px",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "50%",
+    backgroundColor: "#ffdddd",
+    borderRadius: "10px",
     padding: "5px",
   };
 
-  const labelStyling = {
-    fontSize: "18px",
-    textDecoration: "underline",
-    fontWeight: "bold",
-    color: "#0ca678",
-  };
 
-  const eyeIconStyling = !validated
-    ? {
-        position: "relative",
-        left: "44%",
-        bottom: "35px",
-        cursor: "pointer",
-      }
-    : {
-        position: "relative",
-        left: "40%",
-        bottom: "35px",
-        cursor: "pointer",
-      };
+
+  const form = useForm({
+    initialValues: { name: '', password: '' },
+    validate: {
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+      password: (value) => (value.length === 0 && 'Password is required'),
+    },
+  });
+
+  const handleSubmit = () => {
+    if (form.values.email === AdminData[0].email && form.values.password === AdminData[0].password) {
+      setRight(true);
+      setWrong(false);
+      setTimeout(() => {
+        window.location.href = "/admin";
+      }, 3000);
+    }
+    else {
+      setWrong(true);
+      setRight(false);
+      setTimeout(() => {
+        setWrong(false);
+      }, 2000);
+    }
+  };
 
   return (
     <div className="maincontainer">
+
       <div
         className="container-fluid"
         style={{
@@ -92,6 +67,7 @@ const Login = () => {
         }}
       >
         <div className="row no-gutter">
+
           <div className="col p-0">
             <div
               className="login d-flex align-items-center"
@@ -105,74 +81,56 @@ const Login = () => {
                       Back To Home
                     </p>
                   </a>
+
                   <div className="col-lg-10 text-center mx-auto">
+
                     <div className="login-logo-container">
                       <img className="login-logo" src={logo} alt="" />
-                    </div>
-                    <p className="login-title">Login</p>
-                    <Form
-                      noValidate
-                      validated={validated}
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                      onSubmit={handleSubmit}
-                    >
-                      {wrong && (
-                        <Form.Group style={formGroupStyling}>
-                          <Alert variant="danger" style={{ width: "100%" }}>
-                            Invalid Email or Password
-                          </Alert>
-                        </Form.Group>
-                      )}
-                      {right && (
-                        <Form.Group style={formGroupStyling}>
-                          <Alert variant="success" style={{ width: "100%" }}>
-                            Successfully Logged In Redirecting to Admin Page
-                          </Alert>
-                        </Form.Group>
-                      )}
-                      <Form.Group style={formGroupStyling}>
-                        <Form.Label style={labelStyling}>Email:</Form.Label>
-
-                        <Form.Control
-                          style={styling}
-                          type="email"
-                          placeholder="Email"
-                          required
-                          onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          Please provide a valid email: example@dom.com
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                      <Form.Group style={formGroupStyling}>
-                        <Form.Label style={labelStyling}>Password:</Form.Label>
-
-                        <Form.Control
-                          style={styling}
-                          type={type}
-                          placeholder="Password"
-                          required
-                          onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <div style={eyeIconStyling} onClick={handleToggle}>
-                          {icon}
+                      <p className="login-title">Login</p>
+                      <Fade in={wrong} timeout={300}>
+                        <div style={alertBox}>
+                          <div style={textDanger}>Invalid Email or Password</div>
                         </div>
-                        <Form.Control.Feedback type="invalid">
-                          Please provide a password.
-                        </Form.Control.Feedback>
-                      </Form.Group>
+                      </Fade>
+                    </div>
+
+                    <form onSubmit={form.onSubmit(handleSubmit)}>
+
+                      {right && (
+                        <Alert variant="success"><b>Successfully Logged In Redirecting...</b><Spinner animation="border" size="sm" className="ms-2" /></Alert>
+                      )}
+                      <TextInput
+                        radius="xl"
+                        mt="sm"
+                        size="lg"
+                        label="Email"
+                        placeholder="Email"
+                        key={form.key('email')}
+                        id="email"
+                        {...form.getInputProps('email')}
+                      />
+
+                      <PasswordInput
+                        mt="sm"
+                        mb="md"
+                        radius="xl"
+                        size="lg"
+                        label="Password"
+                        placeholder="Password"
+                        key={form.key('password')}
+                        id="password"
+                        {...form.getInputProps('password')}
+                      />
                       <Button
+                        size="lg"
+                        className="btn text-uppercase"
                         type="submit"
-                        style={{ marginTop: "10px", width: "100%" }}
+                        variant="light"
+                        style={{ width: "100%", padding: "10px" }}
                       >
-                        SignIn
+                        Login
                       </Button>
-                    </Form>
+                    </form>
                     <div className="text-center mt-4">
                       <div className="login-text">Don't Have An Account?</div>
                       <a href="/register">
