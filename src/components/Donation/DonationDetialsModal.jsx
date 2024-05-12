@@ -8,6 +8,8 @@ import { RegisteredOrgs } from "../../data/RegisteredOrgs";
 import DonationSubmitForm from "./DonationSubmitForm";
 import DonationPostFulfilledForm from "./DonationPostFulfilledForm";
 import DonationPostEditDeleteForm from "./DonationPostEditDeleteForm";
+import GoogleLocator from "../GoogleLocator";
+import { useState } from "react";
 
 
 
@@ -24,6 +26,10 @@ function DonationDetialsModal({
   back,
   setShowFlag
 }) {
+  const [address , setAdress] = useState('');
+  const [area , setArea] = useState('');
+  const [governorate , setGovernorate] = useState(''); 
+
   return (
     <Modal size="xl" show={showFlag} onHide={hide} scrollable>
       <Modal.Header closeButton>
@@ -39,11 +45,29 @@ function DonationDetialsModal({
             <DonationPrimaryDetails
               donationPrimaryDetails={donationCardDetials["primaryDetails"]}
             />
+
             <DonationAdditionalDetails
               donationAdditionalDetails={
                 donationCardDetials["additionalDetails"]
               }
             />
+            {/* <GoogleLocator
+              getAddress={ (address) => setAdress(address)}
+              getArea={(area) => setArea(area)}
+              getGovernorate={(governorate) => setGovernorate(governorate)}
+            /> */}
+            <h5>Location:</h5>
+                <iframe
+                  loading="lazy"
+                  width="100%"
+                  height="350"
+                  src={user.mapLocation}
+                  style={{
+                    border: "2px solid #0ca678",
+                    width: "50%",
+                    borderRadius: "20px",
+                  }}
+                  ></iframe>
           </div>
 
           <div
@@ -55,24 +79,24 @@ function DonationDetialsModal({
                 RegisteredOrgs[donationCardDetials["organization"]]
               }
             />
-            <div>
+            {(isFulfilled) &&<div>
             <h4>Donor Details</h4>
             <DonatinonOrganizationInfo
                     organizationDetails
                   />
-            </div>
-            {/* {isDoner && (
+            </div>}
+            {isDoner && (
               <DonationSubmitForm hideModal={hide} isVolunteer={isVolunteer} />
             )}
-            {isFulfilled && <DonationPostFulfilledForm item = {donationCardDetials} deletePost={deletePost} />}
+                        {/*{isFulfilled && <DonationPostFulfilledForm item = {donationCardDetials} deletePost={deletePost} />}
             {(isWaiting || isPending) && <DonationPostEditDeleteForm item = {donationCardDetials} deletePost={deletePost} setShowDetails={setShowFlag} />} */}
           </div>
         </div>
       </Modal.Body>
       <Modal.Footer>
-      {isDoner && (
+            {/* {isDoner && (
               <DonationSubmitForm hideModal={hide} isVolunteer={isVolunteer} />
-            )}
+            )} */}
             {isFulfilled && <DonationPostFulfilledForm item = {donationCardDetials} deletePost={deletePost} />}
             {(isWaiting || isPending) && <DonationPostEditDeleteForm item = {donationCardDetials} deletePost={deletePost} setShowDetails={setShowFlag} />}
       </Modal.Footer>
