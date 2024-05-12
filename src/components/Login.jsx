@@ -46,6 +46,20 @@ const Login = () => {
         window.location.href = "/admin";
       }, 3000);
     }
+    else if(form.values.email === "donor@guc.com" && form.values.password === "donor") {
+      setRight(true);
+      setWrong(false);
+      setTimeout(() => {
+        window.location.href = "/donor";
+      }, 3000);
+    }
+    else if(form.values.email === "org@org.com" && form.values.password === "org123") {
+      setRight(true);
+      setWrong(false);
+      setTimeout(() => {
+        window.location.href = "/org";
+      }, 3000);
+    }
     else {
       setWrong(true);
       setRight(false);

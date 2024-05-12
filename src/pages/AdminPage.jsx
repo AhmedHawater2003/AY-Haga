@@ -55,7 +55,7 @@ const AdminPage = () => {
 
             subNav: [
                 {
-                    title: "Active Organization Accounts",
+                    title: "Active Organization",
                     content: <RegOrg  userData={RegOrgData}/>,
                     icon: <IoIcons.IoIosPaper />,
                     data: RegOrgData
@@ -87,6 +87,9 @@ const AdminPage = () => {
                 content={<AdminAccountDetails adminData={AdminData}/>}
                 accountName={AdminData[0].firstName+" "+AdminData[0].lastName}
                 email={AdminData[0].email}
+                isDoner={false}
+                isOrg={false}
+                setContentNotification={setContent}
             />
             <div
                 style={{

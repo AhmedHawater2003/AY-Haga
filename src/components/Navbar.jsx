@@ -41,6 +41,7 @@ const Navbar = ({
   email,
   isDoner =false,
   isOrg =false,
+  setContentNotification,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
@@ -137,9 +138,11 @@ const Navbar = ({
                     }}
                   >
                     <NotificationCenter
+                      setContentNotification={setContentNotification}
+                      isAdmin={!isOrg && !isDoner}
                       notificationData={(isOrg)?OrgNotificationData:(isDoner)?DonerNotificaionData:AdminNotificaionData}
                     />
-                    {accountFlag&&<AccountButton setContent={setContent}  content={content} email={email} name={accountName} />}
+                    {accountFlag&&<AccountButton setContent={setContent} content={content} email={email} name={accountName} />}
                   </div>
                 </li>
               </>
