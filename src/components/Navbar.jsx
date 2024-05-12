@@ -8,7 +8,6 @@ import Sidebar from "./Sidebar";
 import SearchBar from "./SearchBar/SearchBar";
 import NotificationCenter from "./NotificationCenter/NotificationCenter";
 
-
 const NavIcon = styled(Link)`
   margin-left: 2rem;
   font-size: 2rem;
@@ -16,7 +15,7 @@ const NavIcon = styled(Link)`
   padding-right: 20px;
   justify-content: flex-start;
   align-items: center;
-  color: #1b5e39;
+  color: #0ca678;
 `;
 
 const Navbar = ({
@@ -28,10 +27,10 @@ const Navbar = ({
   searchBarFlag = false,
   sideBarData = [],
   sideBarFunction,
-  notificationCenterFlag=false,
-  notificationCenterData=[]
+  notificationCenterFlag = false,
+  notificationCenterData = [],
+  resetSearch,
 }) => {
-  
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -39,7 +38,7 @@ const Navbar = ({
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
+
   const handleScroll = () => {
     if (window.scrollY > 0) {
       setIsScrolled(true);
@@ -82,23 +81,24 @@ const Navbar = ({
                 <FaIcons.FaBars onClick={showSideBar} />
               )}
             </NavIcon>
-            {searchBarFlag && <SearchBar
-              inputStyle={{
-                width: "30vw",
-                height: "40px",
-                padding: "10px 10px",
-              }}
-              buttonStyle={{
-                fontSize: "20px",
-                padding: "4px",
-                width: "80px",
-                height: "40px",
-              }}
-              searchResultsData={searchBarData}
-              onSearchResultSelection={searchBarFunction}
-              resultLabellKey="title"
-              
-            />}
+            {searchBarFlag && (
+              <SearchBar
+                inputStyle={{
+                  width: "30vw",
+                  height: "40px",
+                  padding: "10px 10px",
+                }}
+                buttonStyle={{
+                  fontSize: "20px",
+                  padding: "4px",
+                  width: "80px",
+                  height: "40px",
+                }}
+                searchResultsData={searchBarData}
+                onSearchResultSelection={searchBarFunction}
+                resultLabellKey="title"
+              />
+            )}
           </>
         ) : (
           <a className="navbar-brand" href="/how-to-use">
@@ -114,27 +114,40 @@ const Navbar = ({
         </div>
         <div>
           <ul className="navbar-nav ml-auto">
-          {notificationCenterFlag&&<><li className="nav-item">
-              <NotificationCenter />
-            </li></>}
-            {!notificationCenterFlag && (<><li className="nav-item">
-              <a className="btn" href="/login">
-                Sign In
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="btn" href="/register">
-                Register
-              </a>
-            </li></>)}
+            {notificationCenterFlag && (
+              <>
+                <li className="nav-item">
+                  <NotificationCenter
+                    notificationData={notificationCenterData}
+                  />
+                </li>
+              </>
+            )}
+            {!notificationCenterFlag && (
+              <>
+                <li className="nav-item">
+                  <a className="btn" href="/login">
+                    Sign In
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="btn" href="/register">
+                    Register
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </nav>
       {isSideBarOpen && (
-        <Sidebar sideBarState={[isSideBarOpen, showSideBar]} sideBarData={sideBarData}
-        sideBarFunction={sideBarFunction}
-        resultLabellKey="title" />
-      ) }
+        <Sidebar
+          sideBarState={[isSideBarOpen, showSideBar]}
+          sideBarData={sideBarData}
+          sideBarFunction={sideBarFunction}
+          resultLabellKey="title"
+        />
+      )}
     </div>
   );
 };

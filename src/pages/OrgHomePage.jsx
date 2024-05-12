@@ -6,13 +6,16 @@ import PendingPosts from '../components/org/PendingPosts';
 import WaitingPosts from '../components/org/WaitingPosts';
 import FulfilledPosts from '../components/org/FulfilledPosts';
 import Navbar from '../components/Navbar';
+import OrgAccountDetails from '../components/org/OrgAccountDetails';
+import AccountButton from '../components/AccountButton';
 
 const OrgHomePage = () => {
     const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-    const [isHome, setIsHome] = useState(true);
-    const [isPending, setIsPending] = useState(true);
-    const [isWaiting, setIsWaiting] = useState(true);
-    const [isFulfilled, setIsFulfilled] = useState(true);
+    const [isHome, setIsHome] = useState(false);
+    const [isPending, setIsPending] = useState(false);
+    const [isWaiting, setIsWaiting] = useState(false);
+    const [isFulfilled, setIsFulfilled] = useState(false);
+    const [isAccount, setIsAccount] = useState(true);
 
     const [content, setContent] = useState(<h1>home</h1>);
   const sideBarFunction = (value) => {
@@ -39,6 +42,7 @@ const OrgHomePage = () => {
                     {isPending && <PendingPosts/>}
                     {isWaiting && <WaitingPosts/>}
                     {isFulfilled && <FulfilledPosts/>}
+                    {isAccount && <OrgAccountDetails/>}
                 </div>
             </div>  
   )

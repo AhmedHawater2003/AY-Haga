@@ -7,7 +7,7 @@ import OrgNotificationData from "../../data/OrgNotificationData";
 import NotificationTable from "./NotificationTable";
 import NotificationDetails from "./NotificationDetails";
 
-const NotificationCenter = () => {
+const NotificationCenter = ({notificationData}) => {
   const [show, setShow] = useState(false);
   const [showNotificationDetails, setShowNotificationDetails] = useState(false);
   const [notificationDataId, setNotificationDataId] = useState(0);
@@ -39,7 +39,7 @@ const NotificationCenter = () => {
           bg="danger"
           // style={{ position: "absolute", top: "15px", right: "80px" }}
         >
-          {OrgNotificationData.length}
+          {notificationData.length}
         </Badge>
       </Button>
 
@@ -48,9 +48,9 @@ const NotificationCenter = () => {
           <Modal.Title>Notification Center</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {OrgNotificationData.length > 0 ? (
+          {notificationData.length > 0 ? (
             <NotificationTable
-              notificationData={OrgNotificationData}
+              notificationData={notificationData}
               showNotificationDetails={showNotificationDetails}
               back={back}
               close={close}

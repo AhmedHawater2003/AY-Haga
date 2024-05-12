@@ -16,7 +16,7 @@ const SearchInput = styled.input`
   font-weight: 500;
   :focus {
     outline: none;
-    border-color: #1b5e39; /* YouTube's blue color */
+    border-color: #0ca678; /* YouTube's blue color */
   }
 `;
 
@@ -24,14 +24,27 @@ const SearchButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #1b5e39;
-  background-color: #1b5e39;
+  border: 1px solid #0ca678;
+  background-color: #0ca678;
   border-radius: 0 40px 40px 0;
   cursor: pointer;
   height: inherit;
   color: #e3f9eb;
   font-size: 24px;
 `;
+
+const searchResultsListStyle = {
+  width: "75%",
+  backgroundColor: "#fffffc",
+  display: "flex",
+  flexDirection: "column",
+  borderRadius: "10px",
+  maxHeight: "300px",
+  overflowY: "auto",
+  position: "absolute",
+  zIndex: "1000",
+  top: "5rem",
+};
 const SearchBar = ({
   globalStyling,
   formStyling,
@@ -39,7 +52,8 @@ const SearchBar = ({
   buttonStyle,
   searchResultsData,
   onSearchResultSelection,
-  resultLabellKey
+  resultLabellKey,
+  searchResultsListStyle,
 }) => {
   const mergedFormStyling = { ...globalStyling, ...formStyling };
   const mergedInputStyle = { ...globalStyling, ...inputStyle };
@@ -63,18 +77,21 @@ const SearchBar = ({
           onChange={(e) => setQuery(e.target.value)}
           style={mergedInputStyle}
           type="text"
-          placeholder="Search By Category..."
+          placeholder="Search By Organization Name"
         />
         <SearchButton
           style={mergedButtonStyle}
-          onClick={() => console.log("Ahmed")}
+          onClick={(e) => {
+            e.preventDefault();
+          }}
         >
           <FaSearch />
         </SearchButton>
       </SearchForm>
       <SearchResultsList
+        styling={searchResultsListStyle}
         data={filterdResults}
-        resultLabellKey = {resultLabellKey}
+        resultLabellKey={resultLabellKey}
         onSearchResultSelection={(resultData) => {
           onSearchResultSelection(resultData);
           setQuery((prev) => "");

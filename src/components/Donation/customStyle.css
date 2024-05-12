@@ -1,23 +1,23 @@
-.accordion-button:focus {
+.donation .accordion-button:focus {
   box-shadow: 0 0 0 0.1rem transparent;
 }
 
-.accordion-button::after {
+.donation .accordion-button::after {
   display: none;
 }
 
-.accordion-button {
+.donation .accordion-button {
   justify-content: center;
-  background-color: rgb(27 94 54);
+  background-color: #0ca678;
   color: white;
   font-size: 1.2rem;
   letter-spacing: 2px;
   font-weight: bold;
 }
 
-.accordion-button:not(.collapsed) {
+.donation .accordion-button:not(.collapsed) {
   background-color: white;
-  color: #1b5e39;
+  color: #0ca678;
   font-size: 1.2rem;
   letter-spacing: 2px;
   font-weight: bold;

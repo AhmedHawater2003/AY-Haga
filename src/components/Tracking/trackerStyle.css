@@ -1,0 +1,28 @@
+.track .accordion-item {
+  margin-bottom: 20px;
+  border: 2px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.track .accordion-button:focus {
+  box-shadow: 0 0 0 0.1rem transparent;
+}
+
+.track .accordion-button::after {
+  display: none;
+}
+
+.track .accordion-button {
+  justify-content: space-between;
+  color: #0ca678;
+}
+
+.track .accordion-button:not(.collapsed),
+.accordion-button {
+  background-color: white;
+  color: #0ca678;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  border-bottom: 1px solid #dee2e6;
+}
