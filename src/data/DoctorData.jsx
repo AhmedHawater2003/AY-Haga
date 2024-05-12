@@ -14,6 +14,7 @@ export const DoctorData = [
       "Medical Specialty": "Geriatrics",
       "Organization Name": "Elderly Care Foundation",
       Governorate: "Minya",
+      Area : "Tala",
     },
     organization: "Elderly Care Foundation",
     additionalDetails:
@@ -36,6 +37,7 @@ export const DoctorData = [
       "Medical Specialty": "Orthopedics",
       "Organization Name": "Cairo Medical Center",
       Governorate: "Cairo",
+      Area : "Maadi",
     },
     organization: "Cairo Medical Center",
     additionalDetails:
@@ -57,6 +59,7 @@ export const DoctorData = [
       "Medical Specialty": "Pediatrics",
       "Organization Name": "Tanta Orphanage",
       Governorate: "Gharbia",
+      Area : "Tanta",
     },
     organization: "Tanta Orphanage",
     additionalDetails:
