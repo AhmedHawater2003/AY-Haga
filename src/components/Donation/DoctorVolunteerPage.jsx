@@ -8,6 +8,7 @@ const filterOptions = {
   "Medical Specialty": <NormalFilter inputType="str" />,
   "Organization Name": <NormalFilter inputType="str" />,
   Governorate: <NormalFilter inputType="str" />,
+  Area: <NormalFilter inputType="str" />,
 };
 
 function DoctorVolunteerPage() {
