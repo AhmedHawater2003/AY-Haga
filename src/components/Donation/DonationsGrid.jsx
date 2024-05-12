@@ -15,7 +15,7 @@ function DonationsGrid({
   isPending,
 }) {
   const [showDonationDetails, setShowDetails] = useState(false);
-  const [shownDonation, setShownDonation] = useState(data[0]);
+  const [shownDonation, setShownDonation] = useState([]);
 
   return (
     <>
@@ -23,7 +23,7 @@ function DonationsGrid({
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-          gap: "32px",
+          gap: "35px",
           padding: "15px",
           justifyContent: "center",
         }}

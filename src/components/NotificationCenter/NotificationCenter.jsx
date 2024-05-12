@@ -5,29 +5,40 @@ import Badge from "react-bootstrap/Badge";
 import { FaRegBell } from "react-icons/fa6";
 import OrgNotificationData from "../../data/OrgNotificationData";
 import NotificationTable from "./NotificationTable";
-import NotificationDetails from "./NotificationDetails";
+import RequestPopUp from "./RequestPopUp";
+import AnnouncementPopUp from "./AnnouncementPopUp";
 
 const NotificationCenter = () => {
   const [show, setShow] = useState(false);
-  const [showNotificationDetails, setShowNotificationDetails] = useState(false);
-  const [notificationDataId, setNotificationDataId] = useState(0);
+  const [showRequest, setShowRequest] = useState(false);
+  const [showAnnounce, setShowAnnounce] = useState(false);
 
   const handleClose = () => {
     setShow(false);
-    setShowNotificationDetails(false);
+    setShowAnnounce(false);
+    setShowRequest(false);
   };
   const handleShow = () => setShow(true);
 
-  const handleShowNotificationDetails = (e) => {
+  const handleShowRequest = () => {
+    setShowRequest(true);
+    setShowAnnounce(false);
     setShow(false);
-    setShowNotificationDetails(true);
+  };
+  const handleShowAnnounce = () => {
+    setShowRequest(false);
+    setShowAnnounce(true);
+    setShow(false);
   };
   const back = () => {
     setShow(true);
+    setShowAnnounce(false);
+    setShowRequest(false);
   };
 
   const close = () => {
     setShow(false);
+    setShowNotificationDetails(false);
   };
 
   return (
@@ -51,10 +62,8 @@ const NotificationCenter = () => {
           {OrgNotificationData.length > 0 ? (
             <NotificationTable
               notificationData={OrgNotificationData}
-              showNotificationDetails={showNotificationDetails}
-              back={back}
-              close={close}
-              handleShow={handleShowNotificationDetails}
+              handleShowRequest={handleShowRequest}
+              handleShowAnnounce={handleShowAnnounce}
             />
           ) : (
             <h1> Nothing to see here</h1>
@@ -66,6 +75,9 @@ const NotificationCenter = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <RequestPopUp show={showRequest} back={back} />
+      <AnnouncementPopUp show={showAnnounce} back={back} />
     </>
   );
 };

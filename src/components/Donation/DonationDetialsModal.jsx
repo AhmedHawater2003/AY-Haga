@@ -6,6 +6,8 @@ import DonationAdditionalDetails from "./DonationAdditionalDetails";
 import DonatinonOrganizationInfo from "./DonatinonOrganizationInfo";
 import { RegisteredOrgs } from "../../data/RegisteredOrgs";
 import DonationSubmitForm from "./DonationSubmitForm";
+import DonationPostFulfilledForm from "./DonationPostFulfilledForm";
+import DonationPostEditDeleteForm from "./DonationPostEditDeleteForm";
 
 function DonationDetialsModal({
   isDoner,
@@ -22,7 +24,7 @@ function DonationDetialsModal({
       <Modal.Header closeButton>
         <Modal.Title>{donationCardDetials["title"]}</Modal.Title>
       </Modal.Header>
-      <Modal.Body scrollable>
+      <Modal.Body>
         <div className="container d-flex  w-100">
           <div
             className="donation-details d-flex flex-column h-100 "
@@ -49,6 +51,8 @@ function DonationDetialsModal({
               }
             />
             {isDoner && <DonationSubmitForm hideModal={hide} isVolunteer = {isVolunteer} /> }
+            {isFulfilled && <DonationPostFulfilledForm/>}
+            {(isWaiting || isPending) && <DonationPostEditDeleteForm/>}
           </div>
         </div>
       </Modal.Body>

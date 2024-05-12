@@ -26,7 +26,7 @@ const DonationCard = ({ showDetails, donationDetails, setShownDonation}) => {
         <Button
           variant="primary"
           onClick={handleClick}
-          data
+          data={donationDetails}
           style={{
             display: "block",
             width: "100%",
