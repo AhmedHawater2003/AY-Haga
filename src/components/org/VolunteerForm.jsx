@@ -52,6 +52,11 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
     // const [patientLocationError, setPatientLocationError] = useState('');
     const [patientAddressError, setPatientAddressError] = useState('');
 
+    const [googleAddress , setGoogleAddress] = useState('');
+    const [googleArea , setGoogleArea] = useState('');
+    const [googleGovernate , setGoogleGovernate] = useState('');
+    const [googleError , setGoogleError] = useState('');
+
     
 
     
@@ -88,6 +93,11 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
         setMedicalSpecialityError('');
         // setPatientLocationError('');
         setPatientAddressError('');
+
+        setGoogleAddress('');
+        setGoogleArea('');
+        setGoogleGovernate('');
+        setGoogleError('');
 
         setShowAlert(false);
         setAlertMessage('');
@@ -152,6 +162,12 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
             else{
                 setNumberOfStudentsError('');
             }
+            if(googleAddress === '' || googleArea === '' || googleGovernate === '') {
+              setGoogleError('Please Select a Location');
+          } 
+          else {
+              setGoogleError('');
+          }
         }
         if(type === 'Doctor'){
           
@@ -209,10 +225,16 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
             else{
                 setPatientAddressError('');
             }
+            if(googleAddress === '' || googleArea === '' || googleGovernate === '') {
+                setGoogleError('Please Select a Location');
+            } 
+            else {
+                setGoogleError('');
+            }
 
         }
         //Check if all useStates edited on events are not empty
-        if((type === 'Teacher') && !(title === '' ) && !(description === '') && !(subject === '') 
+        if((type === 'Teacher') && !(title === '' ) && !(description === '') && !(subject === '') && !(googleAddress === '' || googleArea === '' || googleGovernate === '')
         // && !(schoolName === '') 
       && !(schoolAddress === '') && !(schoolContact === '') && !(numberOfStudents === '')){
             setAlertMessage('Post Submitted Successfully!');
@@ -224,7 +246,7 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
     
           }
           if((type === 'Doctor') && !(title === '' ) && !(description === '') && !(patientName === '') && !(patientAge === '') && !(patientGender === '') 
-            && !(patientWeight === '') && !(medicalSpeciality === '') && !(patientAddress === '')){
+            && !(patientWeight === '') && !(medicalSpeciality === '') && !(patientAddress === '') && !(googleAddress === '' || googleArea === '' || googleGovernate === '')){
             setAlertMessage('Post Submitted Successfully!');
             setShowAlert(true);
             setSuccess(true);
@@ -418,13 +440,7 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
                   {patientWeightError}
                 </Form.Control.Feedback>
               </Form.Group>
-              <Form.Group style={{width : '80%'}}  controlId="exampleForm.ControlInput1">
-              <Form.Label>Patient Location
-                {/* {patientLocationError? <span className="text-danger"> *</span> : null} */}
-              </Form.Label>
-              <GoogleLocator />
-
-              </Form.Group>
+             
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Patient Address
                   {patientAddressError? <span className="text-danger"> *</span> : null}
@@ -440,7 +456,22 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
                   {patientAddressError}
                 </Form.Control.Feedback>
                 </Form.Group>
+                <Form.Group style={{width : '80%'}}  controlId="exampleForm.ControlInput1">
+                  <Form.Label>Patient Location
+                    {googleError? <span className="text-danger"> *</span> : null}
+                  </Form.Label>
+                  <br/>
+                  {
+                    googleError && <label style={{color:'red' , fontSize : '14px'}} >Please Select a Location</label>
+                  }
 
+                  <GoogleLocator 
+                    getAddress={(googleAddress) => setGoogleAddress(googleAddress)}
+                    getArea={(googleArea) => setGoogleArea(googleArea)}
+                    getGovernorate={(googleGovernate) => setGoogleGovernate(googleGovernate)}
+                  />
+
+                </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Medical Speciality
                   {medicalSpecialityError? <span className="text-danger"> *</span> : null}
@@ -528,21 +559,6 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
                 </Form.Control.Feedback>
                 </Form.Group> */}
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Address
-                  {schoolAddressError? <span className="text-danger"> *</span> : null}
-                </Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter Address"
-                  value = {schoolAddress}
-                  onChange ={(event) => setSchoolAddress(event.target.value)}
-                  isInvalid = {schoolAddressError}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {schoolAddressError}
-                </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Contact Number
                   {schoolContactError? <span className="text-danger"> *</span> : null}
                 </Form.Label>
@@ -571,12 +587,35 @@ const VolunteerForm = ({showVolunteer , back , close}) => {
                 <Form.Control.Feedback type="invalid">
                   {numberOfStudentsError}
                 </Form.Control.Feedback>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Address
+                  {schoolAddressError? <span className="text-danger"> *</span> : null}
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter Address"
+                  value = {schoolAddress}
+                  onChange ={(event) => setSchoolAddress(event.target.value)}
+                  isInvalid = {schoolAddressError}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {schoolAddressError}
+                </Form.Control.Feedback>
+                </Form.Group>
                 </Form.Group>
                 <Form.Group style={{width : '80%'}}  controlId="exampleForm.ControlInput1">
                 <Form.Label>School Location
-                  {/* {schoolLocationMarkerError? <span className="text-danger"> *</span> : null} */}
+                  {googleError? <span className="text-danger"> *</span> : null}
                 </Form.Label>
-                <GoogleLocator />
+                <br/>
+                {
+                  googleError && <label style={{color:'red' , fontSize : '14px'}} >Please Select a Location</label>
+                }
+                <GoogleLocator 
+                  getAddress={(googleAddress) => setGoogleAddress(googleAddress)}
+                  getArea={(googleArea) => setGoogleArea(googleArea)}
+                  getGovernorate={(googleGovernate) => setGoogleGovernate(googleGovernate)}
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicAdditionalDetails">
                 <Form.Label>Additional Details</Form.Label>

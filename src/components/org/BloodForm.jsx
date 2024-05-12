@@ -13,7 +13,7 @@ const BloodForm = ({showBlood , back , close}) => {
     const [hospitalName , setHospitalName] = useState('');
     const [hospitalArea , setHospitalArea] = useState('');
     const [governate , setGovernate] = useState(''); 
-    // const [hospitalAddress , setHospitalAddress] = useState('');
+    const [hospitalAddress , setHospitalAddress] = useState('');
     const [additionalDetails , setAdditionalDetails] = useState('');
     const [alertMessage , setAlertMessage] = useState('');
     const [showAlert, setShowAlert] = useState(false);
@@ -25,7 +25,7 @@ const BloodForm = ({showBlood , back , close}) => {
     const [hospitalNameError , setHospitalNameError] = useState('');
     const [hospitalAreaError , setHospitalAreaError] = useState('');
     const [governateError , setGovernateError] = useState(''); 
-    // const [hospitalAddressError , setHospitalAddressError] = useState('');
+    const [hospitalAddressError , setHospitalAddressError] = useState('');
     
     const resetInsertions = () => {
         setTitleError('');
@@ -34,14 +34,14 @@ const BloodForm = ({showBlood , back , close}) => {
         setHospitalNameError('');
         setHospitalAreaError('');
         setGovernateError('');
-        // setHospitalAddressError('');
+        setHospitalAddressError('');
         setTitle('');
         setBloodType('');
         setPatientName('');
         setHospitalName('');
         setHospitalArea('');
         setGovernate('');
-        // setHospitalAddress('');
+        setHospitalAddress('');
         setAdditionalDetails('');
         setSuccess(false);
         setShowAlert(false);
@@ -89,6 +89,9 @@ const BloodForm = ({showBlood , back , close}) => {
       else{
         setHospitalNameError('');
       }
+      if(!hospitalAddress){
+        setHospitalAddressError('Hospital Address is required');
+      }
       if(hospitalArea === ''){
         setHospitalAreaError('Hospital Area is required');
       }
@@ -113,16 +116,6 @@ const BloodForm = ({showBlood , back , close}) => {
             close();
         } ,4000);
       }
-
-     
-      
-
-      //-------------------------------------------------------------------------------------
-      //          Waiting for abdullah to return me the address from location marker
-      // if(!hospitalAddress){
-      //   setHospitalAddressError('Hospital Address is required');
-      // }
-      //-------------------------------------------------------------------------------------  
     }
     
 
@@ -186,32 +179,50 @@ const BloodForm = ({showBlood , back , close}) => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicHospitalArea">
+                <Form.Label>Hospital Address  
+                  {hospitalAddressError? <span className="text-danger"> *</span> : null}
+                </Form.Label>
+                <Form.Control type="text" placeholder="Enter Hospital Area" value={(hospitalAddress !== '') ? hospitalAddress : null} onChange={(e) => setHospitalArea(e.target.value)} isInvalid = {hospitalAddressError} />
+                <Form.Control.Feedback type="invalid">
+                  {hospitalAddressError}
+                </Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicHospitalArea">
                 <Form.Label>Hospital Area  
                   {hospitalAreaError? <span className="text-danger"> *</span> : null}
                 </Form.Label>
-                <Form.Control type="text" placeholder="Enter Hospital Area" value={hospitalArea} onChange={(e) => setHospitalArea(e.target.value)} isInvalid = {hospitalAreaError} />
+                <Form.Control type="text" placeholder="Enter Hospital Area" value={(hospitalArea !== '')? hospitalArea : null} onChange={(e) => setHospitalArea(e.target.value)} isInvalid = {hospitalAreaError} />
                 <Form.Control.Feedback type="invalid">
                   {hospitalAreaError}
                 </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicGovernate">
-                <Form.Label>Governate  
+                <Form.Label>Governorate  
                   {governateError? <span className="text-danger"> *</span> : null}
                 </Form.Label>
-                <Form.Control type="text" placeholder="Enter Governate" value={governate} onChange={(e) => setGovernate(e.target.value)} isInvalid = {governateError} />
+                <Form.Control type="text" placeholder="Enter Governate" value={(governate !== '')? governate : null} onChange={(e) => setGovernate(e.target.value)} isInvalid = {governateError} />
                 <Form.Control.Feedback type="invalid">
                   {governateError}
                 </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group   controlId="exampleForm.ControlInput1">
-                <Form.Label>Hospital Address  
+                <Form.Label>
+                  <i>OR</i>
+                  <br/>
+                  Pin Hospital Location:  
                   {/* {hospitalLocationError? <span className="text-danger"> *</span> : null} */}
                 </Form.Label>
-                <GoogleLocator />
+                <GoogleLocator 
+                  getAddress={(hospitalAddress) => setHospitalAddress(hospitalAddress)}
+                  getArea = {(hospitalArea) => setHospitalArea(hospitalArea)}
+                  getGovernorate = {(governate) => setGovernate(governate)}                
+                />
 
                 </Form.Group>
+                
 
     
                 <Form.Group className="mb-3" controlId="formBasicAdditionalDetails">
