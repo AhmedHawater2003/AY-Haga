@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Text } from '@mantine/core';
 import { modals } from '@mantine/modals';
 
-const DeleteConfirmationModal = () => {
+const DeleteConfirmationModal = ({item , deletePost,close ,back }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -16,11 +16,18 @@ const DeleteConfirmationModal = () => {
     </Text>),
     labels: { confirm: 'Delete account', cancel: "No don't delete it" },
     confirmProps: { color: 'red' },
-    onCancel: () => console.log('Cancel'),
-    onConfirm: () => console.log('Confirmed'),
+    onCancel: () => {
+      back();
+      handleClose();
+    },
+    onConfirm: () => {
+      deletePost(item);
+      close();
+      handleClose();
+    }
 });
   return (
-    <Button onClick={openDeleteModal} color="red">Delete account</Button>
+    <Button onClick={() => deletePost(item)} color="red">Delete account</Button>
   );
 };
 
